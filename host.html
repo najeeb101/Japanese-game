@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host View - Gamers Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .host { max-width: 1500px; margin: 10px auto; padding: 0 10px; }
+  .host .frame { max-width: none; margin: 0; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+  .status { font-family: var(--display); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; background: var(--head-bg); color: var(--head-label); border: 3px solid var(--line); border-radius: var(--radius-s); padding: 8px 14px; transform: skewX(var(--skew)); }
+  .status.live { color: #5dff8c; }
+  .host .board { gap: 6px; }
+  .host .head { padding: 5px 2px 4px; }
+  .host .head .jp { font-size: 28px; }
+  .host .head .en { font-size: 10px; }
+  .host .cell { width: 100%; font-size: 20px; padding: 6px 0 4px; border-radius: min(var(--radius), 12px); border-width: 2px; cursor: pointer; }
+  .host .cell.current { outline: 4px solid #ff2d55; outline-offset: 1px; }
+  .panel { position: sticky; top: 10px; }
+  .q-panel { text-align: left; }
+  .q-panel .q-prompt { font-size: 24px; text-align: left; }
+  .empty { font-family: var(--display); font-size: 24px; text-transform: uppercase; text-align: center; padding: 60px 10px; opacity: .85; }
+  .hq-img { display: block; max-width: 100%; max-height: 34vh; margin: 0 0 12px; border: 3px solid var(--line); border-radius: 10px; background: #fff; }
+  .hq-img.cutout { background: var(--stage); }
+  .secret { border: 4px dashed #ff2d55; background: var(--answer); color: var(--answer-text); border-radius: var(--radius); padding: 10px 14px; margin: 6px 0 14px; }
+  .secret small { display: block; font-family: var(--display); letter-spacing: .1em; font-size: 12px; color: #c4002b; text-transform: uppercase; }
+  .secret b { display: block; font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.05; text-transform: uppercase; }
+  .secret span { display: block; font-weight: 700; font-size: 18px; margin-top: 4px; }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .ctrl .btn { font-size: 16px; padding: 9px 14px; }
+  .ctrl .btn.go { background: #1f9d3a; color: #fff; }
+  .ctrl .btn.stop { background: #e8231c; color: #fff; }
+  .hint { font-size: 13px; font-weight: 700; margin-top: 10px; background: rgba(255,255,255,.85); color: #111; padding: 6px 10px; border-radius: 8px; display: none; }
+  .hint.show { display: block; }
+  .help { font-size: 13px; font-weight: 600; margin: 10px 2px 0; background: rgba(255,255,255,.85); color: #111; padding: 6px 10px; border-radius: 8px; }
+  @media (max-width: 980px) { .cols { grid-template-columns: 1fr; } .panel { position: static; } }
+</style>
+</head>
+<body>
+<div class="host">
+  <div class="frame">
+    <div class="bar">
+      <h1>Gamers Week <small style="font-size:.55em">Host</small></h1>
+      <span class="status" id="status">TV: not connected</span>
+      <nav>
+        <a class="btn accent" href="index.html">Exit host view</a>
+        <button class="btn accent" id="openTv">Open TV window</button>
+        <button class="btn" id="tvMenu">TV: Main menu</button>
+        <button class="btn" id="tvBoard">TV: Board</button>
+        <button class="btn" id="r1">1-10</button>
+        <button class="btn" id="r2">11-20</button>
+        <button class="btn" id="r3">21-30</button>
+        <button class="btn" id="r4">31-40</button>
+        <button class="btn" id="random">Random</button>
+        <button class="btn" id="reset">Reset</button>
+        <button class="btn" id="skin"></button>
+      </nav>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="board" id="board"></div>
+        <p class="help">Hover a number to peek at its answer. Click one to open it on the TV.</p>
+      </div>
+      <div class="panel">
+        <div class="q-panel" id="panel"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let current = null;           // { cat, q } shown in the host panel
+let tv = { seen: false, page: '', revealed: false };
+
+const catOf = key => DATA.find(c => c.key === key);
+
+function sendOpen(cat, n) {
+  used.add(cat.key, n);
+  Bus.send({ type: 'open', c: cat.key, n });
+  select(cat, n);
+  renderBoard();
+}
+
+function select(cat, n) {
+  current = { cat, q: cat.questions.find(x => x.n === n) };
+  tv.revealed = false;
+  renderPanel();
+  renderBoard();
+}
+
+/* ---------- board ---------- */
+function renderBoard() {
+  const range = Store.get('jj-range', 0);
+  const board = $('board');
+  board.textContent = '';
+  DATA.forEach(c => {
+    const h = document.createElement('div');
+    h.className = 'head';
+    h.innerHTML = '<span class="jp"></span><span class="en"></span>';
+    h.children[0].textContent = c.jp; h.children[1].textContent = c.en;
+    board.append(h);
+  });
+  for (let r = 1; r <= 10; r++) {
+    const n = range * 10 + r;
+    DATA.forEach(c => {
+      const b = document.createElement('button');
+      const q = c.questions.find(x => x.n === n);
+      b.className = 'cell' + (used.has(c.key, n) ? ' used' : '') + (current && current.cat === c && current.q.n === n ? ' current' : '');
+      b.textContent = n;
+      b.title = q.answer + (q.detail ? ' - ' + q.detail : '');
+      b.onclick = () => sendOpen(c, n);
+      board.append(b);
+    });
+  }
+  [0, 1, 2, 3].forEach(i => $('r' + (i + 1)).classList.toggle('on', range === i));
+  $('skin').textContent = 'Skin: ' + skinLabel(currentSkin());
+}
+
+/* ---------- question panel (the answer only ever appears here) ---------- */
+function renderPanel() {
+  const p = $('panel');
+  p.textContent = '';
+  if (!current) {
+    const e = document.createElement('div');
+    e.className = 'empty';
+    e.textContent = 'Pick a number on the board';
+    p.append(e);
+    return;
+  }
+  const { cat, q } = current;
+  const tag = document.createElement('div');
+  tag.className = 'q-tag'; tag.style.display = 'inline-flex'; tag.style.marginBottom = '10px';
+  tag.innerHTML = '<span class="jp"></span><span class="en"></span><span class="no"></span>';
+  tag.children[0].textContent = cat.jp; tag.children[1].textContent = cat.en; tag.children[2].textContent = '#' + q.n;
+  const prompt = document.createElement('h2');
+  prompt.className = 'q-prompt'; prompt.textContent = q.prompt;
+  p.append(tag);
+  if (q.difficulty) { const d = document.createElement('span'); d.className = 'diff'; d.dataset.d = q.difficulty; d.textContent = diffLabel(q.difficulty); d.style.marginLeft = '10px'; d.style.verticalAlign = 'top'; p.append(d); }
+  p.append(prompt);
+
+  if (q.img) {
+    const im = document.createElement('img');
+    im.className = 'hq-img' + (q.cutout ? ' cutout' : ''); im.src = q.img; im.alt = '';
+    p.append(im);
+  }
+  if (q.audio) {
+    const n = document.createElement('div');
+    n.className = 'hint show'; n.style.background = '#ffe500';
+    n.textContent = '♪ Audio question - the clip plays on the TV (use the buttons below).';
+    p.append(n);
+  }
+
+  const sec = document.createElement('div');
+  sec.className = 'secret';
+  sec.innerHTML = '<small>Answer (host only)</small><b></b><span></span>';
+  sec.children[1].textContent = q.answer; sec.children[2].textContent = q.detail || '';
+  p.append(sec);
+
+  const ctrl = document.createElement('div');
+  ctrl.className = 'ctrl';
+  const mk = (label, cls, fn) => { const b = document.createElement('button'); b.className = 'btn ' + cls; b.textContent = label; b.onclick = fn; ctrl.append(b); return b; };
+  mk('Show answer on TV', 'go', () => { Bus.send({ type: 'reveal' }); tv.revealed = true; renderStatus(); });
+  mk('Hide answer on TV', 'stop', () => { Bus.send({ type: 'hide' }); tv.revealed = false; renderStatus(); });
+  if (q.audio) {
+    mk('▶ Play on TV', 'go', () => Bus.send({ type: 'audio', action: 'play' }));
+    mk('❚❚ Pause', '', () => Bus.send({ type: 'audio', action: 'pause' }));
+    mk('↺ Restart', '', () => Bus.send({ type: 'audio', action: 'restart' }));
+  }
+  const next = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
+  if (next) mk('Next in ' + cat.en + ' →', 'accent', () => sendOpen(cat, next.n));
+  mk('TV back to board', '', () => { Bus.send({ type: 'board' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); });
+  p.append(ctrl);
+
+  const hint = document.createElement('div');
+  hint.className = 'hint'; hint.id = 'audioHint';
+  hint.textContent = 'The TV browser blocked autoplay. Click once anywhere on the TV window (or allow sound for this site in Chrome), then press Play again.';
+  p.append(hint);
+}
+
+function renderStatus() {
+  const s = $('status');
+  if (!tv.seen) { s.textContent = 'TV: not connected'; s.classList.remove('live'); return; }
+  s.classList.add('live');
+  s.textContent = tv.page === 'menu' ? 'TV: main menu'
+    : tv.page === 'board' ? 'TV: showing the board'
+    : 'TV: question' + (tv.revealed ? ' - answer shown' : ' - answer hidden');
+}
+
+/* ---------- controls ---------- */
+$('openTv').onclick = () => {
+  window.open('index.html?tv=1', 'jj-tv', 'popup=yes,width=540,height=960');
+  setTimeout(() => Bus.send({ type: 'ping' }), 1200);
+};
+$('tvMenu').onclick = () => { Bus.send({ type: 'menu' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); };
+$('tvBoard').onclick = () => { Bus.send({ type: 'board' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); };
+[0, 1, 2, 3].forEach(i => { $('r' + (i + 1)).onclick = () => { Store.set('jj-range', i); renderBoard(); }; });
+$('random').onclick = () => {
+  const pool = [];
+  DATA.forEach(c => c.questions.forEach(q => { if (!used.has(c.key, q.n)) pool.push([c, q.n]); }));
+  if (!pool.length) { alert('All questions have been used. Press Reset to start over.'); return; }
+  const [c, n] = pool[Math.floor(Math.random() * pool.length)];
+  sendOpen(c, n);
+};
+$('reset').onclick = () => { if (confirm('Reset the board? All questions will be available again.')) { used.clear(); renderBoard(); } };
+$('skin').onclick = () => { applySkin(nextSkin()); renderBoard(); };
+
+/* ---------- listen to the TV ---------- */
+Bus.on(m => {
+  if (m.type === 'view') {
+    tv = { seen: true, page: m.page, revealed: !!m.revealed };
+    if (m.page === 'question') {
+      const c = catOf(m.c);
+      if (c && (!current || current.cat !== c || current.q.n !== m.n)) { current = { cat: c, q: c.questions.find(x => x.n === m.n) }; renderPanel(); renderBoard(); }
+    } else if (current) { current = null; renderPanel(); renderBoard(); }
+    renderStatus();
+  }
+  if (m.type === 'audioblocked') { const h = $('audioHint'); if (h) h.classList.add('show'); }
+});
+window.onSharedChange = renderBoard;
+
+renderBoard();
+renderPanel();
+renderStatus();
+Bus.send({ type: 'ping' });   // if a TV window is already open it answers with what it is showing
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Question - Gamers Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="frame">
+  <div class="q-top">
+    <a class="btn tvhide" id="menu" href="index.html">&#8962; Main menu</a>
+    <a class="btn tvhide" id="back" href="board.html">&larr; Board</a>
+    <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span><span class="no" id="no"></span></div>
+    <span class="diff" id="diff" hidden></span>
+    <span class="spacer"></span>
+    <a class="btn accent tvhide" id="next" href="board.html">Next &rarr;</a>
+  </div>
+
+  <div class="q-panel" id="panel">
+    <h2 class="q-prompt" id="prompt"></h2>
+    <div id="media"></div>
+    <button class="btn reveal tvhide" id="reveal" aria-expanded="false">Reveal answer</button>
+    <div class="answer" id="answer" aria-live="polite"><b id="a-title"></b><span id="a-detail"></span></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview"><img alt=""></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+const p = new URLSearchParams(location.search);
+const cat = DATA.find(c => c.key === p.get('c'));
+const q = cat && cat.questions.find(x => x.n === Number(p.get('n')));
+
+if (!q) {
+  document.getElementById('panel').innerHTML = '<h2 class="q-prompt">Question not found</h2><a class="btn" href="board.html">Back to board</a> <a class="btn" href="index.html">Main menu</a>';
+  document.getElementById('next').hidden = true;
+} else {
+  document.title = cat.en + ' #' + q.n + ' - Gamers Week';
+  used.add(cat.key, q.n);
+
+  document.getElementById('jp').textContent = cat.jp;
+  document.getElementById('en').textContent = cat.en;
+  document.getElementById('no').textContent = '#' + q.n;
+  document.getElementById('prompt').textContent = q.prompt;
+  if (q.difficulty) { const dEl = document.getElementById('diff'); dEl.hidden = false; dEl.dataset.d = q.difficulty; dEl.textContent = diffLabel(q.difficulty); }
+
+  const media = document.getElementById('media');
+  if (q.img) {
+    const im = document.createElement('img');
+    im.className = 'q-img' + (q.cutout ? ' cutout' : ''); im.src = q.img; im.alt = cat.en + ' question ' + q.n;
+    im.onclick = () => { const lb = document.getElementById('lightbox'); const li = lb.querySelector('img'); li.src = q.img; li.className = q.cutout ? 'cutout' : ''; lb.classList.add('open'); };
+    media.append(im);
+  }
+  if (q.audio) {
+    const box = document.createElement('div');
+    box.className = 'q-audio';
+    box.innerHTML = '<div class="big">♪</div>';
+    const a = document.createElement('audio');
+    a.controls = true; a.src = q.audio; a.preload = 'auto'; a.id = 'clip';
+    box.append(a);
+    media.append(box);
+  }
+
+  document.getElementById('a-title').textContent = q.answer;
+  document.getElementById('a-detail').textContent = q.detail;
+
+  const btn = document.getElementById('reveal'), ans = document.getElementById('answer');
+  function setShown(on) {
+    ans.classList.toggle('show', on);
+    btn.setAttribute('aria-expanded', String(on));
+    btn.textContent = on ? 'Hide answer' : 'Reveal answer';
+    announce({ page: 'question', c: cat.key, n: q.n, revealed: on });
+  }
+  btn.onclick = () => setShown(!ans.classList.contains('show'));
+
+  // the host view can show/hide the answer and run the audio clip on this screen
+  Bus.on(m => {
+    if (!TV) return;
+    if (m.type === 'reveal') setShown(true);
+    if (m.type === 'hide') setShown(false);
+    if (m.type === 'board') location.href = 'board.html?tv=1';
+    if (m.type === 'menu') location.href = 'index.html?tv=1';
+    if (m.type === 'open') location.href = 'question.html?c=' + m.c + '&n=' + m.n + '&tv=1';
+    if (m.type === 'ping') announce({ page: 'question', c: cat.key, n: q.n, revealed: ans.classList.contains('show') });
+    if (m.type === 'audio') {
+      const clip = document.getElementById('clip'); if (!clip) return;
+      if (m.action === 'pause') clip.pause();
+      else {
+        if (m.action === 'restart') clip.currentTime = 0;
+        clip.play().catch(() => Bus.send({ type: 'audioblocked' }));
+      }
+    }
+  });
+  announce({ page: 'question', c: cat.key, n: q.n, revealed: false });
+  holdUpFlash();
+
+  // "Next" goes to the following unused question in the same category, else back to the board
+  const nextQ = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
+  const nextEl = document.getElementById('next');
+  nextEl.href = nextQ ? 'question.html?c=' + cat.key + '&n=' + nextQ.n : 'board.html';
+  if (!nextQ) nextEl.textContent = 'Done ✓';
+}
+
+if (TV) document.getElementById('back').href = 'board.html?tv=1';
+const lb = document.getElementById('lightbox');
+lb.onclick = () => lb.classList.remove('open');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (lb.classList.contains('open')) lb.classList.remove('open'); else if (!TV) location.href = 'board.html'; }
+});
+</script>
+</body>
+</html>

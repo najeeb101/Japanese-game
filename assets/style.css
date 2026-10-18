@@ -1,0 +1,385 @@
+/* ---- skins: Persona 4 is the default; Persona 3 and 5 override the same variables ---- */
+:root {
+  --bg-color: #ffe500;
+  --bg-art: url("theme/stripes.jpeg") center / cover no-repeat;
+  --bg-anim: drift 38s ease-in-out infinite alternate;
+  --deco: url("theme/p4-spiral.jpeg");
+  --spark: #fff; --spark-char: "✦";
+  --hero: url("theme/p4-yu.jpeg"); --hero-ar: 16 / 10; --hero-border: 4px solid var(--line); --hero-blend: normal; --hero-radius: 22px;
+  --ink: #111;               /* text on light surfaces */
+  --line: #111;              /* borders */
+  --frame: rgba(255, 229, 0, .78);
+  --frame-r: 22px;
+  --radius: 18px;            /* number cells */
+  --radius-s: 14px;          /* headers, buttons */
+  --skew: 0deg;
+  --title-color: #fff;
+  --title-stroke: #111;
+  --title-shadow: 3px 3px 0 #111;
+  --head-bg: #111;
+  --head-kanji: #ff7a00;
+  --head-label: #ffe500;
+  --cell: #fff59d;
+  --cell-text: #111;
+  --btn-bg: #111;
+  --btn-text: #ffe500;
+  --accent: #ff7a00;
+  --accent-text: #111;
+  --panel: #ffffff;
+  --panel-text: #111;
+  --answer: #ffe500;
+  --answer-text: #111;
+  --stage: #fffbd0;
+  --reveal: #e8231c;
+  --reveal-text: #fff;
+  --display: "Anton", Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  --body: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, Arial, sans-serif;
+}
+
+/* Persona 3: midnight blue, moon, cyan glow */
+:root[data-skin="p3"] {
+  --bg-color: #020a2c;
+  --bg-art: linear-gradient(rgba(1,8,38,.18), rgba(1,8,38,.5)), url("theme/p3-water.jpeg") center / cover no-repeat;
+  --bg-anim: drift 46s ease-in-out infinite alternate;
+  --deco: url("theme/p3-clock.jpeg");
+  --spark: #9fe9ff; --spark-char: "●";
+  --hero: url("theme/p3-clock.jpeg"); --hero-ar: 1 / 1; --hero-border: 0; --hero-blend: screen; --hero-radius: 0;
+  --ink: #e9fbff;
+  --line: #52d4ff;
+  --frame: rgba(2, 10, 44, .74);
+  --frame-r: 10px;
+  --radius: 6px;
+  --radius-s: 6px;
+  --title-color: #eafcff;
+  --title-stroke: #0a3a8c;
+  --title-shadow: 0 0 14px #52d4ff, 3px 3px 0 #0a3a8c;
+  --head-bg: linear-gradient(180deg, #0a2a73, #051645);
+  --head-kanji: #8ee8ff;
+  --head-label: #ffffff;
+  --cell: linear-gradient(180deg, #2a6ee0, #123c9e);
+  --cell-text: #e9fbff;
+  --btn-bg: #071a52;
+  --btn-text: #8ee8ff;
+  --accent: #52d4ff;
+  --accent-text: #021033;
+  --panel: linear-gradient(180deg, #0a2a73, #051645);
+  --panel-text: #eafcff;
+  --answer: #bdf1ff;
+  --answer-text: #021033;
+  --stage: #d4f3ff;
+  --reveal: #52d4ff;
+  --reveal-text: #021033;
+}
+
+/* Persona 5: red, black, white, slanted */
+:root[data-skin="p5"] {
+  --bg-color: #b30010;
+  --bg-art: linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url("theme/p5-stars.jpeg") 0 0 / 440px auto repeat;
+  --bg-anim: starscroll 36s linear infinite;
+  --deco: none;
+  --spark: #fff; --spark-char: "★";
+  --hero: url("theme/p5-takeyourheart.jpeg"); --hero-ar: 1 / 1; --hero-border: 0; --hero-blend: screen; --hero-radius: 0;
+  --ink: #fff;
+  --line: #fff;
+  --frame: rgba(8, 8, 8, .86);
+  --frame-r: 0px;
+  --radius: 0px;
+  --radius-s: 0px;
+  --skew: -8deg;
+  --title-color: #fff;
+  --title-stroke: #d90012;
+  --title-shadow: 4px 4px 0 #d90012;
+  --head-bg: #d90012;
+  --head-kanji: #ffffff;
+  --head-label: #ffffff;
+  --cell: #f3f3f3;
+  --cell-text: #0c0c0c;
+  --btn-bg: #0c0c0c;
+  --btn-text: #ffffff;
+  --accent: #d90012;
+  --accent-text: #ffffff;
+  --panel: #0c0c0c;
+  --panel-text: #ffffff;
+  --answer: #ffffff;
+  --answer-text: #0c0c0c;
+  --stage: #f2f2f2;
+  --reveal: #d90012;
+  --reveal-text: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--bg-color);
+}
+button, a.btn { font-family: var(--display); letter-spacing: .02em; cursor: pointer; }
+
+.frame {
+  max-width: 1100px; margin: 14px auto; padding: 14px;
+  background: var(--frame); border: 4px solid var(--line); border-radius: var(--frame-r);
+}
+
+/* top bar */
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.bar h1 {
+  margin: 0; font-family: var(--display); font-style: italic; font-weight: 400;
+  font-size: clamp(26px, 4vw, 38px); text-transform: uppercase;
+  color: var(--title-color); -webkit-text-stroke: 1.5px var(--title-stroke); text-shadow: var(--title-shadow);
+}
+.bar nav { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; background: var(--btn-bg); color: var(--btn-text);
+  border: 3px solid var(--line); border-radius: var(--radius-s); padding: 10px 20px; transform: skewX(var(--skew));
+  font-size: 17px; text-transform: uppercase; text-decoration: none; line-height: 1.1;
+}
+.btn:hover { filter: brightness(1.15); }
+.btn:active { transform: translateY(2px) skewX(var(--skew)); }
+.btn.on { outline: 3px solid var(--line); outline-offset: 2px; }
+.btn.accent { background: var(--accent); color: var(--accent-text); }
+
+/* board */
+.board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.head {
+  background: var(--head-bg); border: 3px solid var(--line); border-radius: var(--radius-s); transform: skewX(var(--skew));
+  text-align: center; padding: 8px 4px 6px; font-family: var(--display);
+}
+.head .jp { display: block; font-size: clamp(28px, 4.2vw, 44px); line-height: 1; color: var(--head-kanji); font-weight: 400; }
+.head .en { display: block; font-size: clamp(10px, 1.3vw, 13px); letter-spacing: .06em; color: var(--head-label); text-transform: uppercase; margin-top: 3px; }
+.cell {
+  display: block; text-align: center; text-decoration: none;
+  background: var(--cell); color: var(--cell-text);
+  border: 3px solid var(--line); border-radius: var(--radius); transform: skewX(var(--skew));
+  font-family: var(--display); font-size: clamp(20px, 2.6vw, 28px);
+  padding: 10px 0 8px; transition: transform .1s;
+}
+.cell:hover { transform: translateY(-2px) scale(1.03) skewX(var(--skew)); }
+.cell.used { background: rgba(0,0,0,.35); color: rgba(255,255,255,.55); border-style: dashed; }
+.note { margin: 12px 2px 0; font-size: 13px; font-weight: 700; color: #111; background: rgba(255,255,255,.7); display: inline-block; padding: 3px 10px; border-radius: 8px; }
+
+/* question page */
+.q-top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.q-tag { display: flex; align-items: center; gap: 12px; background: var(--head-bg); border: 3px solid var(--line); border-radius: var(--radius-s); padding: 6px 16px; font-family: var(--display); }
+.q-tag .jp { font-size: 40px; line-height: 1; color: var(--head-kanji); }
+.q-tag .en { color: var(--head-label); text-transform: uppercase; font-size: 18px; letter-spacing: .06em; }
+.q-tag .no { color: #fff; font-size: 30px; }
+.spacer { flex: 1; }
+.q-panel { background: var(--panel); color: var(--panel-text); border: 4px solid var(--line); border-radius: var(--radius); padding: 18px; text-align: center; }
+.q-prompt { font-family: var(--display); font-size: clamp(24px, 4vw, 40px); text-transform: uppercase; margin: 0 0 14px; }
+.q-img { display: block; margin: 0 auto 16px; max-width: 100%; max-height: 52vh; background: #fff; border: 3px solid var(--line); border-radius: 12px; cursor: zoom-in; }
+.q-audio { margin: 0 auto 16px; max-width: 560px; padding: 22px; border: 3px solid var(--line); border-radius: 14px; background: repeating-linear-gradient(135deg, #ffe500 0 14px, #fff27a 14px 28px); }
+.q-audio .big { font-size: 52px; line-height: 1; margin-bottom: 8px; color: #111; }
+.q-audio audio { width: 100%; }
+.answer { display: none; margin: 18px auto 0; max-width: 640px; background: var(--answer); color: var(--answer-text); border: 4px solid var(--line); border-radius: var(--radius); padding: 14px 18px; }
+.answer.show { display: block; animation: pop .18s ease-out; }
+.answer b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(28px, 5vw, 46px); text-transform: uppercase; line-height: 1.05; }
+.answer span { display: block; margin-top: 6px; font-size: 18px; font-weight: 700; }
+.reveal { font-size: 22px; padding: 12px 34px; background: var(--reveal); color: var(--reveal-text); }
+.reveal[aria-expanded="true"] { background: var(--btn-bg); color: var(--btn-text); }
+@keyframes pop { from { transform: scale(.94); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 96vw; max-height: 92vh; background: #fff; border: 4px solid #ffe500; }
+
+@media (max-width: 700px) {
+  .frame { margin: 8px; padding: 10px; border-radius: 16px; }
+  .board { gap: 6px; }
+  .cell { border-radius: 12px; border-width: 2px; padding: 8px 0 6px; }
+  .head { border-radius: 10px; border-width: 2px; }
+  .btn { padding: 8px 12px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .answer.show { animation: none; } .cell { transition: none; } }
+
+/* cut-out characters / silhouettes sit on a plain per-skin stage instead of their old backgrounds */
+.q-img.cutout, .lightbox img.cutout { background: var(--stage); }
+.media img.cutout { background: var(--stage); }
+
+/* TV mode: audience display, no controls */
+html.tv .bar nav, html.tv .tvhide { display: none !important; }
+html.tv body { cursor: none; }
+
+/* tall screens (a vertical TV): fill the whole screen and scale everything with the screen width */
+@media (max-aspect-ratio: 3/4) {
+  html, body { height: 100%; }
+  .frame { max-width: none; width: 100%; min-height: 100vh; margin: 0; border-radius: 0; border-width: 0; padding: 2.4vw; display: flex; flex-direction: column; }
+  .bar { margin-bottom: 2vw; }
+  .bar h1 { font-size: 8vw; }
+  .btn { font-size: 3vw; padding: 1.6vw 3.4vw; border-radius: 2vw; }
+  .board { flex: 1; gap: 1.3vw; grid-template-rows: auto repeat(10, 1fr); }
+  .head { padding: 1.6vw 0.5vw; border-radius: 2vw; }
+  .head .jp { font-size: 9vw; }
+  .head .en { font-size: 2.3vw; }
+  .cell { display: flex; align-items: center; justify-content: center; padding: 0; font-size: 6.2vw; border-radius: 2.4vw; }
+  .note { font-size: 2.6vw; margin-top: 1.6vw; }
+  .q-top { margin-bottom: 2vw; gap: 2vw; }
+  .q-tag { padding: 1vw 3vw; border-radius: 2vw; }
+  .q-tag .jp { font-size: 9vw; } .q-tag .en { font-size: 3.6vw; } .q-tag .no { font-size: 7vw; }
+  .q-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 3vw; border-radius: 3vw; }
+  .q-prompt { font-size: 6.6vw; margin-bottom: 2.4vw; }
+  .q-img { width: 100%; height: 58vh; max-height: none; object-fit: contain; margin-bottom: 3vw; border-radius: 2vw; }
+  .q-audio { max-width: none; width: 100%; padding: 6vw; margin-bottom: 3vw; }
+  .q-audio .big { font-size: 22vw; }
+  .reveal { font-size: 5vw; padding: 2.4vw 8vw; }
+  .answer { max-width: none; width: 100%; padding: 3vw 4vw; border-radius: 3vw; margin-top: 3vw; }
+  .answer b { font-size: 10vw; }
+  .answer span { font-size: 4.6vw; margin-top: 1.4vw; }
+}
+
+
+/* ================= animation ================= */
+body { position: relative; overflow-x: hidden; }
+body::before {            /* moving artwork behind everything */
+  content: ""; position: fixed; inset: -7%; z-index: -2; pointer-events: none;
+  background: var(--bg-art); animation: var(--bg-anim); will-change: transform, background-position;
+}
+body::after {             /* Persona 3: a big clock that slowly turns */
+  content: ""; position: fixed; z-index: -1; pointer-events: none;
+  width: min(120vmin, 1000px); aspect-ratio: 1; right: -18vmin; bottom: -22vmin;
+  background: var(--deco) center / contain no-repeat; mix-blend-mode: screen; opacity: .3;
+  animation: spin 120s linear infinite;
+}
+:root[data-skin="p5"] body::after { display: none; }
+
+@keyframes drift { from { transform: scale(1.04) translate(-2.2%, -1.6%); } to { transform: scale(1.12) translate(2.2%, 1.6%); } }
+@keyframes starscroll { from { background-position: 0 0, 0 0; } to { background-position: 0 0, 440px 838px; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pop { from { transform: scale(.94); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cellIn { 0% { opacity: 0; transform: translateY(26px) scale(.5) rotate(-8deg) skewX(var(--skew)); } 70% { transform: translateY(-4px) scale(1.06) rotate(1deg) skewX(var(--skew)); } 100% { opacity: 1; transform: skewX(var(--skew)); } }
+@keyframes dropIn { 0% { opacity: 0; transform: translateY(-40px) scale(.9) skewX(var(--skew)); } 100% { opacity: 1; transform: skewX(var(--skew)); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-60px) skewX(var(--skew)); } to { opacity: 1; transform: skewX(var(--skew)); } }
+@keyframes panelIn { 0% { opacity: 0; transform: translateY(40px) scale(.94); } 100% { opacity: 1; transform: none; } }
+@keyframes imgIn { 0% { opacity: 0; transform: scale(.85) rotate(-2deg); } 100% { opacity: 1; transform: none; } }
+@keyframes slam { 0% { opacity: 0; transform: scale(1.7) rotate(-5deg); } 55% { opacity: 1; transform: scale(.94) rotate(1deg); } 100% { opacity: 1; transform: none; } }
+@keyframes titleIn { 0% { opacity: 0; transform: translateY(-70px) scale(1.4) skewX(-6deg); } 60% { opacity: 1; transform: translateY(8px) scale(.98); } 100% { opacity: 1; transform: none; } }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1.2deg); } }
+@keyframes pulse { 0%, 100% { transform: scale(1) skewX(var(--skew)); box-shadow: 6px 6px 0 rgba(0,0,0,.55), 0 0 0 0 var(--accent); } 50% { transform: scale(1.06) skewX(var(--skew)); box-shadow: 6px 6px 0 rgba(0,0,0,.55), 0 0 26px 8px var(--accent); } }
+@keyframes riseSpark { 0% { transform: translateY(0) rotate(0) scale(.6); opacity: 0; } 12% { opacity: .9; } 100% { transform: translateY(-115vh) rotate(300deg) scale(1.15); opacity: 0; } }
+@keyframes holdup { 0% { opacity: 0; transform: scale(3.2) rotate(-14deg); } 22% { opacity: 1; transform: scale(1) rotate(-4deg); } 70% { opacity: 1; transform: scale(1.04) rotate(-4deg); } 100% { opacity: 0; transform: scale(1.4) rotate(-2deg); } }
+@keyframes fadeOut { 0%, 60% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+
+/* board: tiles pop in one after another */
+.board.enter .head { animation: dropIn .5s cubic-bezier(.2, 1.3, .4, 1) backwards; animation-delay: calc(var(--i, 0) * 70ms); }
+.board.enter .cell { animation: cellIn .55s cubic-bezier(.2, 1.3, .4, 1) backwards; animation-delay: calc(450ms + var(--i, 0) * 16ms); }
+.bar h1 { animation: slideIn .6s cubic-bezier(.2, 1.3, .4, 1) backwards; }
+.bar nav .btn { animation: dropIn .5s backwards; }
+.bar nav .btn:nth-child(2) { animation-delay: .06s; } .bar nav .btn:nth-child(3) { animation-delay: .12s; }
+.bar nav .btn:nth-child(4) { animation-delay: .18s; } .bar nav .btn:nth-child(5) { animation-delay: .24s; } .bar nav .btn:nth-child(6) { animation-delay: .3s; }
+.btn, .cell { transition: transform .15s cubic-bezier(.2, 1.5, .4, 1), box-shadow .15s, filter .15s; }
+.btn:hover { transform: translateY(-2px) skewX(var(--skew)); }
+.cell:not(.used):hover { box-shadow: 0 0 0 3px var(--accent), 0 10px 20px rgba(0,0,0,.4); transform: translateY(-4px) scale(1.07) rotate(-1.5deg) skewX(var(--skew)); position: relative; z-index: 2; }
+.note { animation: dropIn .6s .9s backwards; }
+
+/* question page */
+.q-tag { animation: slideIn .5s cubic-bezier(.2, 1.3, .4, 1) backwards; }
+.q-panel { animation: panelIn .6s cubic-bezier(.2, 1.2, .4, 1) .05s backwards; }
+.q-prompt { animation: dropIn .5s .25s backwards; }
+.q-img { animation: imgIn .65s cubic-bezier(.2, 1.3, .4, 1) .3s backwards; }
+.q-audio { animation: imgIn .65s .3s backwards; }
+.q-audio .big { animation: float 2.4s ease-in-out infinite; display: inline-block; }
+.reveal { animation: pulse 2.2s ease-in-out infinite; }
+.reveal[aria-expanded="true"] { animation: none; }
+.answer.show { animation: slam .5s cubic-bezier(.2, 1.2, .4, 1); }
+.holdup { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,.55); animation: fadeOut 1.15s ease-out forwards; }
+.holdup img { width: min(80vw, 640px); mix-blend-mode: screen; animation: holdup 1.15s cubic-bezier(.2, 1, .3, 1) forwards; }
+
+/* menu */
+.kicker { animation: slideIn .6s backwards; }
+.title { animation: titleIn .9s cubic-bezier(.2, 1.2, .3, 1) .1s backwards; }
+.sub { animation: dropIn .6s .55s backwards; }
+.clubs { animation: dropIn .6s .8s backwards; }
+.start { animation: dropIn .6s 1s backwards, pulse 2s ease-in-out 1.8s infinite; }
+.hero-tv {
+  animation: imgIn .8s .4s backwards, float 5s ease-in-out 1.3s infinite;
+  background: var(--hero) center / cover no-repeat !important; aspect-ratio: var(--hero-ar) !important;
+  border: var(--hero-border) !important; mix-blend-mode: var(--hero-blend); border-radius: var(--hero-radius) !important;
+}
+:root:not([data-skin="p4"]) .hero-tv { display: block !important; width: min(380px, 60vw); box-shadow: none !important; }
+
+/* floating sparkles (made in JS) */
+.sparks { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.spark { position: absolute; bottom: -8vh; color: var(--spark); opacity: 0; animation: riseSpark linear infinite; text-shadow: 0 0 10px var(--spark); }
+.spark::before { content: var(--spark-char); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .sparks, .holdup { display: none; }
+}
+
+
+/* ================= Persona 4: TV-world tunnel, glitch, scanlines ================= */
+@keyframes turn { to { rotate: 360deg; } }
+@keyframes rgbSplit {
+  0%, 90%, 100% { filter: none; transform: none; }
+  91% { filter: drop-shadow(-5px 0 #ff2d55) drop-shadow(5px 0 #19b5d8); transform: translateX(3px); }
+  93% { filter: drop-shadow(5px 0 #ff2d55) drop-shadow(-5px 0 #19b5d8); transform: translateX(-3px) skewX(-4deg); }
+  95% { filter: drop-shadow(-3px 0 #ff2d55) drop-shadow(3px 0 #19b5d8); transform: none; }
+}
+@keyframes heroFade { 0%, 40% { opacity: 0; } 50%, 90% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes scan { to { background-position: 0 24px; } }
+@keyframes spiralFlash {
+  0%   { opacity: 0; transform: scale(.35) rotate(-140deg); }
+  25%  { opacity: .9; }
+  100% { opacity: 0; transform: scale(3.4) rotate(40deg); }
+}
+@keyframes clockFlash {
+  0%   { opacity: 0; transform: scale(.3) rotate(-220deg); }
+  28%  { opacity: 1; transform: scale(1) rotate(-20deg); }
+  70%  { opacity: 1; transform: scale(1.05) rotate(10deg); }
+  100% { opacity: 0; transform: scale(1.7) rotate(60deg); }
+}
+
+/* a huge, slowly turning spiral behind the page (black stripes tint the yellow) */
+:root[data-skin="p4"] body::after {
+  width: 230vmax; height: 230vmax; aspect-ratio: auto;
+  left: 50%; top: 50%; right: auto; bottom: auto; translate: -50% -50%;
+  background: var(--deco) center / cover no-repeat;
+  mix-blend-mode: multiply; opacity: .16;
+  animation: turn 150s linear infinite;
+}
+
+/* P4 titles glitch every few seconds */
+:root[data-skin="p4"] .bar h1 { animation: slideIn .6s cubic-bezier(.2, 1.3, .4, 1) backwards, rgbSplit 6s 2.5s infinite; }
+:root[data-skin="p4"] .title  { animation: titleIn .9s cubic-bezier(.2, 1.2, .3, 1) .1s backwards, rgbSplit 6s 3s infinite; }
+
+/* P4 menu picture: yellow artwork <-> TV shot, with scanlines like an old set */
+:root[data-skin="p4"] .hero-tv { position: relative; width: min(580px, 82vw) !important; overflow: hidden; box-shadow: 8px 8px 0 rgba(0,0,0,.5) !important; border-radius: 26px !important; }
+:root[data-skin="p4"] .hero-tv::before {
+  content: ""; position: absolute; inset: 0; background: url("theme/p4-tv.jpeg") center / cover no-repeat;
+  animation: heroFade 14s ease-in-out infinite;
+}
+:root[data-skin="p4"] .hero-tv::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 2px, transparent 2px 4px);
+  animation: scan .8s linear infinite;
+  box-shadow: inset 0 0 60px rgba(0,0,0,.55);
+}
+
+/* flashes when a question opens: Persona 3 clock, Persona 4 spiral (Persona 5 HOLD UP! is above) */
+.holdup.clock img { animation: clockFlash 1.15s cubic-bezier(.2, 1, .3, 1) forwards; width: min(70vmin, 560px); }
+.flash-p4 {
+  position: fixed; inset: -20%; z-index: 90; pointer-events: none;
+  background: url("theme/p4-spiral.jpeg") center / cover no-repeat; mix-blend-mode: multiply;
+  animation: spiralFlash 1.1s cubic-bezier(.2, .8, .3, 1) forwards;
+}
+
+@media (max-aspect-ratio: 3/4) { :root[data-skin="p4"] .hero-tv { width: 84vw !important; } }
+
+/* flash images blend straight with the page (no box around them): dim layer + a free-standing image */
+.flash-dim { position: fixed; inset: 0; z-index: 89; pointer-events: none; background: rgba(0,0,0,.55); animation: dimInOut 1.15s ease-out forwards; }
+.flash-img { position: fixed; left: 50%; top: 50%; translate: -50% -50%; width: min(80vw, 640px); z-index: 90; pointer-events: none; mix-blend-mode: screen; animation: holdup 1.15s cubic-bezier(.2, 1, .3, 1) forwards; }
+.flash-img.clock { width: min(70vmin, 560px); animation-name: clockFlash; }
+@keyframes dimInOut { 0% { opacity: 0; } 15%, 70% { opacity: 1; } 100% { opacity: 0; } }
+
+
+/* difficulty badge */
+.diff {
+  font-family: var(--display); font-size: 18px; letter-spacing: .08em; text-transform: uppercase; display: inline-block;
+  padding: 7px 14px; background: var(--head-bg); border: 3px solid var(--line); border-radius: var(--radius-s); transform: skewX(var(--skew));
+  color: #5dff8c; animation: dropIn .5s .2s backwards;
+}
+.diff[data-d="2"] { color: #ffd23f; }
+.diff[data-d="3"] { color: #ff5d6c; }
+.diff[hidden] { display: none; }
+@media (max-aspect-ratio: 3/4) { .diff { font-size: 3.6vw; padding: 1.2vw 2.6vw; border-radius: 2vw; } }

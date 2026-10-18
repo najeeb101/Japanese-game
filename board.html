@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gamers Week - Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="frame">
+  <div class="bar">
+    <h1>Gamers Week</h1>
+    <nav>
+      <a class="btn" href="index.html">&larr; Main menu</a>
+      <button class="btn" id="r1">1-10</button>
+      <button class="btn" id="r2">11-20</button>
+      <button class="btn" id="r3">21-30</button>
+      <button class="btn" id="r4">31-40</button>
+      <button class="btn" id="random">Random</button>
+      <button class="btn" id="reset">Reset</button>
+      <button class="btn accent" id="skin"></button>
+    </nav>
+  </div>
+  <div class="board" id="board"></div>
+  <p class="note" id="note"></p>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+let range = Store.get('jj-range', 0);   // 0 = 1-10, 1 = 11-20, 2 = 21-30, 3 = 31-40 (the host view can change it too)
+const board = document.getElementById('board');
+
+function render(animate) {
+  range = Store.get('jj-range', 0);
+  board.textContent = '';
+  board.classList.toggle('enter', animate === true);
+  let idx = 0;
+  DATA.forEach(c => {
+    const h = document.createElement('div');
+    h.className = 'head';
+    h.innerHTML = '<span class="jp"></span><span class="en"></span>';
+    h.children[0].textContent = c.jp;
+    h.children[1].textContent = c.en;
+    h.style.setProperty('--i', idx++);
+    board.append(h);
+  });
+  for (let r = 1; r <= 10; r++) {
+    const n = range * 10 + r;
+    DATA.forEach(c => {
+      const a = document.createElement('a');
+      a.className = 'cell' + (used.has(c.key, n) ? ' used' : '');
+      a.href = 'question.html?c=' + c.key + '&n=' + n + tvQS();
+      a.textContent = n;
+      a.setAttribute('aria-label', c.en + ' ' + n);
+      a.style.setProperty('--i', idx++);
+      board.append(a);
+    });
+  }
+  [0, 1, 2, 3].forEach(i => document.getElementById('r' + (i + 1)).classList.toggle('on', range === i));
+  const left = DATA.reduce((s, c) => s + c.questions.filter(q => !used.has(c.key, q.n)).length, 0);
+  const total = DATA.reduce((s, c) => s + c.questions.length, 0);
+  document.getElementById('note').textContent = left + ' of ' + total + ' questions left';
+  document.getElementById('skin').textContent = 'Skin: ' + skinLabel(currentSkin());
+}
+
+function setRange(r) { range = r; Store.set('jj-range', r); render(true); }
+[0, 1, 2, 3].forEach(i => { document.getElementById('r' + (i + 1)).onclick = () => setRange(i); });
+
+document.getElementById('random').onclick = () => {
+  const pool = [];
+  DATA.forEach(c => c.questions.forEach(q => { if (!used.has(c.key, q.n)) pool.push([c.key, q.n]); }));
+  if (!pool.length) { alert('All questions have been used. Press Reset to start over.'); return; }
+  const [k, n] = pool[Math.floor(Math.random() * pool.length)];
+  location.href = 'question.html?c=' + k + '&n=' + n + tvQS();
+};
+document.getElementById('reset').onclick = () => {
+  if (confirm('Reset the board? All questions will be available again.')) { used.clear(); render(); }
+};
+document.getElementById('skin').onclick = () => { applySkin(nextSkin()); render(); };
+
+// host view drives the TV: it can open a question here and change the range / used marks
+window.onSharedChange = () => render();
+Bus.on(m => {
+  if (!TV) return;
+  if (m.type === 'open') location.href = 'question.html?c=' + m.c + '&n=' + m.n + '&tv=1';
+  if (m.type === 'menu') location.href = 'index.html?tv=1';
+  if (m.type === 'ping') announce({ page: 'board' });
+});
+
+// coming back with the browser Back button restores the page from cache; redraw so used cells are current
+window.addEventListener('pageshow', e => { if (e.persisted) render(); });
+render(true);
+announce({ page: 'board' });
+</script>
+</body>
+</html>

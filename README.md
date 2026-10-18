@@ -1,6 +1,6 @@
-# Gamers Week
+# Game Jeopardy
 
-**Gamers Week** is a browser-based Japanese gaming quiz game designed for use by a Japan Club and an Esports Club. It presents a Jeopardy-style board with questions about games, characters, consoles, items, and other gaming topics.
+**Game Jeopardy** is a browser-based Japanese gaming quiz game presented at the **Gamers Week** event for a Japan Club and an Esports Club. It presents a Jeopardy-style board with questions about games, characters, consoles, items, and other gaming topics.
 
 ## Features
 

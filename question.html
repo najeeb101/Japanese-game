@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Question - Gamers Week</title>
+<title>Question - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -40,7 +40,7 @@ if (!q) {
   document.getElementById('panel').innerHTML = '<h2 class="q-prompt">Question not found</h2><a class="btn" href="board.html">Back to board</a> <a class="btn" href="index.html">Main menu</a>';
   document.getElementById('next').hidden = true;
 } else {
-  document.title = cat.en + ' #' + q.n + ' - Gamers Week';
+  document.title = cat.en + ' #' + q.n + ' - Game Jeopardy - Gamers Week';
   used.add(cat.key, q.n);
 
   document.getElementById('jp').textContent = cat.jp;

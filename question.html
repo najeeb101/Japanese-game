@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body class="p-question">
 <div class="frame">
   <div class="q-top">
     <a class="btn tvhide" id="menu" href="index.html">&#8962; Main menu</a>
-    <a class="btn tvhide" id="back" href="board.html">&larr; Board</a>
+    <a class="btn tvhide" id="back" href="board.html">&larr; Numbers</a>
     <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span><span class="no" id="no"></span></div>
     <span class="diff" id="diff" hidden></span>
     <span class="spacer"></span>
@@ -20,10 +20,14 @@
   </div>
 
   <div class="q-panel" id="panel">
-    <h2 class="q-prompt" id="prompt"></h2>
+    <div class="q-stage"><h2 class="q-prompt" id="prompt"></h2></div>
     <div id="media"></div>
-    <button class="btn reveal tvhide" id="reveal" aria-expanded="false">Reveal answer</button>
-    <div class="answer" id="answer" aria-live="polite"><b id="a-title"></b><span id="a-detail"></span></div>
+    <div class="q-actions tvhide">
+      <button class="btn hintbtn" id="hint">&#128161; Hint</button>
+      <button class="btn correctbtn" id="correct">&#10004; Correct answer</button>
+    </div>
+    <div class="choices" id="choices"></div>
+    <div class="answer" id="answer" aria-live="polite"><small id="a-label">Correct answer</small><b id="a-title"></b><span id="a-detail"></span></div>
   </div>
 </div>
 
@@ -37,7 +41,7 @@ const cat = DATA.find(c => c.key === p.get('c'));
 const q = cat && cat.questions.find(x => x.n === Number(p.get('n')));
 
 if (!q) {
-  document.getElementById('panel').innerHTML = '<h2 class="q-prompt">Question not found</h2><a class="btn" href="board.html">Back to board</a> <a class="btn" href="index.html">Main menu</a>';
+  document.getElementById('panel').innerHTML = '<h2 class="q-prompt">Question not found</h2><a class="btn" href="board.html">Back to categories</a> <a class="btn" href="index.html">Main menu</a>';
   document.getElementById('next').hidden = true;
 } else {
   document.title = cat.en + ' #' + q.n + ' - Game Jeopardy - Gamers Week';
@@ -69,24 +73,76 @@ if (!q) {
   document.getElementById('a-title').textContent = q.answer;
   document.getElementById('a-detail').textContent = q.detail;
 
-  const btn = document.getElementById('reveal'), ans = document.getElementById('answer');
-  function setShown(on) {
-    ans.classList.toggle('show', on);
-    btn.setAttribute('aria-expanded', String(on));
-    btn.textContent = on ? 'Hide answer' : 'Reveal answer';
-    announce({ page: 'question', c: cat.key, n: q.n, revealed: on });
-  }
-  btn.onclick = () => setShown(!ans.classList.contains('show'));
+  // ---- question state: hint (multiple choice) and result ----
+  const choiceList = choicesFor(cat, q);
+  const rightIdx = choiceList.indexOf(q.answer);
+  const choicesEl = document.getElementById('choices'), ans = document.getElementById('answer');
+  const hintBtn = document.getElementById('hint'), correctBtn = document.getElementById('correct');
+  let hinted = false, result = null;   // result: null | 'win' | 'lose'
 
-  // the host view can show/hide the answer and run the audio clip on this screen
+  const view = () => ({ page: 'question', c: cat.key, n: q.n, revealed: result !== null, hint: hinted, result });
+  window.pageView = view;
+  const tell = () => announce(view());
+
+  function buildChoices() {
+    choicesEl.textContent = '';
+    choiceList.forEach((text, i) => {
+      const b = document.createElement('button');
+      b.className = 'choice'; b.dataset.i = i;
+      b.innerHTML = '<span class="letter"></span><span class="t"></span>';
+      b.children[0].textContent = 'ABCD'[i]; b.children[1].textContent = text;
+      b.onclick = () => pick(i);
+      choicesEl.append(b);
+    });
+  }
+  function showChoices() {
+    if (hinted || result) return;
+    hinted = true;
+    buildChoices();
+    choicesEl.classList.add('show');
+    hintBtn.disabled = true;
+    tell();
+  }
+  function showAnswer(kind) {
+    ans.classList.toggle('lost', kind === 'lose');
+    document.getElementById('a-label').textContent = kind === 'lose' ? 'The correct answer was' : 'Correct answer!';
+    ans.classList.remove('show'); void ans.offsetWidth; ans.classList.add('show');
+  }
+  function finish(kind, picked) {
+    if (result) return;
+    result = kind;
+    hintBtn.disabled = true; correctBtn.disabled = true;
+    if (hinted) {
+      choicesEl.querySelectorAll('.choice').forEach((b, i) => {
+        b.disabled = true;
+        if (i === rightIdx) b.classList.add('right');
+        else if (i === picked) b.classList.add('wrong');
+        else b.classList.add('dim');
+      });
+    }
+    showAnswer(kind);
+    celebrate(kind);
+    tell();
+  }
+  function pick(i) { if (hinted && !result) finish(i === rightIdx ? 'win' : 'lose', i); }
+  function reset() {
+    hinted = false; result = null;
+    choicesEl.classList.remove('show'); choicesEl.textContent = '';
+    ans.classList.remove('show');
+    hintBtn.disabled = false; correctBtn.disabled = false;
+    tell();
+  }
+
+  hintBtn.onclick = showChoices;
+  correctBtn.onclick = () => finish('win', rightIdx);
+
+  // the host view can drive this screen: hint, correct answer, pick a choice, reset, audio
   Bus.on(m => {
     if (!TV) return;
-    if (m.type === 'reveal') setShown(true);
-    if (m.type === 'hide') setShown(false);
-    if (m.type === 'board') location.href = 'board.html?tv=1';
-    if (m.type === 'menu') location.href = 'index.html?tv=1';
-    if (m.type === 'open') location.href = 'question.html?c=' + m.c + '&n=' + m.n + '&tv=1';
-    if (m.type === 'ping') announce({ page: 'question', c: cat.key, n: q.n, revealed: ans.classList.contains('show') });
+    if (m.type === 'hint') showChoices();
+    if (m.type === 'correct') finish('win', rightIdx);
+    if (m.type === 'pick') pick(m.i);
+    if (m.type === 'reset') reset();
     if (m.type === 'audio') {
       const clip = document.getElementById('clip'); if (!clip) return;
       if (m.action === 'pause') clip.pause();
@@ -96,21 +152,21 @@ if (!q) {
       }
     }
   });
-  announce({ page: 'question', c: cat.key, n: q.n, revealed: false });
-  holdUpFlash();
+  tell();
+  openFlash();
 
-  // "Next" goes to the following unused question in the same category, else back to the board
+  // "Next" goes to the following unused question in the same category, else back to the numbers
   const nextQ = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
   const nextEl = document.getElementById('next');
-  nextEl.href = nextQ ? 'question.html?c=' + cat.key + '&n=' + nextQ.n : 'board.html';
+  nextEl.href = nextQ ? 'question.html?c=' + cat.key + '&n=' + nextQ.n : 'category.html?c=' + cat.key;
   if (!nextQ) nextEl.textContent = 'Done ✓';
+  document.getElementById('back').href = 'category.html?c=' + cat.key + tvQS();
 }
 
-if (TV) document.getElementById('back').href = 'board.html?tv=1';
 const lb = document.getElementById('lightbox');
 lb.onclick = () => lb.classList.remove('open');
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { if (lb.classList.contains('open')) lb.classList.remove('open'); else if (!TV) location.href = 'board.html'; }
+  if (e.key === 'Escape') { if (lb.classList.contains('open')) lb.classList.remove('open'); else if (!TV && q) location.href = 'category.html?c=' + cat.key; }
 });
 </script>
 </body>

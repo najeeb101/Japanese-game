@@ -12,67 +12,50 @@
   .frame.menu {
     min-height: calc(100vh - 28px); margin: 14px auto; max-width: 1100px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 10px; text-align: center; padding: 24px 18px;
-    background: rgba(8, 8, 8, .9);
+    gap: 12px; text-align: center; padding: 24px 18px;
+    background: rgba(40, 3, 8, .72);
   }
-  .kicker { margin: 0; font-family: var(--display); letter-spacing: .3em; font-size: clamp(16px, 2.4vw, 24px); background: var(--head-bg); color: var(--head-label); padding: 6px 18px; border: 3px solid var(--line); border-radius: var(--radius-s); transform: skewX(var(--skew)); }
+  .kicker { margin: 0; font-family: var(--display); letter-spacing: .3em; font-size: clamp(16px, 2.4vw, 24px); background: var(--head-bg); color: var(--head-label); padding: 6px 18px; border: 3px solid var(--line); border-radius: var(--radius); }
   .title {
-    margin: 0; font-family: var(--display); font-weight: 400; font-style: italic; text-transform: uppercase; line-height: .95;
+    margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .95;
     font-size: clamp(48px, 9vw, 120px);
     color: var(--title-color); -webkit-text-stroke: 3px var(--title-stroke); text-shadow: 6px 6px 0 var(--title-stroke), var(--title-shadow);
   }
-  .sub { margin: 0; font-family: var(--display); font-size: clamp(20px, 3vw, 34px); letter-spacing: .12em; background: var(--head-bg); color: var(--head-kanji); padding: 6px 20px; border: 3px solid var(--line); border-radius: var(--radius-s); transform: skewX(var(--skew)); }
-  .hero-tv { width: min(380px, 58vw); aspect-ratio: 4 / 3; border: 4px solid var(--line); border-radius: 22px; background: #000 url("assets/theme/p4-tv.jpeg") center / cover no-repeat; box-shadow: 6px 6px 0 rgba(0,0,0,.5); }
-  :root:not([data-skin="p4"]) .hero-tv { display: none; }
-  .clubs { margin: 0; font-weight: 800; font-size: clamp(14px, 1.8vw, 20px); background: var(--btn-bg); color: var(--btn-text); padding: 6px 16px; border: 3px solid var(--line); }
+  .sub { margin: 0; font-family: var(--display); font-size: clamp(20px, 3vw, 34px); letter-spacing: .12em; background: var(--head-bg); color: var(--head-kanji); padding: 6px 20px; border: 3px solid var(--line); border-radius: var(--radius); }
+  .hero { width: min(560px, 80vw); aspect-ratio: 16 / 9; border: 4px solid var(--line); border-radius: 22px; background: #000 url("assets/theme/stage.jpeg") center / cover no-repeat; box-shadow: 0 0 0 3px #7d0f17, 0 0 30px rgba(245, 184, 46, .5); }
+  .clubs { margin: 0; font-weight: 800; font-size: clamp(14px, 1.8vw, 20px); background: var(--accent); color: var(--accent-text); padding: 6px 16px; border: 3px solid var(--line); border-radius: var(--radius); }
   .start { font-size: clamp(30px, 5vw, 56px); padding: .25em 1.3em; background: var(--accent); color: var(--accent-text); box-shadow: 6px 6px 0 rgba(0,0,0,.55); }
   .row { display: flex; gap: 10px; flex-wrap: nowrap; justify-content: center; align-items: center; }
   .row .btn { min-width: 190px; }
-  :root[data-skin="p4"] .frame.menu .hero-tv { width: min(480px, 68vw) !important; }
   @media (max-aspect-ratio: 3/4) {
     .frame.menu { margin: 0; max-width: none; border-radius: 0; border-width: 0; min-height: 100vh; gap: 2.2vh; padding: 5vh 5vw; }
     .kicker { font-size: 4vw; } .sub { font-size: 4.4vw; white-space: nowrap; padding: 6px 3vw; } .clubs { font-size: 3.6vw; }
     .title { font-size: 17vw; }
-    .hero-tv { width: min(72vw, 360px); }
-    :root[data-skin="p4"] .frame.menu .hero-tv { width: min(72vw, 360px) !important; }
+    .hero { width: min(84vw, 460px); }
     .start { width: min(88vw, 440px); font-size: 11vw; }
     .row { width: min(88vw, 440px); flex-direction: column; }
     .row .btn { width: 100%; min-width: 0; }
   }
 </style>
 </head>
-<body>
+<body class="p-menu">
 <div class="frame menu">
   <p class="kicker">GAMERS WEEK</p>
   <h1 class="title">Game Jeopardy</h1>
   <p class="sub">日本 × ESPORTS · ゲーム・ジェパディ</p>
-  <div class="hero-tv" role="img" aria-label="Persona 4 style TV"></div>
+  <div class="hero" role="img" aria-label="Circus stage with red curtains"></div>
   <p class="clubs">Japan Club × Esports Club</p>
   <a class="btn start" id="start" href="board.html">&#9654; Start Game</a>
   <div class="row tvhide">
     <a class="btn" href="host.html">&#9635; Host View</a>
-    <button class="btn accent" id="skin"></button>
   </div>
 </div>
 
 <script src="assets/common.js"></script>
 <script>
-const skinBtn = document.getElementById('skin');
-function label() { skinBtn.textContent = '✦ Change Style: ' + skinLabel(currentSkin()); }
-skinBtn.onclick = () => { applySkin(nextSkin()); label(); };
-window.onSharedChange = label;
-label();
-
 if (TV) document.getElementById('start').href = 'board.html?tv=1';
-
-// the host view drives the TV from here
-Bus.on(m => {
-  if (!TV) return;
-  if (m.type === 'board') location.href = 'board.html?tv=1';
-  if (m.type === 'open') location.href = 'question.html?c=' + m.c + '&n=' + m.n + '&tv=1';
-  if (m.type === 'ping') announce({ page: 'menu' });
-});
-announce({ page: 'menu' });
+window.pageView = () => ({ page: 'menu' });
+announce(window.pageView());
 </script>
 </body>
 </html>

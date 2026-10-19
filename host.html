@@ -11,35 +11,41 @@
   .host { max-width: 1500px; margin: 10px auto; padding: 0 10px; }
   .host .frame { max-width: none; margin: 0; }
   .cols { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; align-items: start; }
-  .status { font-family: var(--display); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; background: var(--head-bg); color: var(--head-label); border: 3px solid var(--line); border-radius: var(--radius-s); padding: 8px 14px; transform: skewX(var(--skew)); }
+  .status { font-family: var(--display); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; background: #2a0508; color: var(--head-label); border: 3px solid var(--line); border-radius: var(--radius); padding: 8px 14px; }
   .status.live { color: #5dff8c; }
-  .host .board { gap: 6px; }
-  .host .head { padding: 5px 2px 4px; }
-  .host .head .jp { font-size: 28px; }
-  .host .head .en { font-size: 10px; }
-  .host .cell { width: 100%; font-size: 20px; padding: 6px 0 4px; border-radius: min(var(--radius), 12px); border-width: 2px; cursor: pointer; }
-  .host .cell.current { outline: 4px solid #ff2d55; outline-offset: 1px; }
+  .host .cats { gap: 10px; }
+  .host .cat { min-height: 110px; border-width: 3px; border-radius: 14px; }
+  .host .cat .jp { font-size: 48px; } .host .cat .en { font-size: 20px; } .host .cat .left { font-size: 12px; }
+  .host .cat.current { outline: 4px solid #fff; outline-offset: 2px; }
+  .host .nums { grid-template-columns: repeat(8, 1fr); gap: 6px; }
+  .host .num { font-size: 20px; padding: 8px 0 6px; border-width: 2px; cursor: pointer; width: 100%; }
+  .host .num.current { outline: 4px solid #fff; outline-offset: 1px; }
+  .crumb { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .panel { position: sticky; top: 10px; }
   .q-panel { text-align: left; }
-  .q-panel .q-prompt { font-size: 24px; text-align: left; }
+  .q-panel .q-prompt { font-size: 24px; text-align: left; margin: 10px 0; }
   .empty { font-family: var(--display); font-size: 24px; text-transform: uppercase; text-align: center; padding: 60px 10px; opacity: .85; }
-  .hq-img { display: block; max-width: 100%; max-height: 34vh; margin: 0 0 12px; border: 3px solid var(--line); border-radius: 10px; background: #fff; }
-  .hq-img.cutout { background: var(--stage); }
-  .secret { border: 4px dashed #ff2d55; background: var(--answer); color: var(--answer-text); border-radius: var(--radius); padding: 10px 14px; margin: 6px 0 14px; }
+  .hq-img { display: block; max-width: 100%; max-height: 30vh; margin: 0 0 12px; border: 3px solid var(--line); border-radius: 10px; background: #fff; }
+  .secret { border: 4px dashed #ffd96b; background: var(--answer); color: var(--answer-text); border-radius: var(--radius); padding: 10px 14px; margin: 6px 0 14px; }
   .secret small { display: block; font-family: var(--display); letter-spacing: .1em; font-size: 12px; color: #c4002b; text-transform: uppercase; }
   .secret b { display: block; font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.05; text-transform: uppercase; }
   .secret span { display: block; font-weight: 700; font-size: 18px; margin-top: 4px; }
   .ctrl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .ctrl .btn { font-size: 16px; padding: 9px 14px; }
   .ctrl .btn.go { background: #1f9d3a; color: #fff; }
-  .ctrl .btn.stop { background: #e8231c; color: #fff; }
-  .hint { font-size: 13px; font-weight: 700; margin-top: 10px; background: rgba(255,255,255,.85); color: #111; padding: 6px 10px; border-radius: 8px; display: none; }
+  .ctrl .btn.stop { background: #8f1119; color: #fff; }
+  .picks { margin-top: 12px; }
+  .picks h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; letter-spacing: .06em; font-size: 15px; text-transform: uppercase; color: var(--head-label); }
+  .picks .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .picks .choice { font-size: 16px; padding: 8px 10px; border-width: 3px; }
+  .picks .choice.is-right { outline: 3px solid #5dff8c; outline-offset: 1px; }
+  .hint { font-size: 13px; font-weight: 700; margin-top: 10px; background: rgba(255,243,207,.92); color: #3a0509; padding: 6px 10px; border-radius: 8px; display: none; }
   .hint.show { display: block; }
-  .help { font-size: 13px; font-weight: 600; margin: 10px 2px 0; background: rgba(255,255,255,.85); color: #111; padding: 6px 10px; border-radius: 8px; }
-  @media (max-width: 980px) { .cols { grid-template-columns: 1fr; } .panel { position: static; } }
+  .help { font-size: 13px; font-weight: 600; margin: 10px 2px 0; background: rgba(255,243,207,.92); color: #3a0509; padding: 6px 10px; border-radius: 8px; }
+  @media (max-width: 980px) { .cols { grid-template-columns: 1fr; } .panel { position: static; } .host .nums { grid-template-columns: repeat(5, 1fr); } }
 </style>
 </head>
-<body>
+<body class="p-board">
 <div class="host">
   <div class="frame">
     <div class="bar">
@@ -49,21 +55,16 @@
         <a class="btn accent" href="index.html">Exit host view</a>
         <button class="btn accent" id="openTv">Open TV window</button>
         <button class="btn" id="tvMenu">TV: Main menu</button>
-        <button class="btn" id="tvBoard">TV: Board</button>
-        <button class="btn" id="r1">1-10</button>
-        <button class="btn" id="r2">11-20</button>
-        <button class="btn" id="r3">21-30</button>
-        <button class="btn" id="r4">31-40</button>
+        <button class="btn" id="tvBoard">TV: Categories</button>
         <button class="btn" id="random">Random</button>
         <button class="btn" id="reset">Reset</button>
-        <button class="btn" id="skin"></button>
       </nav>
     </div>
 
     <div class="cols">
       <div>
-        <div class="board" id="board"></div>
-        <p class="help">Hover a number to peek at its answer. Click one to open it on the TV.</p>
+        <div id="left"></div>
+        <p class="help">Pick a category, then a number (1-40) to open it on the TV. Hover a number to peek at its answer.</p>
       </div>
       <div class="panel">
         <div class="q-panel" id="panel"></div>
@@ -77,66 +78,81 @@
 <script>
 const $ = id => document.getElementById(id);
 let current = null;           // { cat, q } shown in the host panel
-let tv = { seen: false, page: '', revealed: false };
+let openCat = null;           // category whose numbers are listed on the left
+let tv = { seen: false, page: '', hint: false, result: null };
 
 const catOf = key => DATA.find(c => c.key === key);
+const leftIn = c => c.questions.filter(q => !used.has(c.key, q.n)).length;
 
 function sendOpen(cat, n) {
   used.add(cat.key, n);
+  openCat = cat;
   Bus.send({ type: 'open', c: cat.key, n });
   select(cat, n);
-  renderBoard();
 }
-
 function select(cat, n) {
   current = { cat, q: cat.questions.find(x => x.n === n) };
-  tv.revealed = false;
-  renderPanel();
-  renderBoard();
+  tv.hint = false; tv.result = null;
+  renderAll();
 }
+function renderAll() { renderLeft(); renderPanel(); renderStatus(); }
 
-/* ---------- board ---------- */
-function renderBoard() {
-  const range = Store.get('jj-range', 0);
-  const board = $('board');
-  board.textContent = '';
-  DATA.forEach(c => {
-    const h = document.createElement('div');
-    h.className = 'head';
-    h.innerHTML = '<span class="jp"></span><span class="en"></span>';
-    h.children[0].textContent = c.jp; h.children[1].textContent = c.en;
-    board.append(h);
-  });
-  for (let r = 1; r <= 10; r++) {
-    const n = range * 10 + r;
+/* ---------- left side: categories, then the numbers of one category ---------- */
+function renderLeft() {
+  const box = $('left');
+  box.textContent = '';
+  if (!openCat) {
+    const g = document.createElement('div');
+    g.className = 'cats';
     DATA.forEach(c => {
       const b = document.createElement('button');
-      const q = c.questions.find(x => x.n === n);
-      b.className = 'cell' + (used.has(c.key, n) ? ' used' : '') + (current && current.cat === c && current.q.n === n ? ' current' : '');
-      b.textContent = n;
-      b.title = q.answer + (q.detail ? ' - ' + q.detail : '');
-      b.onclick = () => sendOpen(c, n);
-      board.append(b);
+      b.className = 'cat' + (current && current.cat === c ? ' current' : '');
+      b.innerHTML = '<span class="jp"></span><span class="en"></span><span class="left"></span>';
+      b.children[0].textContent = c.jp; b.children[1].textContent = c.en; b.children[2].textContent = leftIn(c) + ' left';
+      b.onclick = () => { openCat = c; Bus.send({ type: 'cat', c: c.key }); renderLeft(); };
+      g.append(b);
     });
+    box.append(g);
+    return;
   }
-  [0, 1, 2, 3].forEach(i => $('r' + (i + 1)).classList.toggle('on', range === i));
-  $('skin').textContent = 'Skin: ' + skinLabel(currentSkin());
+  const crumb = document.createElement('div');
+  crumb.className = 'crumb';
+  const back = document.createElement('button');
+  back.className = 'btn'; back.textContent = '← Categories';
+  back.onclick = () => { openCat = null; Bus.send({ type: 'board' }); renderLeft(); };
+  const tag = document.createElement('div');
+  tag.className = 'q-tag';
+  tag.innerHTML = '<span class="jp"></span><span class="en"></span>';
+  tag.children[0].textContent = openCat.jp; tag.children[1].textContent = openCat.en;
+  crumb.append(back, tag);
+  const g = document.createElement('div');
+  g.className = 'nums';
+  openCat.questions.forEach(q => {
+    const b = document.createElement('button');
+    b.className = 'num' + (used.has(openCat.key, q.n) ? ' used' : '') + (current && current.cat === openCat && current.q.n === q.n ? ' current' : '');
+    b.textContent = q.n;
+    b.title = q.answer + (q.detail ? ' - ' + q.detail : '');
+    b.style.animation = 'none';
+    b.onclick = () => sendOpen(openCat, q.n);
+    g.append(b);
+  });
+  box.append(crumb, g);
 }
 
-/* ---------- question panel (the answer only ever appears here) ---------- */
+/* ---------- question panel (the answer only ever appears here until you press Correct answer) ---------- */
 function renderPanel() {
   const p = $('panel');
   p.textContent = '';
   if (!current) {
     const e = document.createElement('div');
     e.className = 'empty';
-    e.textContent = 'Pick a number on the board';
+    e.textContent = 'Pick a number';
     p.append(e);
     return;
   }
   const { cat, q } = current;
   const tag = document.createElement('div');
-  tag.className = 'q-tag'; tag.style.display = 'inline-flex'; tag.style.marginBottom = '10px';
+  tag.className = 'q-tag'; tag.style.display = 'inline-flex';
   tag.innerHTML = '<span class="jp"></span><span class="en"></span><span class="no"></span>';
   tag.children[0].textContent = cat.jp; tag.children[1].textContent = cat.en; tag.children[2].textContent = '#' + q.n;
   const prompt = document.createElement('h2');
@@ -152,7 +168,7 @@ function renderPanel() {
   }
   if (q.audio) {
     const n = document.createElement('div');
-    n.className = 'hint show'; n.style.background = '#ffe500';
+    n.className = 'hint show'; n.style.background = '#ffd96b';
     n.textContent = '♪ Audio question - the clip plays on the TV (use the buttons below).';
     p.append(n);
   }
@@ -166,8 +182,9 @@ function renderPanel() {
   const ctrl = document.createElement('div');
   ctrl.className = 'ctrl';
   const mk = (label, cls, fn) => { const b = document.createElement('button'); b.className = 'btn ' + cls; b.textContent = label; b.onclick = fn; ctrl.append(b); return b; };
-  mk('Show answer on TV', 'go', () => { Bus.send({ type: 'reveal' }); tv.revealed = true; renderStatus(); });
-  mk('Hide answer on TV', 'stop', () => { Bus.send({ type: 'hide' }); tv.revealed = false; renderStatus(); });
+  mk('💡 Hint (show choices)', 'accent', () => { Bus.send({ type: 'hint' }); tv.hint = true; renderPanel(); renderStatus(); });
+  mk('✔ Correct answer', 'go', () => { Bus.send({ type: 'correct' }); tv.result = 'win'; renderPanel(); renderStatus(); });
+  mk('↺ Reset question', 'stop', () => { Bus.send({ type: 'reset' }); tv.hint = false; tv.result = null; renderPanel(); renderStatus(); });
   if (q.audio) {
     mk('▶ Play on TV', 'go', () => Bus.send({ type: 'audio', action: 'play' }));
     mk('❚❚ Pause', '', () => Bus.send({ type: 'audio', action: 'pause' }));
@@ -175,8 +192,26 @@ function renderPanel() {
   }
   const next = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
   if (next) mk('Next in ' + cat.en + ' →', 'accent', () => sendOpen(cat, next.n));
-  mk('TV back to board', '', () => { Bus.send({ type: 'board' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); });
+  mk('TV back to numbers', '', () => { Bus.send({ type: 'cat', c: cat.key }); openCat = cat; current = null; renderAll(); });
   p.append(ctrl);
+
+  // after the hint: the four choices, so the host can tap the one the player picks (a wrong pick plays the "lose" animation)
+  if (tv.hint) {
+    const box = document.createElement('div');
+    box.className = 'picks';
+    box.innerHTML = '<h3>Player picked… (tap a choice)</h3><div class="grid"></div>';
+    const list = choicesFor(cat, q);
+    list.forEach((text, i) => {
+      const b = document.createElement('button');
+      b.className = 'choice' + (text === q.answer ? ' is-right' : '');
+      b.disabled = !!tv.result;
+      b.innerHTML = '<span class="letter"></span><span class="t"></span>';
+      b.children[0].textContent = 'ABCD'[i]; b.children[1].textContent = text;
+      b.onclick = () => { Bus.send({ type: 'pick', i }); tv.result = text === q.answer ? 'win' : 'lose'; renderPanel(); renderStatus(); };
+      box.querySelector('.grid').append(b);
+    });
+    p.append(box);
+  }
 
   const hint = document.createElement('div');
   hint.className = 'hint'; hint.id = 'audioHint';
@@ -189,8 +224,9 @@ function renderStatus() {
   if (!tv.seen) { s.textContent = 'TV: not connected'; s.classList.remove('live'); return; }
   s.classList.add('live');
   s.textContent = tv.page === 'menu' ? 'TV: main menu'
-    : tv.page === 'board' ? 'TV: showing the board'
-    : 'TV: question' + (tv.revealed ? ' - answer shown' : ' - answer hidden');
+    : tv.page === 'board' ? 'TV: showing the categories'
+    : tv.page === 'category' ? 'TV: showing the numbers'
+    : 'TV: question' + (tv.result === 'win' ? ' - answered correctly' : tv.result === 'lose' ? ' - wrong choice' : tv.hint ? ' - choices shown' : '');
 }
 
 /* ---------- controls ---------- */
@@ -198,9 +234,8 @@ $('openTv').onclick = () => {
   window.open('index.html?tv=1', 'jj-tv', 'popup=yes,width=540,height=960');
   setTimeout(() => Bus.send({ type: 'ping' }), 1200);
 };
-$('tvMenu').onclick = () => { Bus.send({ type: 'menu' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); };
-$('tvBoard').onclick = () => { Bus.send({ type: 'board' }); current = null; tv.revealed = false; renderPanel(); renderBoard(); };
-[0, 1, 2, 3].forEach(i => { $('r' + (i + 1)).onclick = () => { Store.set('jj-range', i); renderBoard(); }; });
+$('tvMenu').onclick = () => { Bus.send({ type: 'menu' }); current = null; openCat = null; renderAll(); };
+$('tvBoard').onclick = () => { Bus.send({ type: 'board' }); current = null; openCat = null; renderAll(); };
 $('random').onclick = () => {
   const pool = [];
   DATA.forEach(c => c.questions.forEach(q => { if (!used.has(c.key, q.n)) pool.push([c, q.n]); }));
@@ -208,26 +243,27 @@ $('random').onclick = () => {
   const [c, n] = pool[Math.floor(Math.random() * pool.length)];
   sendOpen(c, n);
 };
-$('reset').onclick = () => { if (confirm('Reset the board? All questions will be available again.')) { used.clear(); renderBoard(); } };
-$('skin').onclick = () => { applySkin(nextSkin()); renderBoard(); };
+$('reset').onclick = () => { if (confirm('Reset the board? All questions will be available again.')) { used.clear(); renderAll(); } };
 
 /* ---------- listen to the TV ---------- */
 Bus.on(m => {
   if (m.type === 'view') {
-    tv = { seen: true, page: m.page, revealed: !!m.revealed };
+    tv = { seen: true, page: m.page, hint: !!m.hint, result: m.result || null };
     if (m.page === 'question') {
       const c = catOf(m.c);
-      if (c && (!current || current.cat !== c || current.q.n !== m.n)) { current = { cat: c, q: c.questions.find(x => x.n === m.n) }; renderPanel(); renderBoard(); }
-    } else if (current) { current = null; renderPanel(); renderBoard(); }
-    renderStatus();
+      if (c && (!current || current.cat !== c || current.q.n !== m.n)) { current = { cat: c, q: c.questions.find(x => x.n === m.n) }; openCat = c; }
+    } else {
+      current = null;
+      if (m.page === 'category') openCat = catOf(m.c) || openCat;
+      else if (m.page === 'board' || m.page === 'menu') openCat = null;
+    }
+    renderAll();
   }
   if (m.type === 'audioblocked') { const h = $('audioHint'); if (h) h.classList.add('show'); }
 });
-window.onSharedChange = renderBoard;
+window.onSharedChange = renderAll;
 
-renderBoard();
-renderPanel();
-renderStatus();
+renderAll();
 Bus.send({ type: 'ping' });   // if a TV window is already open it answers with what it is showing
 </script>
 </body>

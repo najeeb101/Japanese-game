@@ -4,12 +4,14 @@
 
 ## Features
 
-- 40 questions organized into four board ranges
-- Host view for selecting questions and revealing answers
+- Six categories, each with 40 numbered questions: the board shows only the categories, and the numbers 1-40 appear once you open one
+- Hint button that turns the question into four multiple-choice answers
+- Correct answer button plus win and lose animations (a wrong choice is the only way to lose)
+- Host view for selecting questions, giving hints and marking answers
 - TV/audience view that follows the host in another browser window
-- Three visual styles: Persona 3, Persona 4, and Persona 5
+- One vintage circus / theatre theme (crimson, cream and gold marquee lights)
 - Question images, character art, backgrounds, and sound effects
-- Local browser storage for used questions, selected style, and synchronized game state
+- Local browser storage for used questions and synchronized game state
 - Responsive layout for desktop displays, projectors, tablets, and phones
 
 ## Play online
@@ -42,8 +44,8 @@ No build step or package installation is required.
 
 1. Open `index.html` to reach the main menu.
 2. Select **Host View**.
-3. Choose a question from the board.
-4. Use the host controls to reveal the answer and move to the next question.
+3. Choose a category, then a number from 1 to 40.
+4. Press **Hint** to show four choices, or **Correct answer** when the player gets it right. Picking a wrong choice plays the lose animation and shows the right answer.
 5. Use **Reset** on the board when starting a new game.
 
 ### Using a second display
@@ -68,7 +70,8 @@ The host and audience windows communicate through browser `localStorage` events,
 .
 ├── index.html       # Main menu
 ├── host.html        # Host controls and question panel
-├── board.html       # Question board
+├── board.html       # Category board
+├── category.html    # Numbers 1-40 for one category
 ├── question.html    # Question and answer display
 └── assets/
     ├── common.js    # Shared state, styles, and host/TV communication
@@ -76,7 +79,7 @@ The host and audience windows communicate through browser `localStorage` events,
     ├── style.css    # Shared styles
     ├── audio/       # Sound effects
     ├── img/         # Question and character artwork
-    └── theme/       # Style backgrounds and visual assets
+    └── theme/       # Theme backgrounds and win/lose artwork
 ```
 
 ## Deployment with GitHub Pages

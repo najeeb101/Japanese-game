@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Category - Game Jeopardy - Gamers Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="p-board">
+<div class="frame">
+  <div class="q-top">
+    <a class="btn tvhide" href="index.html">&#8962; Main menu</a>
+    <a class="btn tvhide" id="back" href="board.html">&larr; Categories</a>
+    <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span></div>
+  </div>
+  <div class="nums" id="nums"></div>
+  <p class="note" id="note"></p>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+const key = new URLSearchParams(location.search).get('c');
+const cat = DATA.find(c => c.key === key);
+const wrap = document.getElementById('nums');
+
+function render() {
+  wrap.textContent = '';
+  cat.questions.forEach((q, i) => {
+    const a = document.createElement('a');
+    a.className = 'num' + (used.has(cat.key, q.n) ? ' used' : '');
+    a.href = 'question.html?c=' + cat.key + '&n=' + q.n + tvQS();
+    a.textContent = q.n;
+    a.setAttribute('aria-label', cat.en + ' ' + q.n);
+    a.style.setProperty('--i', i);
+    wrap.append(a);
+  });
+  const left = cat.questions.filter(q => !used.has(cat.key, q.n)).length;
+  document.getElementById('note').textContent = left + ' of ' + cat.questions.length + ' questions left';
+}
+
+if (!cat) {
+  location.replace('board.html' + (TV ? '?tv=1' : ''));
+} else {
+  document.title = cat.en + ' - Game Jeopardy - Gamers Week';
+  document.getElementById('jp').textContent = cat.jp;
+  document.getElementById('en').textContent = cat.en;
+  if (TV) document.getElementById('back').href = 'board.html?tv=1';
+  window.onSharedChange = render;
+  window.addEventListener('pageshow', e => { if (e.persisted) render(); });
+  window.pageView = () => ({ page: 'category', c: cat.key });
+  render();
+  announce(window.pageView());
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !TV) location.href = 'board.html'; });
+}
+</script>
+</body>
+</html>

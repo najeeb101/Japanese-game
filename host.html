@@ -190,9 +190,8 @@ function renderPanel() {
     mk('❚❚ Pause', '', () => Bus.send({ type: 'audio', action: 'pause' }));
     mk('↺ Restart', '', () => Bus.send({ type: 'audio', action: 'restart' }));
   }
-  const next = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
-  if (next) mk('Next in ' + cat.en + ' →', 'accent', () => sendOpen(cat, next.n));
   mk('TV back to numbers', '', () => { Bus.send({ type: 'cat', c: cat.key }); openCat = cat; current = null; renderAll(); });
+  mk('TV back to categories', '', () => { Bus.send({ type: 'board' }); openCat = null; current = null; renderAll(); });
   p.append(ctrl);
 
   // after the hint: the four choices, so the host can tap the one the player picks (a wrong pick plays the "lose" animation)

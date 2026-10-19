@@ -15,8 +15,6 @@
     <a class="btn tvhide" id="back" href="board.html">&larr; Numbers</a>
     <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span><span class="no" id="no"></span></div>
     <span class="diff" id="diff" hidden></span>
-    <span class="spacer"></span>
-    <a class="btn accent tvhide" id="next" href="board.html">Next &rarr;</a>
   </div>
 
   <div class="q-panel" id="panel">
@@ -42,7 +40,6 @@ const q = cat && cat.questions.find(x => x.n === Number(p.get('n')));
 
 if (!q) {
   document.getElementById('panel').innerHTML = '<h2 class="q-prompt">Question not found</h2><a class="btn" href="board.html">Back to categories</a> <a class="btn" href="index.html">Main menu</a>';
-  document.getElementById('next').hidden = true;
 } else {
   document.title = cat.en + ' #' + q.n + ' - Game Jeopardy - Gamers Week';
   used.add(cat.key, q.n);
@@ -155,11 +152,6 @@ if (!q) {
   tell();
   openFlash();
 
-  // "Next" goes to the following unused question in the same category, else back to the numbers
-  const nextQ = cat.questions.find(x => x.n > q.n && !used.has(cat.key, x.n)) || cat.questions.find(x => !used.has(cat.key, x.n) && x.n !== q.n);
-  const nextEl = document.getElementById('next');
-  nextEl.href = nextQ ? 'question.html?c=' + cat.key + '&n=' + nextQ.n : 'category.html?c=' + cat.key;
-  if (!nextQ) nextEl.textContent = 'Done ✓';
   document.getElementById('back').href = 'category.html?c=' + cat.key + tvQS();
 }
 

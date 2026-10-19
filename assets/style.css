@@ -156,32 +156,37 @@ html.tv body { cursor: none; }
 /* tall screens (a vertical TV): fill the whole screen and scale everything with the screen width */
 @media (max-aspect-ratio: 3/4) {
   html, body { height: 100%; }
+  html.tv, html.tv body { overflow: hidden; }
+  html.tv .frame { height: 100vh; min-height: 0; }
   .frame { max-width: none; width: 100%; min-height: 100vh; margin: 0; border-radius: 0; border-width: 0; padding: 2.4vw; display: flex; flex-direction: column; }
   .bar { margin-bottom: 2vw; }
   .bar h1 { font-size: 8vw; }
+  .bar h1 small { display: none; }
   .btn { font-size: 3vw; padding: 1.6vw 3.4vw; border-radius: 2vw; }
-  .cats { flex: 1; gap: 3vw; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
-  .cat { min-height: 0; border-radius: 4vw; }
+  .cats { flex: 1; gap: 3vw; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, minmax(0, 1fr)); min-height: 0; }
+  .cat { min-height: 0; overflow: hidden; border-radius: 4vw; }
   .cat .jp { font-size: 22vw; } .cat .en { font-size: 6vw; } .cat .left { font-size: 3vw; }
-  .nums { flex: 1; gap: 1.6vw; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(8, 1fr); }
+  .nums { flex: 1; gap: 1.6vw; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(8, minmax(0, 1fr)); min-height: 0; }
   .num { display: flex; align-items: center; justify-content: center; padding: 0; font-size: 7vw; border-radius: 2.4vw; }
   .note { font-size: 2.6vw; margin-top: 1.6vw; }
   .q-top { margin-bottom: 2vw; gap: 2vw; }
   .q-tag { padding: 1vw 3vw; border-radius: 2vw; }
   .q-tag .jp { font-size: 9vw; } .q-tag .en { font-size: 3.6vw; } .q-tag .no { font-size: 7vw; }
-  .q-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 3vw; border-radius: 3vw; }
-  .q-stage { padding: 9vw 12vw; min-height: 0; margin-bottom: 3vw; }
+  .q-panel { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 3vw; border-radius: 3vw; min-height: 0; overflow: hidden; }
+  .q-stage { padding: 6vw 12vw; min-height: 0; margin-bottom: 2vw; flex: none; }
   .q-prompt { font-size: 6.2vw; }
-  .q-img { width: 100%; height: 44vh; max-height: none; object-fit: contain; margin-bottom: 3vw; border-radius: 2vw; }
+  .q-img { width: 100%; height: auto; flex: 1 1 0; min-height: 0; max-height: none; object-fit: contain; margin-bottom: 2vw; border-radius: 2vw; }
+  #media { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
   .q-audio { max-width: none; width: 100%; padding: 6vw; margin-bottom: 3vw; }
   .q-audio .big { font-size: 22vw; }
   .q-actions .btn { font-size: 5vw; padding: 2.4vw 7vw; }
-  .choices { grid-template-columns: 1fr; gap: 2vw; max-width: none; }
-  .choice { font-size: 5.6vw; padding: 2.4vw 3vw; border-radius: 2vw; }
+  .choices { grid-template-columns: 1fr 1fr; gap: 1.6vw; max-width: none; margin: 1vw 0 0; flex: none; }
+  .choice { font-size: 4vw; padding: 1.8vw 2vw; border-radius: 2vw; gap: 1.4vw; border-width: 3px; }
   .answer { max-width: none; width: 100%; padding: 3vw 4vw; border-radius: 3vw; margin-top: 3vw; }
   .answer small { font-size: 3.2vw; }
-  .answer b { font-size: 10vw; }
-  .answer span { font-size: 4.6vw; margin-top: 1.4vw; }
+  .answer { flex: none; }
+  .answer b { font-size: 8vw; }
+  .answer span { font-size: 3.8vw; margin-top: 1vw; }
 }
 
 /* difficulty badge */

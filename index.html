@@ -13,16 +13,19 @@
     min-height: calc(100vh - 28px); margin: 14px auto; max-width: 1100px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 12px; text-align: center; padding: 24px 18px;
-    background: rgba(40, 3, 8, .72);
+    background: rgba(18, 5, 50, .74);
   }
   .kicker { margin: 0; font-family: var(--display); letter-spacing: .3em; font-size: clamp(16px, 2.4vw, 24px); background: var(--head-bg); color: var(--head-label); padding: 6px 18px; border: 3px solid var(--line); border-radius: var(--radius); }
   .title {
     margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .95;
     font-size: clamp(48px, 9vw, 120px);
-    color: var(--title-color); -webkit-text-stroke: 3px var(--title-stroke); text-shadow: 6px 6px 0 var(--title-stroke), var(--title-shadow);
+    color: var(--title-color); text-shadow: 6px 6px 0 var(--pink), -5px -5px 0 var(--line), 0 0 34px rgba(255, 62, 165, .9);
   }
   .sub { margin: 0; font-family: var(--display); font-size: clamp(20px, 3vw, 34px); letter-spacing: .12em; background: var(--head-bg); color: var(--head-kanji); padding: 6px 20px; border: 3px solid var(--line); border-radius: var(--radius); }
-  .hero { width: min(560px, 80vw); aspect-ratio: 16 / 9; border: 4px solid var(--line); border-radius: 22px; background: #000 url("assets/theme/stage.jpeg") center / cover no-repeat; box-shadow: 0 0 0 3px #7d0f17, 0 0 30px rgba(245, 184, 46, .5); }
+  .hero { position: relative; width: min(300px, 56vw); aspect-ratio: 1; display: grid; place-items: center; }
+  .hero::before { content: ""; position: absolute; inset: 15%; border-radius: 50%; background: radial-gradient(circle, #5a1fd1 0%, #1d0a56 70%); box-shadow: 0 0 40px rgba(122, 44, 255, .9), inset 0 0 30px rgba(0, 0, 0, .5); }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; animation: rock 6s ease-in-out infinite; }
+  .hero .q { position: relative; font-family: var(--display); font-size: clamp(80px, 16vw, 150px); line-height: 1; color: #fff; text-shadow: 4px 4px 0 var(--pink), -3px -3px 0 var(--line), 0 0 28px rgba(255, 255, 255, .8); animation: float 3s ease-in-out infinite; }
   .clubs { margin: 0; font-weight: 800; font-size: clamp(14px, 1.8vw, 20px); background: var(--accent); color: var(--accent-text); padding: 6px 16px; border: 3px solid var(--line); border-radius: var(--radius); }
   .start { font-size: clamp(30px, 5vw, 56px); padding: .25em 1.3em; background: var(--accent); color: var(--accent-text); box-shadow: 6px 6px 0 rgba(0,0,0,.55); }
   .row { display: flex; gap: 10px; flex-wrap: nowrap; justify-content: center; align-items: center; }
@@ -43,7 +46,7 @@
   <p class="kicker">GAMERS WEEK</p>
   <h1 class="title">Game Jeopardy</h1>
   <p class="sub">日本 × ESPORTS · ゲーム・ジェパディ</p>
-  <div class="hero" role="img" aria-label="Circus stage with red curtains"></div>
+  <div class="hero" role="img" aria-label="Glowing star ring with a question mark"><img src="assets/theme/ring.png" alt=""><span class="q">?</span></div>
   <p class="clubs">Japan Club × Esports Club</p>
   <a class="btn start" id="start" href="board.html">&#9654; Start Game</a>
   <div class="row tvhide">

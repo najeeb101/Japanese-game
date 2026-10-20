@@ -59,7 +59,7 @@ addEventListener('storage', e => {
   if (e.key === 'jj-used' && typeof window.onSharedChange === 'function') window.onSharedChange();
 });
 
-// ---- background sparkles: little gold stars drifting up the screen ----
+// ---- background decor: drifting clouds, flickering lightning and little stars drifting up the screen ----
 function makeSparks() {
   if (reducedMotion()) return;
   const layer = document.createElement('div');
@@ -76,16 +76,27 @@ function makeSparks() {
   }
   document.body.prepend(layer);
 }
-if (document.body) makeSparks(); else addEventListener('DOMContentLoaded', makeSparks);
+function makeDecor() {
+  if (reducedMotion()) return;
+  const layer = document.createElement('div');
+  layer.className = 'decor';
+  layer.setAttribute('aria-hidden', 'true');
+  layer.innerHTML = ['cloud a:clouds', 'cloud b:clouds', 'bolt a:bolt', 'bolt b:bolt']
+    .map(x => { const [cls, img] = x.split(':'); return '<img class="' + cls + '" alt="" src="assets/theme/' + img + '.png">'; }).join('');
+  document.body.prepend(layer);
+}
+const decorate = () => { makeDecor(); makeSparks(); };
+if (document.body) decorate(); else addEventListener('DOMContentLoaded', decorate);
 
 // "!!!" flash when a question opens
 function openFlash() {
   if (reducedMotion()) return;
   const dim = document.createElement('div'); dim.className = 'flash-dim';
+  const splash = document.createElement('div'); splash.className = 'flash-splash';
   const img = document.createElement('img');
-  img.alt = ''; img.className = 'flash-img'; img.src = 'assets/theme/sparks.jpeg';
-  document.body.append(dim, img);
-  setTimeout(() => { dim.remove(); img.remove(); }, 1300);
+  img.alt = ''; img.className = 'flash-img'; img.src = 'assets/theme/bolt.png';
+  document.body.append(dim, splash, img);
+  setTimeout(() => { dim.remove(); splash.remove(); img.remove(); }, 1300);
 }
 
 // difficulty (1 easy, 2 medium, 3 hard) as stars + word
@@ -108,12 +119,61 @@ function shuffled(list, rnd) {
   for (let i = list.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [list[i], list[j]] = [list[j], list[i]]; }
   return list;
 }
+// Wrong answers that don't give the real one away: other parts of the same series (1, 2, 3 / II, III ...) when there are any,
+// otherwise made-up look-alikes (a word swapped for one from another answer, or two names blended). One real answer from
+// the category is mixed in too, so "the only real-sounding one" is never the right pick.
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI'];
+const SERIES = { 'final fantasy': 'r', 'dark souls': 'r', 'street fighter': 'r', 'castlevania': 'r', 'mega man': 'a', 'resident evil': 'a', 'persona': 'a',
+  'fallout': 'a', 'metal gear solid': 'a', 'devil may cry': 'a', 'xenoblade chronicles': 'a', 'super mario bros.': 'a', 'mario kart': 'a', 'shovel knight': 'a' };
+function sequelNames(answer) {
+  let base = null, n = 0, style = 'a';
+  const m = answer.match(/^(.+?)\s+(\d{1,2}|[IVX]{1,5})$/);
+  if (m && /^\d+$/.test(m[2])) { base = m[1]; n = Number(m[2]); style = 'a'; }
+  else if (m && ROMAN.includes(m[2])) { base = m[1]; n = ROMAN.indexOf(m[2]) + 1; style = 'r'; }
+  else if (SERIES[answer.toLowerCase()]) { base = answer; n = 1; style = SERIES[answer.toLowerCase()]; }
+  if (!base || n > 12) return [];
+  const out = [];
+  for (let k = 1; k <= Math.max(n + 3, 5); k++) if (k !== n) out.push({ k, d: Math.abs(k - n) });
+  out.sort((x, y) => x.d - y.d);
+  return out.slice(0, 5).map(o => base + ' ' + (style === 'r' ? ROMAN[o.k - 1] : o.k));
+}
+function lookalike(answer, pool, rnd) {
+  const words = answer.split(' ');
+  // words worth borrowing from other answers: real words, not "&", "of", numerals or slashes
+  const ok = w => /^[A-Za-zÀ-ÿ'.-]{3,}$/.test(w) && !ROMAN.includes(w) && !/^(of|the|and)$/i.test(w);
+  const borrow = [];
+  pool.forEach(p => { if (p !== answer) p.split(' ').forEach(w => { if (ok(w) && !words.includes(w)) borrow.push(w); }); });
+  if (words.length > 1 && borrow.length) {
+    const swappable = words.map((w, i) => i).filter(i => ok(words[i]));
+    if (swappable.length) {
+      const i = swappable[Math.floor(rnd() * swappable.length)];
+      const w = words.slice();
+      w[i] = borrow[Math.floor(rnd() * borrow.length)];
+      return w.join(' ');
+    }
+  }
+  // single word (a name): nudge the spelling so it still looks like a name
+  const a = words[0];
+  const ends = ['a', 'o', 'y', 'i', 'el', 'er', 'on'];
+  const cut = a.length > 4 ? a.slice(0, -1 - Math.floor(rnd() * 2)) : a;
+  return cut + ends[Math.floor(rnd() * ends.length)];
+}
 function choicesFor(cat, q) {
   const rnd = seededRandom(cat.key + ':' + q.n);
-  const seen = new Set([q.answer.toLowerCase()]);
-  const others = [];
-  cat.questions.forEach(x => { const k = x.answer.toLowerCase(); if (!seen.has(k)) { seen.add(k); others.push(x.answer); } });
-  return shuffled([q.answer].concat(shuffled(others, rnd).slice(0, 3)), rnd);
+  const pool = [...new Set(cat.questions.map(x => x.answer))];
+  const taken = new Set([q.answer.toLowerCase()]);
+  const decoys = [];
+  const add = t => { const k = t.toLowerCase(); if (t && !taken.has(k) && decoys.length < 3) { taken.add(k); decoys.push(t); } };
+  const real = new Set(pool.map(p => p.toLowerCase()));
+
+  shuffled(sequelNames(q.answer).slice(0, 4), rnd).slice(0, 2).forEach(add);           // other parts: 1, 2, 3 ...
+  for (let tries = 0; tries < 20 && decoys.length < 2; tries++) {                        // invented look-alikes
+    const t = lookalike(q.answer, pool, rnd); if (!real.has(t.toLowerCase())) add(t);
+  }
+  const lenGap = t => Math.abs(t.length - q.answer.length);                              // one real answer of similar length
+  shuffled(pool.filter(p => p !== q.answer), rnd).sort((x, y) => lenGap(x) - lenGap(y)).slice(0, 6).forEach(t => { if (decoys.length < 3) add(t); });
+  for (let tries = 0; tries < 30 && decoys.length < 3; tries++) add(lookalike(q.answer, pool, rnd));
+  return shuffled([q.answer].concat(decoys), rnd);
 }
 
 // ---- win / lose effects ----
@@ -140,11 +200,12 @@ function celebrate(kind) {
   const fx = document.createElement('div');
   fx.className = 'fx fx-' + kind;
   fx.setAttribute('aria-hidden', 'true');
-  const img = (src, cls) => '<img class="' + cls + '" alt="" src="assets/theme/' + src + '.jpeg">';
+  const img = (src, cls) => '<img class="' + cls + '" alt="" src="assets/theme/' + src + '">';
   if (kind === 'win') {
-    fx.innerHTML = img('stars', 'fx-stars') + img('sparks', 'fx-burst') +
-      img(Math.random() < 0.5 ? 'wow' : 'omg', 'fx-word') + '<div class="fx-text">Correct!</div>';
-    const colors = ['#f5b82e', '#c8202a', '#fff3cf', '#ff7a3d', '#ffd96b'];
+    const words = ['Correct!', 'Wow!', 'Nice!', 'Yes!'];
+    fx.innerHTML = img('rays.png', 'fx-rays') + img('stars.png', 'fx-stars') +
+      '<div class="fx-text">' + words[Math.floor(Math.random() * words.length)] + '</div>';
+    const colors = ['#35f2ff', '#ff3ea5', '#ffe66b', '#ffffff', '#b04dff'];
     for (let i = 0; i < 46; i++) {
       const c = document.createElement('i');
       c.className = 'confetti';
@@ -156,7 +217,7 @@ function celebrate(kind) {
       fx.append(c);
     }
   } else {
-    fx.innerHTML = img('exclaim', 'fx-word') + '<div class="fx-text">Wrong!</div>';
+    fx.innerHTML = img('neon.jpg', 'fx-neon') + img('bolt.png', 'fx-bolt') + '<div class="fx-text">Wrong!</div>';
     document.documentElement.classList.add('shake');
     setTimeout(() => document.documentElement.classList.remove('shake'), 800);
   }

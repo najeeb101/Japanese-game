@@ -343,6 +343,186 @@ window.DATA = [
     "difficulty": 1,
     "img": "assets/img/silhouette-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Who is this silhouette?",
+    "answer": "Mario",
+    "detail": "Game: Super Mario Bros.",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-41.png",
+    "cutout": true
+   },
+   {
+    "n": 42,
+    "prompt": "Who is this silhouette?",
+    "answer": "Luigi",
+    "detail": "Game: Luigi's Mansion",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-42.png",
+    "cutout": true
+   },
+   {
+    "n": 43,
+    "prompt": "Who is this silhouette?",
+    "answer": "Pikachu",
+    "detail": "Game: Pokémon",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-43.png",
+    "cutout": true
+   },
+   {
+    "n": 44,
+    "prompt": "Who is this silhouette?",
+    "answer": "Sonic",
+    "detail": "Game: Sonic the Hedgehog",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-44.png",
+    "cutout": true
+   },
+   {
+    "n": 45,
+    "prompt": "Who is this silhouette?",
+    "answer": "Kirby",
+    "detail": "Game: Kirby's Dream Land",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-45.png",
+    "cutout": true
+   },
+   {
+    "n": 46,
+    "prompt": "Who is this silhouette?",
+    "answer": "Tails",
+    "detail": "Game: Sonic the Hedgehog 2",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-46.png",
+    "cutout": true
+   },
+   {
+    "n": 47,
+    "prompt": "Who is this silhouette?",
+    "answer": "Knuckles",
+    "detail": "Game: Sonic the Hedgehog 3 & Knuckles",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-47.png",
+    "cutout": true
+   },
+   {
+    "n": 48,
+    "prompt": "Who is this silhouette?",
+    "answer": "Spyro",
+    "detail": "Game: Spyro the Dragon",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-48.png",
+    "cutout": true
+   },
+   {
+    "n": 49,
+    "prompt": "Who is this silhouette?",
+    "answer": "Wario",
+    "detail": "Game: Wario Land",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-49.png",
+    "cutout": true
+   },
+   {
+    "n": 50,
+    "prompt": "Who is this silhouette?",
+    "answer": "Waluigi",
+    "detail": "Game: Mario Tennis",
+    "difficulty": 3,
+    "img": "assets/img/silhouette-50.png",
+    "cutout": true
+   },
+   {
+    "n": 51,
+    "prompt": "Who is this silhouette?",
+    "answer": "Toad",
+    "detail": "Game: Super Mario Bros.",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-51.png",
+    "cutout": true
+   },
+   {
+    "n": 52,
+    "prompt": "Who is this silhouette?",
+    "answer": "Pac-Man",
+    "detail": "Game: Pac-Man",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-52.png",
+    "cutout": true
+   },
+   {
+    "n": 53,
+    "prompt": "Who is this silhouette?",
+    "answer": "Yoshi",
+    "detail": "Game: Super Mario World",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-53.png",
+    "cutout": true
+   },
+   {
+    "n": 54,
+    "prompt": "Who is this silhouette?",
+    "answer": "Donkey Kong",
+    "detail": "Game: Donkey Kong Country",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-54.png",
+    "cutout": true
+   },
+   {
+    "n": 55,
+    "prompt": "Who is this silhouette?",
+    "answer": "Bowser",
+    "detail": "Game: Super Mario Bros.",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-55.png",
+    "cutout": true
+   },
+   {
+    "n": 56,
+    "prompt": "Who is this silhouette?",
+    "answer": "Princess Peach",
+    "detail": "Game: Super Mario Bros.",
+    "difficulty": 1,
+    "img": "assets/img/silhouette-56.png",
+    "cutout": true
+   },
+   {
+    "n": 57,
+    "prompt": "Who is this silhouette?",
+    "answer": "Lara Croft",
+    "detail": "Game: Tomb Raider",
+    "difficulty": 2,
+    "img": "assets/img/silhouette-57.png",
+    "cutout": true
+   },
+   {
+    "n": 58,
+    "prompt": "Who is this silhouette?",
+    "answer": "Olimar",
+    "detail": "Game: Pikmin",
+    "difficulty": 3,
+    "img": "assets/img/silhouette-58.png",
+    "cutout": true
+   },
+   {
+    "n": 59,
+    "prompt": "Who is this silhouette?",
+    "answer": "Marth",
+    "detail": "Game: Fire Emblem",
+    "difficulty": 3,
+    "img": "assets/img/silhouette-59.png",
+    "cutout": true
+   },
+   {
+    "n": 60,
+    "prompt": "Who is this silhouette?",
+    "answer": "Captain Falcon",
+    "detail": "Game: F-Zero",
+    "difficulty": 3,
+    "img": "assets/img/silhouette-60.png",
+    "cutout": true
    }
   ]
  },
@@ -650,6 +830,166 @@ window.DATA = [
     "detail": "Track: Rush About",
     "difficulty": 3,
     "audio": "assets/audio/sound-40.mp3"
+   },
+   {
+    "n": 41,
+    "prompt": "Which game is this music from?",
+    "answer": "Undertale",
+    "detail": "Track: Megalovania",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-41.mp3"
+   },
+   {
+    "n": 42,
+    "prompt": "Which game is this music from?",
+    "answer": "Undertale",
+    "detail": "Track: Fallen Down",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-42.mp3"
+   },
+   {
+    "n": 43,
+    "prompt": "Which game is this music from?",
+    "answer": "Tetris",
+    "detail": "Track: Korobeiniki",
+    "difficulty": 1,
+    "audio": "assets/audio/sound-43.mp3"
+   },
+   {
+    "n": 44,
+    "prompt": "Which game is this music from?",
+    "answer": "Civilization IV",
+    "detail": "Track: Baba Yetu",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-44.mp3"
+   },
+   {
+    "n": 45,
+    "prompt": "Which game is this music from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Track: Ground Theme",
+    "difficulty": 1,
+    "audio": "assets/audio/sound-45.mp3"
+   },
+   {
+    "n": 46,
+    "prompt": "Which game is this music from?",
+    "answer": "Undertale",
+    "detail": "Track: Hopes and Dreams",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-46.mp3"
+   },
+   {
+    "n": 47,
+    "prompt": "Which game is this music from?",
+    "answer": "Pokémon",
+    "detail": "Track: Pokémon Theme",
+    "difficulty": 1,
+    "audio": "assets/audio/sound-47.mp3"
+   },
+   {
+    "n": 48,
+    "prompt": "Which game is this music from?",
+    "answer": "Pokémon Red/Blue",
+    "detail": "Track: Lavender Town",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-48.mp3"
+   },
+   {
+    "n": 49,
+    "prompt": "Which game is this music from?",
+    "answer": "Chrono Trigger",
+    "detail": "Track: Brink of Time",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-49.mp3"
+   },
+   {
+    "n": 50,
+    "prompt": "Which game is this music from?",
+    "answer": "Sonic R",
+    "detail": "Track: Super Sonic Racing",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-50.mp3"
+   },
+   {
+    "n": 51,
+    "prompt": "Which game is this music from?",
+    "answer": "Metal Gear Solid",
+    "detail": "Track: Main Theme",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-51.mp3"
+   },
+   {
+    "n": 52,
+    "prompt": "Which game is this music from?",
+    "answer": "Metal Gear Solid 2",
+    "detail": "Track: Main Theme",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-52.mp3"
+   },
+   {
+    "n": 53,
+    "prompt": "Which game is this music from?",
+    "answer": "Space Invaders",
+    "detail": "Track: Space Invaders Music",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-53.mp3"
+   },
+   {
+    "n": 54,
+    "prompt": "Which game is this music from?",
+    "answer": "Grand Theft Auto V",
+    "detail": "Track: Main Theme",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-54.mp3"
+   },
+   {
+    "n": 55,
+    "prompt": "Which game is this music from?",
+    "answer": "Donkey Kong Country",
+    "detail": "Track: Aquatic Ambience",
+    "difficulty": 2,
+    "audio": "assets/audio/sound-55.mp3"
+   },
+   {
+    "n": 56,
+    "prompt": "Which game is this music from?",
+    "answer": "Red Dead Redemption",
+    "detail": "Track: Main Theme",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-56.mp3"
+   },
+   {
+    "n": 57,
+    "prompt": "Which game is this music from?",
+    "answer": "Red Dead Redemption 2",
+    "detail": "Track: Unshaken",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-57.mp3"
+   },
+   {
+    "n": 58,
+    "prompt": "Which game is this music from?",
+    "answer": "Ni no Kuni",
+    "detail": "Track: Kokoro no Kakera",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-58.mp3"
+   },
+   {
+    "n": 59,
+    "prompt": "Which game is this music from?",
+    "answer": "L.A. Noire",
+    "detail": "Track: Main Theme",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-59.mp3"
+   },
+   {
+    "n": 60,
+    "prompt": "Which game is this music from?",
+    "answer": "Castlevania: Bloodlines",
+    "detail": "Track: Stage 1",
+    "difficulty": 3,
+    "audio": "assets/audio/sound-60.mp3"
    }
   ]
  },
@@ -997,6 +1337,181 @@ window.DATA = [
     "difficulty": 2,
     "img": "assets/img/character-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Which game is this character from?",
+    "answer": "Horizon Zero Dawn",
+    "detail": "Character: Aloy",
+    "difficulty": 2,
+    "img": "assets/img/character-41.png",
+    "cutout": true
+   },
+   {
+    "n": 42,
+    "prompt": "Which game is this character from?",
+    "answer": "Assassin's Creed II",
+    "detail": "Character: Ezio Auditore",
+    "difficulty": 2,
+    "img": "assets/img/character-42.png",
+    "cutout": true
+   },
+   {
+    "n": 43,
+    "prompt": "Which game is this character from?",
+    "answer": "Overwatch",
+    "detail": "Character: Tracer",
+    "difficulty": 1,
+    "img": "assets/img/character-43.jpg"
+   },
+   {
+    "n": 44,
+    "prompt": "Which game is this character from?",
+    "answer": "Mortal Kombat",
+    "detail": "Character: Sub-Zero",
+    "difficulty": 2,
+    "img": "assets/img/character-44.png",
+    "cutout": true
+   },
+   {
+    "n": 45,
+    "prompt": "Which game is this character from?",
+    "answer": "The Last of Us",
+    "detail": "Character: Joel",
+    "difficulty": 2,
+    "img": "assets/img/character-45.png",
+    "cutout": true
+   },
+   {
+    "n": 46,
+    "prompt": "Which game is this character from?",
+    "answer": "Minecraft",
+    "detail": "Character: Steve",
+    "difficulty": 1,
+    "img": "assets/img/character-46.png",
+    "cutout": true
+   },
+   {
+    "n": 47,
+    "prompt": "Which game is this character from?",
+    "answer": "Half-Life",
+    "detail": "Character: Gordon Freeman",
+    "difficulty": 2,
+    "img": "assets/img/character-47.png",
+    "cutout": true
+   },
+   {
+    "n": 48,
+    "prompt": "Which game is this character from?",
+    "answer": "Halo",
+    "detail": "Character: Master Chief",
+    "difficulty": 1,
+    "img": "assets/img/character-48.jpg"
+   },
+   {
+    "n": 49,
+    "prompt": "Which game is this character from?",
+    "answer": "The Witcher 3",
+    "detail": "Character: Geralt of Rivia",
+    "difficulty": 2,
+    "img": "assets/img/character-49.jpg"
+   },
+   {
+    "n": 50,
+    "prompt": "Which game is this character from?",
+    "answer": "Fire Emblem: Path of Radiance",
+    "detail": "Character: Ike",
+    "difficulty": 3,
+    "img": "assets/img/character-50.png",
+    "cutout": true
+   },
+   {
+    "n": 51,
+    "prompt": "Which game is this character from?",
+    "answer": "Star Fox 64",
+    "detail": "Character: Wolf O'Donnell",
+    "difficulty": 3,
+    "img": "assets/img/character-51.png",
+    "cutout": true
+   },
+   {
+    "n": 52,
+    "prompt": "Which game is this character from?",
+    "answer": "Animal Crossing",
+    "detail": "Character: Villager",
+    "difficulty": 1,
+    "img": "assets/img/character-52.png",
+    "cutout": true
+   },
+   {
+    "n": 53,
+    "prompt": "Which game is this character from?",
+    "answer": "Tekken",
+    "detail": "Character: Kazuya Mishima",
+    "difficulty": 2,
+    "img": "assets/img/character-53.png",
+    "cutout": true
+   },
+   {
+    "n": 54,
+    "prompt": "Which game is this character from?",
+    "answer": "Uncharted",
+    "detail": "Character: Nathan Drake",
+    "difficulty": 2,
+    "img": "assets/img/character-54.png",
+    "cutout": true
+   },
+   {
+    "n": 55,
+    "prompt": "Which game is this character from?",
+    "answer": "Ratchet & Clank",
+    "detail": "Character: Ratchet",
+    "difficulty": 2,
+    "img": "assets/img/character-55.png",
+    "cutout": true
+   },
+   {
+    "n": 56,
+    "prompt": "Which game is this character from?",
+    "answer": "Splatoon",
+    "detail": "Character: Inkling",
+    "difficulty": 1,
+    "img": "assets/img/character-56.png",
+    "cutout": true
+   },
+   {
+    "n": 57,
+    "prompt": "Which game is this character from?",
+    "answer": "Mass Effect",
+    "detail": "Character: Commander Shepard",
+    "difficulty": 2,
+    "img": "assets/img/character-57.jpg"
+   },
+   {
+    "n": 58,
+    "prompt": "Which game is this character from?",
+    "answer": "Jak and Daxter",
+    "detail": "Character: Jak",
+    "difficulty": 3,
+    "img": "assets/img/character-58.png",
+    "cutout": true
+   },
+   {
+    "n": 59,
+    "prompt": "Which game is this character from?",
+    "answer": "God of War",
+    "detail": "Character: Kratos",
+    "difficulty": 1,
+    "img": "assets/img/character-59.jpg"
+   },
+   {
+    "n": 60,
+    "prompt": "Which game is this character from?",
+    "answer": "Metroid",
+    "detail": "Character: Samus Aran",
+    "difficulty": 1,
+    "img": "assets/img/character-60.png",
+    "cutout": true
    }
   ]
  },
@@ -1321,6 +1836,184 @@ window.DATA = [
     "difficulty": 2,
     "img": "assets/img/item-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Which game is this item from?",
+    "answer": "Half-Life 2",
+    "detail": "Item: Gravity Gun",
+    "difficulty": 2,
+    "img": "assets/img/item-41.png",
+    "cutout": true
+   },
+   {
+    "n": 42,
+    "prompt": "Which game is this item from?",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Master Sword",
+    "difficulty": 1,
+    "img": "assets/img/item-42.png",
+    "cutout": true
+   },
+   {
+    "n": 43,
+    "prompt": "Which game is this item from?",
+    "answer": "Pokémon",
+    "detail": "Item: Poké Ball",
+    "difficulty": 1,
+    "img": "assets/img/item-43.png",
+    "cutout": true
+   },
+   {
+    "n": 44,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Super Mushroom",
+    "difficulty": 1,
+    "img": "assets/img/item-44.png",
+    "cutout": true
+   },
+   {
+    "n": 45,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Fire Flower",
+    "difficulty": 1,
+    "img": "assets/img/item-45.png",
+    "cutout": true
+   },
+   {
+    "n": 46,
+    "prompt": "Which game is this item from?",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Item: Chaos Emeralds",
+    "difficulty": 2,
+    "img": "assets/img/item-46.jpg"
+   },
+   {
+    "n": 47,
+    "prompt": "Which game is this item from?",
+    "answer": "Minecraft",
+    "detail": "Item: Diamond Pickaxe",
+    "difficulty": 1,
+    "img": "assets/img/item-47.png",
+    "cutout": true
+   },
+   {
+    "n": 48,
+    "prompt": "Which game is this item from?",
+    "answer": "Minecraft",
+    "detail": "Item: Ender Pearl",
+    "difficulty": 2,
+    "img": "assets/img/item-48.png",
+    "cutout": true
+   },
+   {
+    "n": 49,
+    "prompt": "Which game is this item from?",
+    "answer": "Assassin's Creed",
+    "detail": "Item: Hidden Blade",
+    "difficulty": 2,
+    "img": "assets/img/item-49.jpg"
+   },
+   {
+    "n": 50,
+    "prompt": "Which game is this item from?",
+    "answer": "Mario Kart",
+    "detail": "Item: Banana Peel",
+    "difficulty": 1,
+    "img": "assets/img/item-50.png",
+    "cutout": true
+   },
+   {
+    "n": 51,
+    "prompt": "Which game is this item from?",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Heart Container",
+    "difficulty": 2,
+    "img": "assets/img/item-51.png",
+    "cutout": true
+   },
+   {
+    "n": 52,
+    "prompt": "Which game is this item from?",
+    "answer": "Half-Life",
+    "detail": "Item: Crowbar",
+    "difficulty": 2,
+    "img": "assets/img/item-52.png",
+    "cutout": true
+   },
+   {
+    "n": 53,
+    "prompt": "Which game is this item from?",
+    "answer": "God of War",
+    "detail": "Item: Blades of Chaos",
+    "difficulty": 2,
+    "img": "assets/img/item-53.png",
+    "cutout": true
+   },
+   {
+    "n": 54,
+    "prompt": "Which game is this item from?",
+    "answer": "Crash Bandicoot",
+    "detail": "Item: Wumpa Fruit",
+    "difficulty": 3,
+    "img": "assets/img/item-54.png",
+    "cutout": true
+   },
+   {
+    "n": 55,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Super Star",
+    "difficulty": 1,
+    "img": "assets/img/item-55.png",
+    "cutout": true
+   },
+   {
+    "n": 56,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: 1-Up Mushroom",
+    "difficulty": 1,
+    "img": "assets/img/item-56.png",
+    "cutout": true
+   },
+   {
+    "n": 57,
+    "prompt": "Which game is this item from?",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Rupee",
+    "difficulty": 1,
+    "img": "assets/img/item-57.png",
+    "cutout": true
+   },
+   {
+    "n": 58,
+    "prompt": "Which game is this item from?",
+    "answer": "Breath of the Wild",
+    "detail": "Item: Hylian Shield",
+    "difficulty": 3,
+    "img": "assets/img/item-58.png",
+    "cutout": true
+   },
+   {
+    "n": 59,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Warp Pipe",
+    "difficulty": 1,
+    "img": "assets/img/item-59.png",
+    "cutout": true
+   },
+   {
+    "n": 60,
+    "prompt": "Which game is this item from?",
+    "answer": "Super Mario World",
+    "detail": "Item: Cape Feather",
+    "difficulty": 2,
+    "img": "assets/img/item-60.png",
+    "cutout": true
    }
   ]
  },
@@ -1628,6 +2321,166 @@ window.DATA = [
     "detail": "Made by: Tiger Telematics",
     "difficulty": 3,
     "img": "assets/img/console-40.jpg"
+   },
+   {
+    "n": 41,
+    "prompt": "What console is this?",
+    "answer": "PlayStation",
+    "detail": "Made by: Sony",
+    "difficulty": 1,
+    "img": "assets/img/console-41.jpg"
+   },
+   {
+    "n": 42,
+    "prompt": "What console is this?",
+    "answer": "PlayStation 3",
+    "detail": "Made by: Sony",
+    "difficulty": 2,
+    "img": "assets/img/console-42.jpg"
+   },
+   {
+    "n": 43,
+    "prompt": "What console is this?",
+    "answer": "PlayStation 4",
+    "detail": "Made by: Sony",
+    "difficulty": 1,
+    "img": "assets/img/console-43.jpg"
+   },
+   {
+    "n": 44,
+    "prompt": "What console is this?",
+    "answer": "PlayStation 5",
+    "detail": "Made by: Sony",
+    "difficulty": 1,
+    "img": "assets/img/console-44.jpg"
+   },
+   {
+    "n": 45,
+    "prompt": "What console is this?",
+    "answer": "Xbox",
+    "detail": "Made by: Microsoft",
+    "difficulty": 1,
+    "img": "assets/img/console-45.jpg"
+   },
+   {
+    "n": 46,
+    "prompt": "What console is this?",
+    "answer": "Xbox 360",
+    "detail": "Made by: Microsoft",
+    "difficulty": 1,
+    "img": "assets/img/console-46.jpg"
+   },
+   {
+    "n": 47,
+    "prompt": "What console is this?",
+    "answer": "Xbox One",
+    "detail": "Made by: Microsoft",
+    "difficulty": 2,
+    "img": "assets/img/console-47.jpg"
+   },
+   {
+    "n": 48,
+    "prompt": "What console is this?",
+    "answer": "Nintendo Switch",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1,
+    "img": "assets/img/console-48.jpg"
+   },
+   {
+    "n": 49,
+    "prompt": "What console is this?",
+    "answer": "Wii",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1,
+    "img": "assets/img/console-49.jpg"
+   },
+   {
+    "n": 50,
+    "prompt": "What console is this?",
+    "answer": "NES",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1,
+    "img": "assets/img/console-50.jpg"
+   },
+   {
+    "n": 51,
+    "prompt": "What console is this?",
+    "answer": "SNES",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1,
+    "img": "assets/img/console-51.jpg"
+   },
+   {
+    "n": 52,
+    "prompt": "What console is this?",
+    "answer": "Game Boy",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1,
+    "img": "assets/img/console-52.jpg"
+   },
+   {
+    "n": 53,
+    "prompt": "What console is this?",
+    "answer": "Game Boy Color",
+    "detail": "Made by: Nintendo",
+    "difficulty": 2,
+    "img": "assets/img/console-53.jpg"
+   },
+   {
+    "n": 54,
+    "prompt": "What console is this?",
+    "answer": "Nintendo 3DS",
+    "detail": "Made by: Nintendo",
+    "difficulty": 2,
+    "img": "assets/img/console-54.jpg"
+   },
+   {
+    "n": 55,
+    "prompt": "What console is this?",
+    "answer": "Atari 2600",
+    "detail": "Made by: Atari",
+    "difficulty": 2,
+    "img": "assets/img/console-55.jpg"
+   },
+   {
+    "n": 56,
+    "prompt": "What console is this?",
+    "answer": "Sega Master System",
+    "detail": "Made by: Sega",
+    "difficulty": 2,
+    "img": "assets/img/console-56.jpg"
+   },
+   {
+    "n": 57,
+    "prompt": "What console is this?",
+    "answer": "Steam Deck",
+    "detail": "Made by: Valve",
+    "difficulty": 2,
+    "img": "assets/img/console-57.jpg"
+   },
+   {
+    "n": 58,
+    "prompt": "What console is this?",
+    "answer": "3DO",
+    "detail": "Made by: Panasonic (3DO Company)",
+    "difficulty": 3,
+    "img": "assets/img/console-58.jpg"
+   },
+   {
+    "n": 59,
+    "prompt": "What console is this?",
+    "answer": "ColecoVision",
+    "detail": "Made by: Coleco",
+    "difficulty": 3,
+    "img": "assets/img/console-59.jpg"
+   },
+   {
+    "n": 60,
+    "prompt": "What console is this?",
+    "answer": "Magnavox Odyssey",
+    "detail": "Made by: Magnavox",
+    "difficulty": 3,
+    "img": "assets/img/console-60.jpg"
    }
   ]
  },
@@ -1935,6 +2788,166 @@ window.DATA = [
     "detail": "Area: Timber Hearth",
     "difficulty": 2,
     "img": "assets/img/biome-40.jpg"
+   },
+   {
+    "n": 41,
+    "prompt": "Which game and area is this?",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Area: Green Hill Zone",
+    "difficulty": 1,
+    "img": "assets/img/biome-41.jpg"
+   },
+   {
+    "n": 42,
+    "prompt": "Which game and area is this?",
+    "answer": "Ocarina of Time",
+    "detail": "Area: Hyrule Field",
+    "difficulty": 1,
+    "img": "assets/img/biome-42.jpg"
+   },
+   {
+    "n": 43,
+    "prompt": "Which game and area is this?",
+    "answer": "Skyrim",
+    "detail": "Area: Whiterun",
+    "difficulty": 2,
+    "img": "assets/img/biome-43.jpg"
+   },
+   {
+    "n": 44,
+    "prompt": "Which game and area is this?",
+    "answer": "League of Legends",
+    "detail": "Area: Summoner's Rift",
+    "difficulty": 2,
+    "img": "assets/img/biome-44.jpg"
+   },
+   {
+    "n": 45,
+    "prompt": "Which game and area is this?",
+    "answer": "Counter-Strike",
+    "detail": "Area: Dust II",
+    "difficulty": 2,
+    "img": "assets/img/biome-45.jpg"
+   },
+   {
+    "n": 46,
+    "prompt": "Which game and area is this?",
+    "answer": "Dark Souls",
+    "detail": "Area: Anor Londo",
+    "difficulty": 3,
+    "img": "assets/img/biome-46.jpg"
+   },
+   {
+    "n": 47,
+    "prompt": "Which game and area is this?",
+    "answer": "The Witcher 3",
+    "detail": "Area: Novigrad",
+    "difficulty": 3,
+    "img": "assets/img/biome-47.jpg"
+   },
+   {
+    "n": 48,
+    "prompt": "Which game and area is this?",
+    "answer": "Banjo-Kazooie",
+    "detail": "Area: Spiral Mountain",
+    "difficulty": 3,
+    "img": "assets/img/biome-48.jpg"
+   },
+   {
+    "n": 49,
+    "prompt": "Which game and area is this?",
+    "answer": "Mass Effect",
+    "detail": "Area: The Citadel",
+    "difficulty": 2,
+    "img": "assets/img/biome-49.jpg"
+   },
+   {
+    "n": 50,
+    "prompt": "Which game and area is this?",
+    "answer": "Super Mario Odyssey",
+    "detail": "Area: Mushroom Kingdom",
+    "difficulty": 2,
+    "img": "assets/img/biome-50.jpg"
+   },
+   {
+    "n": 51,
+    "prompt": "Which game and area is this?",
+    "answer": "Minecraft",
+    "detail": "Area: The Nether",
+    "difficulty": 1,
+    "img": "assets/img/biome-51.jpg"
+   },
+   {
+    "n": 52,
+    "prompt": "Which game and area is this?",
+    "answer": "Undertale",
+    "detail": "Area: Snowdin",
+    "difficulty": 2,
+    "img": "assets/img/biome-52.jpg"
+   },
+   {
+    "n": 53,
+    "prompt": "Which game and area is this?",
+    "answer": "Terraria",
+    "detail": "Area: Underground Jungle",
+    "difficulty": 3,
+    "img": "assets/img/biome-53.jpg"
+   },
+   {
+    "n": 54,
+    "prompt": "Which game and area is this?",
+    "answer": "Sonic the Hedgehog 2",
+    "detail": "Area: Chemical Plant Zone",
+    "difficulty": 3,
+    "img": "assets/img/biome-54.jpg"
+   },
+   {
+    "n": 55,
+    "prompt": "Which game and area is this?",
+    "answer": "Grand Theft Auto V",
+    "detail": "Area: Los Santos",
+    "difficulty": 2,
+    "img": "assets/img/biome-55.jpg"
+   },
+   {
+    "n": 56,
+    "prompt": "Which game and area is this?",
+    "answer": "BioShock",
+    "detail": "Area: Rapture",
+    "difficulty": 2,
+    "img": "assets/img/biome-56.jpg"
+   },
+   {
+    "n": 57,
+    "prompt": "Which game and area is this?",
+    "answer": "Hollow Knight",
+    "detail": "Area: City of Tears",
+    "difficulty": 3,
+    "img": "assets/img/biome-57.jpg"
+   },
+   {
+    "n": 58,
+    "prompt": "Which game and area is this?",
+    "answer": "Pokémon",
+    "detail": "Area: Viridian Forest",
+    "difficulty": 2,
+    "img": "assets/img/biome-58.jpg"
+   },
+   {
+    "n": 59,
+    "prompt": "Which game and area is this?",
+    "answer": "Metroid",
+    "detail": "Area: Planet Zebes",
+    "difficulty": 3,
+    "img": "assets/img/biome-59.jpg"
+   },
+   {
+    "n": 60,
+    "prompt": "Which game and area is this?",
+    "answer": "Cyberpunk 2077",
+    "detail": "Area: Night City",
+    "difficulty": 3,
+    "img": "assets/img/biome-60.jpg"
    }
   ]
  }

@@ -31,11 +31,13 @@
   .row { display: flex; gap: 10px; flex-wrap: nowrap; justify-content: center; align-items: center; }
   .row .btn { min-width: 190px; }
   @media (max-aspect-ratio: 3/4) {
-    .frame.menu { margin: 0; max-width: none; border-radius: 0; border-width: 0; min-height: 100vh; gap: 2.2vh; padding: 5vh 5vw; }
-    .kicker { font-size: 4vw; } .sub { font-size: 4.4vw; white-space: nowrap; padding: 6px 3vw; } .clubs { font-size: 3.6vw; }
-    .title { font-size: 17vw; }
-    .hero { width: min(84vw, 460px); }
-    .start { width: min(88vw, 440px); font-size: 11vw; }
+    /* tall screen / kiosk: size everything by the smaller of width and height so nothing is cut off */
+    html.tv .frame.menu { height: 100vh; min-height: 0; overflow: hidden; }
+    .frame.menu { margin: 0; max-width: none; border-radius: 0; border-width: 0; min-height: 100vh; gap: 2vh; padding: 3vh 5vw; }
+    .kicker { font-size: min(4vw, 2.2vh); padding: .5vh 3vw; } .sub { font-size: min(4.4vw, 2.6vh); white-space: nowrap; padding: .6vh 3vw; } .clubs { font-size: min(3.6vw, 2vh); }
+    .title { font-size: min(17vw, 9vh); }
+    .hero { width: min(60vw, 28vh); }
+    .start { white-space: nowrap; width: min(88vw, 440px); font-size: min(9vw, 5.5vh); padding: .3em 0; }
     .row { width: min(88vw, 440px); flex-direction: column; }
     .row .btn { width: 100%; min-width: 0; }
   }

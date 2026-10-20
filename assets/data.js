@@ -343,6 +343,146 @@ window.DATA = [
     "difficulty": 1,
     "img": "assets/img/silhouette-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Who am I? Clue: a red-capped plumber who stomps on Goombas",
+    "answer": "Mario",
+    "detail": "Game: Super Mario Bros.",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "Who am I? Clue: Mario's taller brother in green",
+    "answer": "Luigi",
+    "detail": "Game: Luigi's Mansion",
+    "difficulty": 1
+   },
+   {
+    "n": 43,
+    "prompt": "Who am I? Clue: a yellow electric mouse with a lightning-bolt tail",
+    "answer": "Pikachu",
+    "detail": "Game: Pokémon",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "Who am I? Clue: a blue hedgehog who runs faster than sound",
+    "answer": "Sonic",
+    "detail": "Game: Sonic the Hedgehog",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "Who am I? Clue: a pink puffball who inhales enemies to copy their powers",
+    "answer": "Kirby",
+    "detail": "Game: Kirby's Dream Land",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "Who am I? Clue: a yellow circle who eats dots and runs from ghosts",
+    "answer": "Pac-Man",
+    "detail": "Game: Pac-Man",
+    "difficulty": 1
+   },
+   {
+    "n": 47,
+    "prompt": "Who am I? Clue: a green dinosaur with a very long tongue",
+    "answer": "Yoshi",
+    "detail": "Game: Super Mario World",
+    "difficulty": 1
+   },
+   {
+    "n": 48,
+    "prompt": "Who am I? Clue: a giant ape who throws barrels and wears a red tie",
+    "answer": "Donkey Kong",
+    "detail": "Game: Donkey Kong",
+    "difficulty": 1
+   },
+   {
+    "n": 49,
+    "prompt": "Who am I? Clue: a Spartan who is the Master Chief of the UNSC",
+    "answer": "Master Chief",
+    "detail": "Game: Halo",
+    "difficulty": 2
+   },
+   {
+    "n": 50,
+    "prompt": "Who am I? Clue: a Greek god of war with red tattoos and the Blades of Chaos",
+    "answer": "Kratos",
+    "detail": "Game: God of War",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "Who am I? Clue: an adventurer with twin pistols and a braid",
+    "answer": "Lara Croft",
+    "detail": "Game: Tomb Raider",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "Who am I? Clue: a white-haired monster hunter with two swords",
+    "answer": "Geralt of Rivia",
+    "detail": "Game: The Witcher 3",
+    "difficulty": 2
+   },
+   {
+    "n": 53,
+    "prompt": "Who am I? Clue: an orange bandicoot who spins into crates",
+    "answer": "Crash Bandicoot",
+    "detail": "Game: Crash Bandicoot",
+    "difficulty": 2
+   },
+   {
+    "n": 54,
+    "prompt": "Who am I? Clue: a small purple dragon with a dragonfly friend",
+    "answer": "Spyro",
+    "detail": "Game: Spyro the Dragon",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "Who am I? Clue: a blocky miner who crafts and builds",
+    "answer": "Steve",
+    "detail": "Game: Minecraft",
+    "difficulty": 2
+   },
+   {
+    "n": 56,
+    "prompt": "Who am I? Clue: a character with a teacup for a head",
+    "answer": "Cuphead",
+    "detail": "Game: Cuphead",
+    "difficulty": 2
+   },
+   {
+    "n": 57,
+    "prompt": "Who am I? Clue: a red-haired huntress with a Focus on her ear",
+    "answer": "Aloy",
+    "detail": "Game: Horizon Zero Dawn",
+    "difficulty": 3
+   },
+   {
+    "n": 58,
+    "prompt": "Who am I? Clue: an assassin from Renaissance Florence with a hidden blade",
+    "answer": "Ezio Auditore",
+    "detail": "Game: Assassin's Creed II",
+    "difficulty": 3
+   },
+   {
+    "n": 59,
+    "prompt": "Who am I? Clue: a physicist with a crowbar and an orange suit",
+    "answer": "Gordon Freeman",
+    "detail": "Game: Half-Life",
+    "difficulty": 3
+   },
+   {
+    "n": 60,
+    "prompt": "Who am I? Clue: a marine with a shotgun who fights demons on Mars",
+    "answer": "Doomguy",
+    "detail": "Game: DOOM",
+    "difficulty": 3
    }
   ]
  },
@@ -650,6 +790,146 @@ window.DATA = [
     "detail": "Track: Rush About",
     "difficulty": 3,
     "audio": "assets/audio/sound-40.mp3"
+   },
+   {
+    "n": 41,
+    "prompt": "Which game has the music track “Megalovania”?",
+    "answer": "Undertale",
+    "detail": "Track: Megalovania",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "Which game has the music track “Korobeiniki” (the Russian folk tune)?",
+    "answer": "Tetris",
+    "detail": "Track: Korobeiniki",
+    "difficulty": 1
+   },
+   {
+    "n": 43,
+    "prompt": "Which game has the music track “Still Alive” sung over the credits?",
+    "answer": "Portal",
+    "detail": "Track: Still Alive",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "Which game has the music track “Sweden” (calm piano)?",
+    "answer": "Minecraft",
+    "detail": "Track: Sweden",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "Which game has the music track “Rainbow Road”?",
+    "answer": "Mario Kart 64",
+    "detail": "Track: Rainbow Road",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "Which game has the music track “Jump Up, Super Star!”?",
+    "answer": "Super Mario Odyssey",
+    "detail": "Track: Jump Up, Super Star!",
+    "difficulty": 2
+   },
+   {
+    "n": 47,
+    "prompt": "Which game has the music track “Dragonborn” with the choir?",
+    "answer": "Skyrim",
+    "detail": "Track: Dragonborn",
+    "difficulty": 2
+   },
+   {
+    "n": 48,
+    "prompt": "Which game has the music track “Baba Yetu” (sung in Swahili)?",
+    "answer": "Civilization IV",
+    "detail": "Track: Baba Yetu",
+    "difficulty": 2
+   },
+   {
+    "n": 49,
+    "prompt": "Which game has the music track “Lifelight”?",
+    "answer": "Super Smash Bros. Ultimate",
+    "detail": "Track: Lifelight",
+    "difficulty": 2
+   },
+   {
+    "n": 50,
+    "prompt": "Which game has the music track “Live & Learn” by Crush 40?",
+    "answer": "Sonic Adventure 2",
+    "detail": "Track: Live & Learn",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "Which game has the music track “Vampire Killer”?",
+    "answer": "Castlevania",
+    "detail": "Track: Vampire Killer",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "Which game has the music track “Pokémon Center”?",
+    "answer": "Pokémon Red/Blue",
+    "detail": "Track: Pokémon Center",
+    "difficulty": 1
+   },
+   {
+    "n": 53,
+    "prompt": "Which game has the music track “Aerith's Theme”?",
+    "answer": "Final Fantasy VII",
+    "detail": "Track: Aerith's Theme",
+    "difficulty": 2
+   },
+   {
+    "n": 54,
+    "prompt": "Which game has the music track “Corneria”?",
+    "answer": "Star Fox",
+    "detail": "Track: Corneria",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "Which game has the music track “Gangplank Galleon”?",
+    "answer": "Donkey Kong Country 2",
+    "detail": "Track: Gangplank Galleon",
+    "difficulty": 3
+   },
+   {
+    "n": 56,
+    "prompt": "Which game has the music track “Stickerbush Symphony”?",
+    "answer": "Donkey Kong Country 2",
+    "detail": "Track: Stickerbush Symphony",
+    "difficulty": 3
+   },
+   {
+    "n": 57,
+    "prompt": "Which game has the music track “Ballad of the Goddess”?",
+    "answer": "Skyward Sword",
+    "detail": "Track: Ballad of the Goddess",
+    "difficulty": 3
+   },
+   {
+    "n": 58,
+    "prompt": "Which game has the music track “Zelda's Lullaby”?",
+    "answer": "Ocarina of Time",
+    "detail": "Track: Zelda's Lullaby",
+    "difficulty": 1
+   },
+   {
+    "n": 59,
+    "prompt": "Which game has the music track “Through the Fire and Flames”?",
+    "answer": "Guitar Hero III",
+    "detail": "Track: Through the Fire and Flames",
+    "difficulty": 3
+   },
+   {
+    "n": 60,
+    "prompt": "Which game has the music track “Hopes and Dreams”?",
+    "answer": "Undertale",
+    "detail": "Track: Hopes and Dreams",
+    "difficulty": 3
    }
   ]
  },
@@ -997,6 +1277,146 @@ window.DATA = [
     "difficulty": 2,
     "img": "assets/img/character-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Which game is this character from? Clue: Kratos, the Ghost of Sparta",
+    "answer": "God of War",
+    "detail": "Character: Kratos",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "Which game is this character from? Clue: Master Chief",
+    "answer": "Halo",
+    "detail": "Character: Master Chief",
+    "difficulty": 1
+   },
+   {
+    "n": 43,
+    "prompt": "Which game is this character from? Clue: Lara Croft",
+    "answer": "Tomb Raider",
+    "detail": "Character: Lara Croft",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "Which game is this character from? Clue: Steve and his diamond pickaxe",
+    "answer": "Minecraft",
+    "detail": "Character: Steve",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "Which game is this character from? Clue: Mario's rival, the spiky-shelled king",
+    "answer": "Super Mario Bros.",
+    "detail": "Character: Bowser",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "Which game is this character from? Clue: Geralt of Rivia",
+    "answer": "The Witcher 3",
+    "detail": "Character: Geralt",
+    "difficulty": 2
+   },
+   {
+    "n": 47,
+    "prompt": "Which game is this character from? Clue: Aloy",
+    "answer": "Horizon Zero Dawn",
+    "detail": "Character: Aloy",
+    "difficulty": 2
+   },
+   {
+    "n": 48,
+    "prompt": "Which game is this character from? Clue: Ezio Auditore",
+    "answer": "Assassin's Creed II",
+    "detail": "Character: Ezio",
+    "difficulty": 2
+   },
+   {
+    "n": 49,
+    "prompt": "Which game is this character from? Clue: Crash Bandicoot",
+    "answer": "Crash Bandicoot",
+    "detail": "Character: Crash",
+    "difficulty": 1
+   },
+   {
+    "n": 50,
+    "prompt": "Which game is this character from? Clue: Spyro the Dragon",
+    "answer": "Spyro the Dragon",
+    "detail": "Character: Spyro",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "Which game is this character from? Clue: Cuphead and Mugman",
+    "answer": "Cuphead",
+    "detail": "Character: Cuphead",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "Which game is this character from? Clue: Gordon Freeman",
+    "answer": "Half-Life",
+    "detail": "Character: Gordon Freeman",
+    "difficulty": 2
+   },
+   {
+    "n": 53,
+    "prompt": "Which game is this character from? Clue: Joel and Ellie",
+    "answer": "The Last of Us",
+    "detail": "Character: Joel",
+    "difficulty": 2
+   },
+   {
+    "n": 54,
+    "prompt": "Which game is this character from? Clue: Doomguy",
+    "answer": "DOOM",
+    "detail": "Character: Doom Slayer",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "Which game is this character from? Clue: Tracer, the speedy time-jumper",
+    "answer": "Overwatch",
+    "detail": "Character: Tracer",
+    "difficulty": 2
+   },
+   {
+    "n": 56,
+    "prompt": "Which game is this character from? Clue: Sub-Zero and Scorpion",
+    "answer": "Mortal Kombat",
+    "detail": "Character: Sub-Zero",
+    "difficulty": 2
+   },
+   {
+    "n": 57,
+    "prompt": "Which game is this character from? Clue: V and Johnny Silverhand",
+    "answer": "Cyberpunk 2077",
+    "detail": "Character: V",
+    "difficulty": 3
+   },
+   {
+    "n": 58,
+    "prompt": "Which game is this character from? Clue: Isaac Clarke, the engineer in a suit with a glowing spine",
+    "answer": "Dead Space",
+    "detail": "Character: Isaac Clarke",
+    "difficulty": 3
+   },
+   {
+    "n": 59,
+    "prompt": "Which game is this character from? Clue: Shadow the Hedgehog's rival with a blue body and red shoes",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Character: Sonic",
+    "difficulty": 1
+   },
+   {
+    "n": 60,
+    "prompt": "Which game is this character from? Clue: Madeline, the girl who climbs a mountain",
+    "answer": "Celeste",
+    "detail": "Character: Madeline",
+    "difficulty": 3
    }
   ]
  },
@@ -1321,6 +1741,146 @@ window.DATA = [
     "difficulty": 2,
     "img": "assets/img/item-40.png",
     "cutout": true
+   },
+   {
+    "n": 41,
+    "prompt": "Which game is this item from? Clue: the Portal Gun",
+    "answer": "Portal",
+    "detail": "Item: Portal Gun",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "Which game is this item from? Clue: the Gravity Gun that picks up objects",
+    "answer": "Half-Life 2",
+    "detail": "Item: Gravity Gun",
+    "difficulty": 2
+   },
+   {
+    "n": 43,
+    "prompt": "Which game is this item from? Clue: the Master Sword",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Master Sword",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "Which game is this item from? Clue: the Poké Ball",
+    "answer": "Pokémon",
+    "detail": "Item: Poké Ball",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "Which game is this item from? Clue: the Super Mushroom",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Super Mushroom",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "Which game is this item from? Clue: the Fire Flower",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Fire Flower",
+    "difficulty": 1
+   },
+   {
+    "n": 47,
+    "prompt": "Which game is this item from? Clue: golden Rings that you lose when hit",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Item: Rings",
+    "difficulty": 1
+   },
+   {
+    "n": 48,
+    "prompt": "Which game is this item from? Clue: the Power Pellet that turns ghosts blue",
+    "answer": "Pac-Man",
+    "detail": "Item: Power Pellet",
+    "difficulty": 1
+   },
+   {
+    "n": 49,
+    "prompt": "Which game is this item from? Clue: the Diamond Pickaxe",
+    "answer": "Minecraft",
+    "detail": "Item: Diamond Pickaxe",
+    "difficulty": 1
+   },
+   {
+    "n": 50,
+    "prompt": "Which game is this item from? Clue: the Ender Pearl",
+    "answer": "Minecraft",
+    "detail": "Item: Ender Pearl",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "Which game is this item from? Clue: the Hidden Blade",
+    "answer": "Assassin's Creed",
+    "detail": "Item: Hidden Blade",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "Which game is this item from? Clue: the BFG 9000",
+    "answer": "DOOM",
+    "detail": "Item: BFG 9000",
+    "difficulty": 2
+   },
+   {
+    "n": 53,
+    "prompt": "Which game is this item from? Clue: the Warp Pipe",
+    "answer": "Super Mario Bros.",
+    "detail": "Item: Warp Pipe",
+    "difficulty": 1
+   },
+   {
+    "n": 54,
+    "prompt": "Which game is this item from? Clue: the Heart Container",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Heart Container",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "Which game is this item from? Clue: the Banana Peel you drop behind your kart",
+    "answer": "Mario Kart",
+    "detail": "Item: Banana Peel",
+    "difficulty": 1
+   },
+   {
+    "n": 56,
+    "prompt": "Which game is this item from? Clue: the Crowbar",
+    "answer": "Half-Life",
+    "detail": "Item: Crowbar",
+    "difficulty": 2
+   },
+   {
+    "n": 57,
+    "prompt": "Which game is this item from? Clue: the Chaos Emeralds",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Item: Chaos Emerald",
+    "difficulty": 2
+   },
+   {
+    "n": 58,
+    "prompt": "Which game is this item from? Clue: the Blades of Chaos",
+    "answer": "God of War",
+    "detail": "Item: Blades of Chaos",
+    "difficulty": 2
+   },
+   {
+    "n": 59,
+    "prompt": "Which game is this item from? Clue: Rupees as the money",
+    "answer": "The Legend of Zelda",
+    "detail": "Item: Rupee",
+    "difficulty": 1
+   },
+   {
+    "n": 60,
+    "prompt": "Which game is this item from? Clue: the Wumpa Fruit",
+    "answer": "Crash Bandicoot",
+    "detail": "Item: Wumpa Fruit",
+    "difficulty": 3
    }
   ]
  },
@@ -1628,6 +2188,146 @@ window.DATA = [
     "detail": "Made by: Tiger Telematics",
     "difficulty": 3,
     "img": "assets/img/console-40.jpg"
+   },
+   {
+    "n": 41,
+    "prompt": "What console is this? Clue: Sony's first console, released in Japan in December 1994",
+    "answer": "PlayStation",
+    "detail": "Made by: Sony",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "What console is this? Clue: Nintendo's 1983 console in Japan, the Famicom's Western twin",
+    "answer": "NES",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1
+   },
+   {
+    "n": 43,
+    "prompt": "What console is this? Clue: Microsoft's first console, with the huge \"Duke\" controller",
+    "answer": "Xbox",
+    "detail": "Made by: Microsoft",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "What console is this? Clue: Nintendo's hybrid console you can take out of the dock",
+    "answer": "Nintendo Switch",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "What console is this? Clue: the white console with a motion-sensing wand",
+    "answer": "Wii",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "What console is this? Clue: the 16-bit grey Nintendo with colourful ABXY buttons",
+    "answer": "SNES",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1
+   },
+   {
+    "n": 47,
+    "prompt": "What console is this? Clue: the 1989 grey handheld with a green screen and Tetris",
+    "answer": "Game Boy",
+    "detail": "Made by: Nintendo",
+    "difficulty": 1
+   },
+   {
+    "n": 48,
+    "prompt": "What console is this? Clue: the 2011 handheld with a glasses-free 3D screen",
+    "answer": "Nintendo 3DS",
+    "detail": "Made by: Nintendo",
+    "difficulty": 2
+   },
+   {
+    "n": 49,
+    "prompt": "What console is this? Clue: the console launched in 2020 with a white and black design",
+    "answer": "PlayStation 5",
+    "detail": "Made by: Sony",
+    "difficulty": 1
+   },
+   {
+    "n": 50,
+    "prompt": "What console is this? Clue: the console with the \"Red Ring of Death\"",
+    "answer": "Xbox 360",
+    "detail": "Made by: Microsoft",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "What console is this? Clue: the 2006 Sony console that launched at $599",
+    "answer": "PlayStation 3",
+    "detail": "Made by: Sony",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "What console is this? Clue: the 2013 console with a light bar on its controller",
+    "answer": "PlayStation 4",
+    "detail": "Made by: Sony",
+    "difficulty": 1
+   },
+   {
+    "n": 53,
+    "prompt": "What console is this? Clue: the 1977 console with wood-grain panels",
+    "answer": "Atari 2600",
+    "detail": "Made by: Atari",
+    "difficulty": 2
+   },
+   {
+    "n": 54,
+    "prompt": "What console is this? Clue: Sega's 8-bit rival to the NES",
+    "answer": "Sega Master System",
+    "detail": "Made by: Sega",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "What console is this? Clue: Valve's handheld PC",
+    "answer": "Steam Deck",
+    "detail": "Made by: Valve",
+    "difficulty": 2
+   },
+   {
+    "n": 56,
+    "prompt": "What console is this? Clue: the 1993 console that cost $699 and played CDs",
+    "answer": "3DO",
+    "detail": "Made by: Panasonic / Goldstar / Sanyo",
+    "difficulty": 3
+   },
+   {
+    "n": 57,
+    "prompt": "What console is this? Clue: the 1982 console that came with Donkey Kong",
+    "answer": "ColecoVision",
+    "detail": "Made by: Coleco",
+    "difficulty": 3
+   },
+   {
+    "n": 58,
+    "prompt": "What console is this? Clue: the colourful 1998 portable successor of the Game Boy",
+    "answer": "Game Boy Color",
+    "detail": "Made by: Nintendo",
+    "difficulty": 2
+   },
+   {
+    "n": 59,
+    "prompt": "What console is this? Clue: the 2013 follow-up to the Xbox 360",
+    "answer": "Xbox One",
+    "detail": "Made by: Microsoft",
+    "difficulty": 2
+   },
+   {
+    "n": 60,
+    "prompt": "What console is this? Clue: the first home console ever, released in 1972",
+    "answer": "Magnavox Odyssey",
+    "detail": "Made by: Magnavox",
+    "difficulty": 3
    }
   ]
  },
@@ -1935,6 +2635,146 @@ window.DATA = [
     "detail": "Area: Timber Hearth",
     "difficulty": 2,
     "img": "assets/img/biome-40.jpg"
+   },
+   {
+    "n": 41,
+    "prompt": "Which game has this area? Clue: Green Hill Zone",
+    "answer": "Sonic the Hedgehog",
+    "detail": "Area: Green Hill Zone",
+    "difficulty": 1
+   },
+   {
+    "n": 42,
+    "prompt": "Which game has this area? Clue: Pallet Town",
+    "answer": "Pokémon Red/Blue",
+    "detail": "Area: Pallet Town",
+    "difficulty": 1
+   },
+   {
+    "n": 43,
+    "prompt": "Which game has this area? Clue: Rapture, the city under the sea",
+    "answer": "BioShock",
+    "detail": "Area: Rapture",
+    "difficulty": 1
+   },
+   {
+    "n": 44,
+    "prompt": "Which game has this area? Clue: Whiterun and the Throat of the World",
+    "answer": "Skyrim",
+    "detail": "Area: Whiterun",
+    "difficulty": 1
+   },
+   {
+    "n": 45,
+    "prompt": "Which game has this area? Clue: Night City",
+    "answer": "Cyberpunk 2077",
+    "detail": "Area: Night City",
+    "difficulty": 1
+   },
+   {
+    "n": 46,
+    "prompt": "Which game has this area? Clue: Los Santos",
+    "answer": "Grand Theft Auto V",
+    "detail": "Area: Los Santos",
+    "difficulty": 1
+   },
+   {
+    "n": 47,
+    "prompt": "Which game has this area? Clue: Summoner's Rift",
+    "answer": "League of Legends",
+    "detail": "Area: Summoner's Rift",
+    "difficulty": 1
+   },
+   {
+    "n": 48,
+    "prompt": "Which game has this area? Clue: Dust II",
+    "answer": "Counter-Strike",
+    "detail": "Area: Dust II",
+    "difficulty": 2
+   },
+   {
+    "n": 49,
+    "prompt": "Which game has this area? Clue: Anor Londo",
+    "answer": "Dark Souls",
+    "detail": "Area: Anor Londo",
+    "difficulty": 2
+   },
+   {
+    "n": 50,
+    "prompt": "Which game has this area? Clue: Novigrad",
+    "answer": "The Witcher 3",
+    "detail": "Area: Novigrad",
+    "difficulty": 2
+   },
+   {
+    "n": 51,
+    "prompt": "Which game has this area? Clue: Black Mesa Research Facility",
+    "answer": "Half-Life",
+    "detail": "Area: Black Mesa",
+    "difficulty": 2
+   },
+   {
+    "n": 52,
+    "prompt": "Which game has this area? Clue: Greenpath and the City of Tears",
+    "answer": "Hollow Knight",
+    "detail": "Area: City of Tears",
+    "difficulty": 2
+   },
+   {
+    "n": 53,
+    "prompt": "Which game has this area? Clue: Kakariko Village",
+    "answer": "Ocarina of Time",
+    "detail": "Area: Kakariko Village",
+    "difficulty": 2
+   },
+   {
+    "n": 54,
+    "prompt": "Which game has this area? Clue: Planet Zebes",
+    "answer": "Metroid",
+    "detail": "Area: Zebes",
+    "difficulty": 2
+   },
+   {
+    "n": 55,
+    "prompt": "Which game has this area? Clue: Spiral Mountain",
+    "answer": "Banjo-Kazooie",
+    "detail": "Area: Spiral Mountain",
+    "difficulty": 2
+   },
+   {
+    "n": 56,
+    "prompt": "Which game has this area? Clue: The Citadel space station",
+    "answer": "Mass Effect",
+    "detail": "Area: The Citadel",
+    "difficulty": 2
+   },
+   {
+    "n": 57,
+    "prompt": "Which game has this area? Clue: Nuketown",
+    "answer": "Call of Duty: Black Ops",
+    "detail": "Area: Nuketown",
+    "difficulty": 3
+   },
+   {
+    "n": 58,
+    "prompt": "Which game has this area? Clue: Liberty City",
+    "answer": "Grand Theft Auto IV",
+    "detail": "Area: Liberty City",
+    "difficulty": 3
+   },
+   {
+    "n": 59,
+    "prompt": "Which game has this area? Clue: Lordran",
+    "answer": "Dark Souls",
+    "detail": "Area: Lordran",
+    "difficulty": 3
+   },
+   {
+    "n": 60,
+    "prompt": "Which game has this area? Clue: Hyrule Castle Town",
+    "answer": "Ocarina of Time",
+    "detail": "Area: Hyrule Castle Town",
+    "difficulty": 3
    }
   ]
  }

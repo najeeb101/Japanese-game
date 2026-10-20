@@ -6,7 +6,7 @@
 <title>Question - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=4">
 </head>
 <body class="p-question">
 <div class="frame">
@@ -31,8 +31,8 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview"><img alt=""></div>
 
-<script src="assets/data.js"></script>
-<script src="assets/common.js"></script>
+<script src="assets/data.js?v=4"></script>
+<script src="assets/common.js?v=4"></script>
 <script>
 const p = new URLSearchParams(location.search);
 const cat = DATA.find(c => c.key === p.get('c'));
@@ -71,8 +71,8 @@ if (!q) {
   document.getElementById('a-detail').textContent = q.detail;
 
   // ---- question state: hint (multiple choice) and result ----
-  const choiceList = choicesFor(cat, q);
-  const rightIdx = choiceList.indexOf(q.answer);
+  let choiceList = choicesFor(cat, q);
+  let rightIdx = choiceList.indexOf(q.answer);
   const choicesEl = document.getElementById('choices'), ans = document.getElementById('answer');
   const hintBtn = document.getElementById('hint'), correctBtn = document.getElementById('correct');
   let hinted = false, result = null;   // result: null | 'win' | 'lose'
@@ -136,7 +136,11 @@ if (!q) {
   // the host view can drive this screen: hint, correct answer, pick a choice, reset, audio
   Bus.on(m => {
     if (!TV) return;
-    if (m.type === 'hint') showChoices();
+    if (m.type === 'hint') {
+      // use the exact choices the host is showing, so both screens always match
+      if (Array.isArray(m.choices) && m.choices.includes(q.answer)) { choiceList = m.choices; rightIdx = choiceList.indexOf(q.answer); }
+      showChoices();
+    }
     if (m.type === 'correct') finish('win', rightIdx);
     if (m.type === 'pick') pick(m.i);
     if (m.type === 'reset') reset();

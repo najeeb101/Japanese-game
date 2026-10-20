@@ -6,7 +6,7 @@
 <title>Host View - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=4">
 <style>
   .host { max-width: 1500px; margin: 10px auto; padding: 0 10px; }
   .host .frame { max-width: none; margin: 0; }
@@ -73,8 +73,8 @@
   </div>
 </div>
 
-<script src="assets/data.js"></script>
-<script src="assets/common.js"></script>
+<script src="assets/data.js?v=4"></script>
+<script src="assets/common.js?v=4"></script>
 <script>
 const $ = id => document.getElementById(id);
 let current = null;           // { cat, q } shown in the host panel
@@ -182,7 +182,7 @@ function renderPanel() {
   const ctrl = document.createElement('div');
   ctrl.className = 'ctrl';
   const mk = (label, cls, fn) => { const b = document.createElement('button'); b.className = 'btn ' + cls; b.textContent = label; b.onclick = fn; ctrl.append(b); return b; };
-  mk('💡 Hint (show choices)', 'accent', () => { Bus.send({ type: 'hint' }); tv.hint = true; renderPanel(); renderStatus(); });
+  mk('💡 Hint (show choices)', 'accent', () => { Bus.send({ type: 'hint', choices: choicesFor(cat, q) }); tv.hint = true; renderPanel(); renderStatus(); });
   mk('✔ Correct answer', 'go', () => { Bus.send({ type: 'correct' }); tv.result = 'win'; renderPanel(); renderStatus(); });
   mk('↺ Reset question', 'stop', () => { Bus.send({ type: 'reset' }); tv.hint = false; tv.result = null; renderPanel(); renderStatus(); });
   if (q.audio) {
@@ -236,9 +236,11 @@ $('openTv').onclick = () => {
 $('tvMenu').onclick = () => { Bus.send({ type: 'menu' }); current = null; openCat = null; renderAll(); };
 $('tvBoard').onclick = () => { Bus.send({ type: 'board' }); current = null; openCat = null; renderAll(); };
 $('random').onclick = () => {
+  // random question from the category you are in (or from everything when none is open)
+  const here = openCat || (current && current.cat);
   const pool = [];
-  DATA.forEach(c => c.questions.forEach(q => { if (!used.has(c.key, q.n)) pool.push([c, q.n]); }));
-  if (!pool.length) { alert('All questions have been used. Press Reset to start over.'); return; }
+  (here ? [here] : DATA).forEach(c => c.questions.forEach(q => { if (!used.has(c.key, q.n)) pool.push([c, q.n]); }));
+  if (!pool.length) { alert(here ? 'All questions in ' + here.en + ' have been used. Pick another category or press Reset.' : 'All questions have been used. Press Reset to start over.'); return; }
   const [c, n] = pool[Math.floor(Math.random() * pool.length)];
   sendOpen(c, n);
 };

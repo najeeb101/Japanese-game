@@ -4,7 +4,7 @@
 
 ## Features
 
-- Six categories, each with 60 numbered questions: the board shows only the categories, and the numbers 1-60 appear once you open one
+- Six categories, each with 40 numbered questions: the board shows only the categories, and the numbers 1-40 appear once you open one
 - Hint button that turns the question into four multiple-choice answers
 - Correct answer button plus win and lose animations (a wrong choice is the only way to lose)
 - Host view for selecting questions, giving hints and marking answers
@@ -44,7 +44,7 @@ No build step or package installation is required.
 
 1. Open `index.html` to reach the main menu.
 2. Select **Host View**.
-3. Choose a category, then a number from 1 to 60.
+3. Choose a category, then a number from 1 to 40.
 4. Press **Hint** to show four choices, or **Correct answer** when the player gets it right. Picking a wrong choice plays the lose animation and shows the right answer.
 5. Use **Reset** on the board when starting a new game.
 
@@ -71,7 +71,7 @@ The host and audience windows communicate through browser `localStorage` events,
 ├── index.html       # Main menu
 ├── host.html        # Host controls and question panel
 ├── board.html       # Category board
-├── category.html    # Numbers 1-60 for one category
+├── category.html    # Numbers 1-40 for one category
 ├── question.html    # Question and answer display
 └── assets/
     ├── common.js    # Shared state, styles, and host/TV communication

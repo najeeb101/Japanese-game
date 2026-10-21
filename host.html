@@ -6,42 +6,43 @@
 <title>Host View - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 <style>
   .host { max-width: 1500px; margin: 10px auto; padding: 0 10px; }
   .host .frame { max-width: none; margin: 0; }
   .cols { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; align-items: start; }
-  .status { font-family: var(--display); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; background: #12062f; color: var(--head-label); border: 3px solid var(--line); border-radius: var(--radius); padding: 8px 14px; }
+  .status { font-family: var(--display); font-size: 15px; letter-spacing: .04em; text-transform: uppercase; background: #000; color: var(--head-label); border: 3px solid var(--line); border-radius: var(--radius); padding: 8px 14px; }
   .status.live { color: #5dff8c; }
   .host .cats { gap: 10px; }
-  .host .cat { min-height: 110px; border-width: 3px; border-radius: 14px; }
-  .host .cat .jp { font-size: 48px; } .host .cat .en { font-size: 20px; } .host .cat .left { font-size: 12px; }
-  .host .cat.current { outline: 4px solid #ffe66b; outline-offset: 2px; }
+  .host .cat { min-height: 110px; border-width: 3px; border-radius: 4px; }
+  .host .cat .mask { height: 56px; }
+  .host .cat .jp { font-size: 22px; } .host .cat .en { font-size: 20px; } .host .cat .left { font-size: 12px; }
+  .host .cat.current { outline: 4px solid #fff; outline-offset: 2px; }
   .host .nums { grid-template-columns: repeat(8, 1fr); gap: 6px; }
   .host .num { font-size: 20px; padding: 8px 0 6px; border-width: 2px; cursor: pointer; width: 100%; }
-  .host .num.current { outline: 4px solid #fff; outline-offset: 1px; }
+  .host .num.current { outline: 4px solid #ffd23f; outline-offset: 1px; }
   .crumb { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .panel { position: sticky; top: 10px; }
   .q-panel { text-align: left; }
   .q-panel .q-prompt { font-size: 24px; text-align: left; margin: 10px 0; }
   .empty { font-family: var(--display); font-size: 24px; text-transform: uppercase; text-align: center; padding: 60px 10px; opacity: .85; }
   .hq-img { display: block; max-width: 100%; max-height: 30vh; margin: 0 0 12px; border: 3px solid var(--line); border-radius: 10px; background: #fff; }
-  .secret { border: 4px dashed #ffe66b; background: rgba(240, 232, 255, .96); color: #2a0a5e; border-radius: var(--radius); padding: 10px 14px; margin: 6px 0 14px; }
-  .secret small { display: block; font-family: var(--display); letter-spacing: .1em; font-size: 12px; color: #d4106f; text-transform: uppercase; }
+  .secret { border: 4px dashed #e60012; background: rgba(255, 255, 255, .97); color: #000; border-radius: var(--radius); padding: 10px 14px; margin: 6px 0 14px; }
+  .secret small { display: block; font-family: var(--display); letter-spacing: .1em; font-size: 12px; color: #e60012; text-transform: uppercase; }
   .secret b { display: block; font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.05; text-transform: uppercase; }
   .secret span { display: block; font-weight: 700; font-size: 18px; margin-top: 4px; }
   .ctrl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .ctrl .btn { font-size: 16px; padding: 9px 14px; }
   .ctrl .btn.go { background: #1f9d3a; color: #fff; }
-  .ctrl .btn.stop { background: #b01a5f; color: #fff; }
+  .ctrl .btn.stop { background: #e60012; color: #fff; }
   .picks { margin-top: 12px; }
   .picks h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 400; letter-spacing: .06em; font-size: 15px; text-transform: uppercase; color: var(--head-label); }
   .picks .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .picks .choice { font-size: 16px; padding: 8px 10px; border-width: 3px; }
   .picks .choice.is-right { outline: 3px solid #5dff8c; outline-offset: 1px; }
-  .hint { font-size: 13px; font-weight: 700; margin-top: 10px; background: rgba(240,232,255,.94); color: #2a0a5e; padding: 6px 10px; border-radius: 8px; display: none; }
+  .hint { font-size: 13px; font-weight: 700; margin-top: 10px; background: rgba(255,255,255,.95); color: #000; padding: 6px 10px; border-radius: 2px; display: none; }
   .hint.show { display: block; }
-  .help { font-size: 13px; font-weight: 600; margin: 10px 2px 0; background: rgba(240,232,255,.94); color: #2a0a5e; padding: 6px 10px; border-radius: 8px; }
+  .help { font-size: 13px; font-weight: 600; margin: 10px 2px 0; background: rgba(255,255,255,.95); color: #000; padding: 6px 10px; border-radius: 2px; }
   @media (max-width: 980px) { .cols { grid-template-columns: 1fr; } .panel { position: static; } .host .nums { grid-template-columns: repeat(5, 1fr); } }
 </style>
 </head>
@@ -56,6 +57,7 @@
         <button class="btn accent" id="openTv">Open TV window</button>
         <button class="btn" id="tvMenu">TV: Main menu</button>
         <button class="btn" id="tvBoard">TV: Categories</button>
+        <button class="btn" id="tvBrb">TV: Be right back</button>
         <button class="btn" id="random">Random</button>
         <button class="btn" id="reset">Reset</button>
       </nav>
@@ -73,8 +75,8 @@
   </div>
 </div>
 
-<script src="assets/data.js?v=4"></script>
-<script src="assets/common.js?v=4"></script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/common.js?v=5"></script>
 <script>
 const $ = id => document.getElementById(id);
 let current = null;           // { cat, q } shown in the host panel
@@ -107,8 +109,8 @@ function renderLeft() {
     DATA.forEach(c => {
       const b = document.createElement('button');
       b.className = 'cat' + (current && current.cat === c ? ' current' : '');
-      b.innerHTML = '<span class="jp"></span><span class="en"></span><span class="left"></span>';
-      b.children[0].textContent = c.jp; b.children[1].textContent = c.en; b.children[2].textContent = leftIn(c) + ' left';
+      b.innerHTML = '<img class="mask" alt=""><span class="jp"></span><span class="en"></span><span class="left"></span>';
+      b.children[0].src = maskFor(c.key); b.children[1].textContent = c.jp; b.children[2].textContent = c.en; b.children[3].textContent = leftIn(c) + ' left';
       b.onclick = () => { openCat = c; Bus.send({ type: 'cat', c: c.key }); renderLeft(); };
       g.append(b);
     });
@@ -122,8 +124,8 @@ function renderLeft() {
   back.onclick = () => { openCat = null; Bus.send({ type: 'board' }); renderLeft(); };
   const tag = document.createElement('div');
   tag.className = 'q-tag';
-  tag.innerHTML = '<span class="jp"></span><span class="en"></span>';
-  tag.children[0].textContent = openCat.jp; tag.children[1].textContent = openCat.en;
+  tag.innerHTML = '<img class="tag-mask" alt=""><span class="jp"></span><span class="en"></span>';
+  tag.children[0].src = maskFor(openCat.key); tag.children[1].textContent = openCat.jp; tag.children[2].textContent = openCat.en;
   crumb.append(back, tag);
   const g = document.createElement('div');
   g.className = 'nums';
@@ -153,8 +155,8 @@ function renderPanel() {
   const { cat, q } = current;
   const tag = document.createElement('div');
   tag.className = 'q-tag'; tag.style.display = 'inline-flex';
-  tag.innerHTML = '<span class="jp"></span><span class="en"></span><span class="no"></span>';
-  tag.children[0].textContent = cat.jp; tag.children[1].textContent = cat.en; tag.children[2].textContent = '#' + q.n;
+  tag.innerHTML = '<img class="tag-mask" alt=""><span class="jp"></span><span class="en"></span><span class="no"></span>';
+  tag.children[0].src = maskFor(cat.key); tag.children[1].textContent = cat.jp; tag.children[2].textContent = cat.en; tag.children[3].textContent = '#' + q.n;
   const prompt = document.createElement('h2');
   prompt.className = 'q-prompt'; prompt.textContent = q.prompt;
   p.append(tag);
@@ -165,6 +167,11 @@ function renderPanel() {
     const im = document.createElement('img');
     im.className = 'hq-img' + (q.cutout ? ' cutout' : ''); im.src = q.img; im.alt = '';
     p.append(im);
+  }
+  if (q.emoji) {
+    const em = document.createElement('div');
+    em.className = 'q-emoji'; em.style.fontSize = '56px'; em.style.padding = '10px'; em.style.margin = '0 0 12px'; em.textContent = q.emoji;
+    p.append(em);
   }
   if (q.audio) {
     const n = document.createElement('div');
@@ -223,6 +230,7 @@ function renderStatus() {
   if (!tv.seen) { s.textContent = 'TV: not connected'; s.classList.remove('live'); return; }
   s.classList.add('live');
   s.textContent = tv.page === 'menu' ? 'TV: main menu'
+    : tv.page === 'brb' ? 'TV: be right back'
     : tv.page === 'board' ? 'TV: showing the categories'
     : tv.page === 'category' ? 'TV: showing the numbers'
     : 'TV: question' + (tv.result === 'win' ? ' - answered correctly' : tv.result === 'lose' ? ' - wrong choice' : tv.hint ? ' - choices shown' : '');
@@ -235,6 +243,7 @@ $('openTv').onclick = () => {
 };
 $('tvMenu').onclick = () => { Bus.send({ type: 'menu' }); current = null; openCat = null; renderAll(); };
 $('tvBoard').onclick = () => { Bus.send({ type: 'board' }); current = null; openCat = null; renderAll(); };
+$('tvBrb').onclick = () => { Bus.send({ type: 'brb' }); current = null; openCat = null; renderAll(); };
 $('random').onclick = () => {
   // random question from the category you are in (or from everything when none is open)
   const here = openCat || (current && current.cat);
@@ -256,7 +265,7 @@ Bus.on(m => {
     } else {
       current = null;
       if (m.page === 'category') openCat = catOf(m.c) || openCat;
-      else if (m.page === 'board' || m.page === 'menu') openCat = null;
+      else if (m.page === 'board' || m.page === 'menu' || m.page === 'brb') openCat = null;
     }
     renderAll();
   }

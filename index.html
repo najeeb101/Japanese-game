@@ -6,28 +6,36 @@
 <title>Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 <style>
   body { min-height: 100vh; }
   .frame.menu {
     min-height: calc(100vh - 28px); margin: 14px auto; max-width: 1100px;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 12px; text-align: center; padding: 24px 18px;
-    background: rgba(18, 5, 50, .74);
+    background: rgba(6, 6, 6, .74);
   }
   .kicker { margin: 0; font-family: var(--display); letter-spacing: .3em; font-size: clamp(16px, 2.4vw, 24px); background: var(--head-bg); color: var(--head-label); padding: 6px 18px; border: 3px solid var(--line); border-radius: var(--radius); }
   .title {
     margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .95;
     font-size: clamp(48px, 9vw, 120px);
-    color: var(--title-color); text-shadow: 6px 6px 0 var(--pink), -5px -5px 0 var(--line), 0 0 34px rgba(255, 62, 165, .9);
+    color: var(--title-color);
   }
   .sub { margin: 0; font-family: var(--display); font-size: clamp(20px, 3vw, 34px); letter-spacing: .12em; background: var(--head-bg); color: var(--head-kanji); padding: 6px 20px; border: 3px solid var(--line); border-radius: var(--radius); }
-  .hero { position: relative; width: min(300px, 56vw); aspect-ratio: 1; display: grid; place-items: center; }
-  .hero::before { content: ""; position: absolute; inset: 15%; border-radius: 50%; background: radial-gradient(circle, #5a1fd1 0%, #1d0a56 70%); box-shadow: 0 0 40px rgba(122, 44, 255, .9), inset 0 0 30px rgba(0, 0, 0, .5); }
-  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; animation: rock 6s ease-in-out infinite; }
-  .hero .q { position: relative; font-family: var(--display); font-size: clamp(80px, 16vw, 150px); line-height: 1; color: #fff; text-shadow: 4px 4px 0 var(--pink), -3px -3px 0 var(--line), 0 0 28px rgba(255, 255, 255, .8); animation: float 3s ease-in-out infinite; }
+  .hero { position: relative; width: min(280px, 56vw); aspect-ratio: 1; display: grid; place-items: center; }
+  .hero { background: #000; border: 4px solid #fff; box-shadow: 8px 8px 0 var(--red); overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(230,0,18,.55), transparent 70%); }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rock 8s ease-in-out infinite; mix-blend-mode: screen; }
+  .hero .q { position: relative; font-family: var(--display); font-size: clamp(80px, 16vw, 150px); line-height: 1; color: #fff; text-shadow: 5px 5px 0 var(--red), -3px -3px 0 #000; animation: float 3s ease-in-out infinite; }
   .clubs { margin: 0; font-weight: 800; font-size: clamp(14px, 1.8vw, 20px); background: var(--accent); color: var(--accent-text); padding: 6px 16px; border: 3px solid var(--line); border-radius: var(--radius); }
-  .start { font-size: clamp(30px, 5vw, 56px); padding: .25em 1.3em; background: var(--accent); color: var(--accent-text); box-shadow: 6px 6px 0 rgba(0,0,0,.55); }
+  .start { font-size: clamp(30px, 5vw, 56px); padding: .25em 1.3em; background: var(--red); color: #fff; box-shadow: 6px 6px 0 #000; }
+  /* ransom-note letters */
+  .title .w { display: inline-block; white-space: nowrap; margin: 0 .12em; }
+  .rn { display: inline-block; padding: 0 .06em; margin: 0 .01em; line-height: 1; }
+  .rn.k0 { background: #fff; color: #000; transform: rotate(-4deg) translateY(.02em); }
+  .rn.k1 { background: #000; color: #fff; transform: rotate(3deg) translateY(-.03em); border: .03em solid #fff; }
+  .rn.k2 { background: var(--red); color: #fff; transform: rotate(-2deg) translateY(.04em); font-family: Georgia, serif; font-style: italic; font-weight: 700; }
+  .rn.k3 { background: #fff; color: var(--red); transform: rotate(5deg); font-family: Georgia, serif; font-weight: 700; }
   .row { display: flex; gap: 10px; flex-wrap: nowrap; justify-content: center; align-items: center; }
   .row .btn { min-width: 190px; }
   @media (max-aspect-ratio: 3/4) {
@@ -46,18 +54,25 @@
 <body class="p-menu">
 <div class="frame menu">
   <p class="kicker">GAMERS WEEK</p>
-  <h1 class="title">Game Jeopardy</h1>
+  <h1 class="title" aria-label="Game Jeopardy">Game Jeopardy</h1>
   <p class="sub">日本 × ESPORTS · ゲーム・ジェパディ</p>
-  <div class="hero" role="img" aria-label="Glowing star ring with a question mark"><img src="assets/theme/ring.png" alt=""><span class="q">?</span></div>
+  <div class="hero" role="img" aria-label="Red spiral with stars and a question mark"><img src="assets/p5/ring.jpg" alt=""><span class="q">?</span></div>
   <p class="clubs">Japan Club × Esports Club</p>
   <a class="btn start" id="start" href="board.html">&#9654; Start Game</a>
   <div class="row tvhide">
     <a class="btn" href="host.html">&#9635; Host View</a>
+    <a class="btn" href="brb.html">&#9202; Be right back</a>
   </div>
 </div>
 
-<script src="assets/common.js?v=4"></script>
+<script src="assets/common.js?v=5"></script>
 <script>
+// ransom-note title: every letter a different cut-out
+(() => {
+  const h = document.querySelector('.title'); const words = h.textContent.split(' '); let i = 0; h.textContent = '';
+  words.forEach(w => { const wd = document.createElement('span'); wd.className = 'w'; wd.setAttribute('aria-hidden', 'true');
+    [...w].forEach(ch => { const s = document.createElement('span'); s.className = 'rn k' + ((i++ * 7 + 1) % 4); s.textContent = ch; wd.append(s); }); h.append(wd, ' '); });
+})();
 if (TV) document.getElementById('start').href = 'board.html?tv=1';
 window.pageView = () => ({ page: 'menu' });
 announce(window.pageView());

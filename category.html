@@ -6,21 +6,21 @@
 <title>Category - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body class="p-board p-cat">
 <div class="frame">
   <div class="q-top">
     <a class="btn tvhide" href="index.html">&#8962; Main menu</a>
     <a class="btn tvhide" id="back" href="board.html">&larr; Categories</a>
-    <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span></div>
+    <div class="q-tag"><img class="tag-mask" id="mask" alt=""><span class="jp" id="jp"></span><span class="en" id="en"></span></div>
   </div>
   <div class="nums" id="nums"></div>
   <p class="note" id="note"></p>
 </div>
 
-<script src="assets/data.js?v=4"></script>
-<script src="assets/common.js?v=4"></script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/common.js?v=5"></script>
 <script>
 const key = new URLSearchParams(location.search).get('c');
 const cat = DATA.find(c => c.key === key);
@@ -45,6 +45,7 @@ if (!cat) {
   location.replace('board.html' + (TV ? '?tv=1' : ''));
 } else {
   document.title = cat.en + ' - Game Jeopardy - Gamers Week';
+  document.getElementById('mask').src = maskFor(cat.key);
   document.getElementById('jp').textContent = cat.jp;
   document.getElementById('en').textContent = cat.en;
   if (TV) document.getElementById('back').href = 'board.html?tv=1';

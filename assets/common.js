@@ -48,6 +48,7 @@ function go(url) {
 Bus.on(m => {
   if (!TV) return;
   if (m.type === 'menu') go('index.html?tv=1');
+  if (m.type === 'brb') go('brb.html?tv=1');
   if (m.type === 'board') go('board.html?tv=1');
   if (m.type === 'cat') go('category.html?c=' + m.c + '&tv=1');
   if (m.type === 'open') go('question.html?c=' + m.c + '&n=' + m.n + '&tv=1');
@@ -59,7 +60,7 @@ addEventListener('storage', e => {
   if (e.key === 'jj-used' && typeof window.onSharedChange === 'function') window.onSharedChange();
 });
 
-// ---- background decor: drifting clouds, flickering lightning and little stars drifting up the screen ----
+// ---- background decor: drifting star clusters and little stars rising up the screen ----
 function makeSparks() {
   if (reducedMotion()) return;
   const layer = document.createElement('div');
@@ -81,22 +82,31 @@ function makeDecor() {
   const layer = document.createElement('div');
   layer.className = 'decor';
   layer.setAttribute('aria-hidden', 'true');
-  layer.innerHTML = ['cloud a:clouds', 'cloud b:clouds', 'bolt a:bolt', 'bolt b:bolt']
-    .map(x => { const [cls, img] = x.split(':'); return '<img class="' + cls + '" alt="" src="assets/theme/' + img + '.png">'; }).join('');
+  layer.innerHTML = ['cloud a', 'cloud b'].map(cls => '<img class="' + cls + '" alt="" src="assets/p5/ring.jpg">').join('');
   document.body.prepend(layer);
 }
 const decorate = () => { makeDecor(); makeSparks(); };
 if (document.body) decorate(); else addEventListener('DOMContentLoaded', decorate);
 
-// "!!!" flash when a question opens
+// each category wears the mask of a Phantom Thief; each question bubble gets a character (the same one on the host and the TV)
+const MASKS = { silhouette: 'm-joker', sound: 'm-fox', character: 'm-morgana', item: 'm-noir', console: 'm-queen', biome: 'm-violet', emoji: 'm-panther' };
+const maskFor = key => 'assets/p5/cut/' + (MASKS[key] || 'm-joker') + '.png';
+const CHARS = [['c-ren', 'Joker'], ['c-ann', 'Panther'], ['c-ryuji', 'Skull'], ['c-morgana', 'Mona'], ['c-yusuke', 'Fox'], ['c-makoto', 'Queen'], ['c-futaba', 'Oracle'], ['c-haru', 'Noir'], ['c-akechi', 'Crow']];
+function charFor(cat, n) {
+  const c = CHARS[Math.floor(seededRandom(cat + ':char:' + n)() * CHARS.length)];
+  return { src: 'assets/p5/cut/' + c[0] + '.png', name: c[1] };
+}
+
+// card-throw clip with a red wipe when a question opens
 function openFlash() {
   if (reducedMotion()) return;
   const dim = document.createElement('div'); dim.className = 'flash-dim';
-  const splash = document.createElement('div'); splash.className = 'flash-splash';
-  const img = document.createElement('img');
-  img.alt = ''; img.className = 'flash-img'; img.src = 'assets/theme/bolt.png';
-  document.body.append(dim, splash, img);
-  setTimeout(() => { dim.remove(); splash.remove(); img.remove(); }, 1300);
+  const vid = document.createElement('video');
+  vid.className = 'flash-vid'; vid.src = 'assets/p5/cards.mp4'; vid.muted = true; vid.playsInline = true; vid.autoplay = true;
+  const wipe = document.createElement('div'); wipe.className = 'flash-wipe';
+  document.body.append(dim, vid, wipe);
+  vid.play().catch(() => {});
+  setTimeout(() => { dim.remove(); vid.remove(); wipe.remove(); }, 1450);
 }
 
 // difficulty (1 easy, 2 medium, 3 hard) as stars + word
@@ -200,12 +210,11 @@ function celebrate(kind) {
   const fx = document.createElement('div');
   fx.className = 'fx fx-' + kind;
   fx.setAttribute('aria-hidden', 'true');
-  const img = (src, cls) => '<img class="' + cls + '" alt="" src="assets/theme/' + src + '">';
+  const vid = src => '<video class="fx-vid" src="assets/p5/' + src + '" muted playsinline autoplay></video>';
   if (kind === 'win') {
-    const words = ['Correct!', 'Wow!', 'Nice!', 'Yes!'];
-    fx.innerHTML = img('rays.png', 'fx-rays') + img('stars.png', 'fx-stars') +
-      '<div class="fx-text">' + words[Math.floor(Math.random() * words.length)] + '</div>';
-    const colors = ['#35f2ff', '#ff3ea5', '#ffe66b', '#ffffff', '#b04dff'];
+    const words = ['Correct!', 'Nice!', 'Yes!', 'Take it!'];
+    fx.innerHTML = vid(Math.random() < .5 ? 'joker.mp4' : 'city.mp4') + '<div class="fx-text">' + words[Math.floor(Math.random() * words.length)] + '</div>';
+    const colors = ['#e60012', '#ffffff', '#ff5a66', '#ffffff', '#b0b0b0'];
     for (let i = 0; i < 46; i++) {
       const c = document.createElement('i');
       c.className = 'confetti';
@@ -217,10 +226,11 @@ function celebrate(kind) {
       fx.append(c);
     }
   } else {
-    fx.innerHTML = img('neon.jpg', 'fx-neon') + img('bolt.png', 'fx-bolt') + '<div class="fx-text">Wrong!</div>';
+    fx.innerHTML = vid('eyes.mp4') + '<div class="fx-text">Wrong!</div>';
     document.documentElement.classList.add('shake');
     setTimeout(() => document.documentElement.classList.remove('shake'), 800);
   }
+  fx.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
   document.body.append(fx);
-  setTimeout(() => fx.remove(), 2500);
+  setTimeout(() => fx.remove(), 3300);
 }

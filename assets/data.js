@@ -2950,5 +2950,492 @@ window.DATA = [
     "img": "assets/img/biome-60.jpg"
    }
   ]
+ },
+ {
+  "key": "emoji",
+  "jp": "絵",
+  "en": "Emoji",
+  "questions": [
+   {
+    "n": 1,
+    "prompt": "Which character is this?",
+    "answer": "Mario",
+    "detail": "From: Super Mario",
+    "difficulty": 1,
+    "emoji": "🍄🔧🧢"
+   },
+   {
+    "n": 2,
+    "prompt": "Which character is this?",
+    "answer": "Sonic",
+    "detail": "From: Sonic the Hedgehog",
+    "difficulty": 1,
+    "emoji": "🦔💨💍"
+   },
+   {
+    "n": 3,
+    "prompt": "Which character is this?",
+    "answer": "Pikachu",
+    "detail": "From: Pokémon",
+    "difficulty": 1,
+    "emoji": "⚡🐭🟡"
+   },
+   {
+    "n": 4,
+    "prompt": "Which character is this?",
+    "answer": "Link",
+    "detail": "From: The Legend of Zelda",
+    "difficulty": 1,
+    "emoji": "🗡️🛡️🧝"
+   },
+   {
+    "n": 5,
+    "prompt": "Which character is this?",
+    "answer": "Kirby",
+    "detail": "From: Kirby",
+    "difficulty": 1,
+    "emoji": "🌸⭐😋"
+   },
+   {
+    "n": 6,
+    "prompt": "Which character is this?",
+    "answer": "Donkey Kong",
+    "detail": "From: Donkey Kong",
+    "difficulty": 1,
+    "emoji": "🦍🍌🛢️"
+   },
+   {
+    "n": 7,
+    "prompt": "Which character is this?",
+    "answer": "Pac-Man",
+    "detail": "From: Pac-Man",
+    "difficulty": 1,
+    "emoji": "🟡👻🍒"
+   },
+   {
+    "n": 8,
+    "prompt": "Which character is this?",
+    "answer": "Bowser",
+    "detail": "From: Super Mario",
+    "difficulty": 1,
+    "emoji": "🐢🔥👑"
+   },
+   {
+    "n": 9,
+    "prompt": "Which character is this?",
+    "answer": "Yoshi",
+    "detail": "From: Super Mario",
+    "difficulty": 1,
+    "emoji": "🦖🥚🟢"
+   },
+   {
+    "n": 10,
+    "prompt": "Which character is this?",
+    "answer": "Princess Peach",
+    "detail": "From: Super Mario",
+    "difficulty": 1,
+    "emoji": "👸🍑🍰"
+   },
+   {
+    "n": 11,
+    "prompt": "Which character is this?",
+    "answer": "Luigi",
+    "detail": "From: Luigi's Mansion",
+    "difficulty": 2,
+    "emoji": "👻🔦💚"
+   },
+   {
+    "n": 12,
+    "prompt": "Which character is this?",
+    "answer": "Samus Aran",
+    "detail": "From: Metroid",
+    "difficulty": 2,
+    "emoji": "🚀👩‍🚀🔫"
+   },
+   {
+    "n": 13,
+    "prompt": "Which character is this?",
+    "answer": "Lara Croft",
+    "detail": "From: Tomb Raider",
+    "difficulty": 1,
+    "emoji": "🏺🔫👩"
+   },
+   {
+    "n": 14,
+    "prompt": "Which character is this?",
+    "answer": "Master Chief",
+    "detail": "From: Halo",
+    "difficulty": 2,
+    "emoji": "🪖🛰️💚"
+   },
+   {
+    "n": 15,
+    "prompt": "Which character is this?",
+    "answer": "Steve",
+    "detail": "From: Minecraft",
+    "difficulty": 1,
+    "emoji": "⛏️🟫🧱"
+   },
+   {
+    "n": 16,
+    "prompt": "Which character is this?",
+    "answer": "Creeper",
+    "detail": "From: Minecraft",
+    "difficulty": 1,
+    "emoji": "💥🟢🧨"
+   },
+   {
+    "n": 17,
+    "prompt": "Which character is this?",
+    "answer": "Sans",
+    "detail": "From: Undertale",
+    "difficulty": 2,
+    "emoji": "💀🦴🌭"
+   },
+   {
+    "n": 18,
+    "prompt": "Which character is this?",
+    "answer": "Goku",
+    "detail": "From: Dragon Ball",
+    "difficulty": 1,
+    "emoji": "🐉🟠💪"
+   },
+   {
+    "n": 19,
+    "prompt": "Which character is this?",
+    "answer": "Naruto",
+    "detail": "From: Naruto",
+    "difficulty": 1,
+    "emoji": "🍥🦊🌀"
+   },
+   {
+    "n": 20,
+    "prompt": "Which character is this?",
+    "answer": "Luffy",
+    "detail": "From: One Piece",
+    "difficulty": 1,
+    "emoji": "🏴‍☠️👒🍖"
+   },
+   {
+    "n": 21,
+    "prompt": "Which character is this?",
+    "answer": "Charizard",
+    "detail": "From: Pokémon",
+    "difficulty": 1,
+    "emoji": "🔥🐉🧡"
+   },
+   {
+    "n": 22,
+    "prompt": "Which character is this?",
+    "answer": "Jigglypuff",
+    "detail": "From: Pokémon",
+    "difficulty": 2,
+    "emoji": "🎤😴🎵"
+   },
+   {
+    "n": 23,
+    "prompt": "Which character is this?",
+    "answer": "Totoro",
+    "detail": "From: My Neighbor Totoro",
+    "difficulty": 2,
+    "emoji": "🌳🐻☔"
+   },
+   {
+    "n": 24,
+    "prompt": "Which character is this?",
+    "answer": "Hello Kitty",
+    "detail": "From: Sanrio",
+    "difficulty": 1,
+    "emoji": "🎀🐱🍎"
+   },
+   {
+    "n": 25,
+    "prompt": "Which character is this?",
+    "answer": "Spider-Man",
+    "detail": "From: Marvel",
+    "difficulty": 1,
+    "emoji": "🕷️🕸️🏙️"
+   },
+   {
+    "n": 26,
+    "prompt": "Which character is this?",
+    "answer": "Batman",
+    "detail": "From: DC Comics",
+    "difficulty": 1,
+    "emoji": "🦇🌃🖤"
+   },
+   {
+    "n": 27,
+    "prompt": "Which character is this?",
+    "answer": "The Joker",
+    "detail": "From: Batman",
+    "difficulty": 1,
+    "emoji": "🃏🤡💜"
+   },
+   {
+    "n": 28,
+    "prompt": "Which character is this?",
+    "answer": "Morgana",
+    "detail": "From: Persona 5",
+    "difficulty": 3,
+    "emoji": "🐈‍⬛🎩🧣"
+   },
+   {
+    "n": 29,
+    "prompt": "Which character is this?",
+    "answer": "Cloud Strife",
+    "detail": "From: Final Fantasy VII",
+    "difficulty": 2,
+    "emoji": "🌥️🗡️🏍️"
+   },
+   {
+    "n": 30,
+    "prompt": "Which character is this?",
+    "answer": "Sephiroth",
+    "detail": "From: Final Fantasy VII",
+    "difficulty": 2,
+    "emoji": "🗡️🪽🔥"
+   },
+   {
+    "n": 31,
+    "prompt": "Which character is this?",
+    "answer": "Ness",
+    "detail": "From: EarthBound",
+    "difficulty": 3,
+    "emoji": "⚾🧢🎒"
+   },
+   {
+    "n": 32,
+    "prompt": "Which character is this?",
+    "answer": "Isabelle",
+    "detail": "From: Animal Crossing",
+    "difficulty": 2,
+    "emoji": "🐕🏝️📋"
+   },
+   {
+    "n": 33,
+    "prompt": "Which character is this?",
+    "answer": "Tom Nook",
+    "detail": "From: Animal Crossing",
+    "difficulty": 2,
+    "emoji": "🦝💰🏠"
+   },
+   {
+    "n": 34,
+    "prompt": "Which character is this?",
+    "answer": "Mega Man",
+    "detail": "From: Mega Man",
+    "difficulty": 2,
+    "emoji": "🤖🔵💥"
+   },
+   {
+    "n": 35,
+    "prompt": "Which character is this?",
+    "answer": "Ryu",
+    "detail": "From: Street Fighter",
+    "difficulty": 1,
+    "emoji": "🥋🔥👊"
+   },
+   {
+    "n": 36,
+    "prompt": "Which character is this?",
+    "answer": "Chun-Li",
+    "detail": "From: Street Fighter",
+    "difficulty": 2,
+    "emoji": "🥋🦵💙"
+   },
+   {
+    "n": 37,
+    "prompt": "Which character is this?",
+    "answer": "Scorpion",
+    "detail": "From: Mortal Kombat",
+    "difficulty": 2,
+    "emoji": "🦂🔥🥷"
+   },
+   {
+    "n": 38,
+    "prompt": "Which character is this?",
+    "answer": "Sub-Zero",
+    "detail": "From: Mortal Kombat",
+    "difficulty": 2,
+    "emoji": "❄️🥷🧊"
+   },
+   {
+    "n": 39,
+    "prompt": "Which character is this?",
+    "answer": "Crash Bandicoot",
+    "detail": "From: Crash Bandicoot",
+    "difficulty": 2,
+    "emoji": "🦘🍎📦"
+   },
+   {
+    "n": 40,
+    "prompt": "Which character is this?",
+    "answer": "Spyro",
+    "detail": "From: Spyro the Dragon",
+    "difficulty": 2,
+    "emoji": "🐉💜✨"
+   },
+   {
+    "n": 41,
+    "prompt": "Which character is this?",
+    "answer": "Ezio",
+    "detail": "From: Assassin's Creed",
+    "difficulty": 3,
+    "emoji": "🦅🗡️🏛️"
+   },
+   {
+    "n": 42,
+    "prompt": "Which character is this?",
+    "answer": "Geralt",
+    "detail": "From: The Witcher",
+    "difficulty": 2,
+    "emoji": "🐺⚔️🧙"
+   },
+   {
+    "n": 43,
+    "prompt": "Which character is this?",
+    "answer": "Kratos",
+    "detail": "From: God of War",
+    "difficulty": 2,
+    "emoji": "🪓👨‍🦲👊"
+   },
+   {
+    "n": 44,
+    "prompt": "Which character is this?",
+    "answer": "Toad",
+    "detail": "From: Super Mario",
+    "difficulty": 2,
+    "emoji": "🍄🔴⚪"
+   },
+   {
+    "n": 45,
+    "prompt": "Which character is this?",
+    "answer": "Bulbasaur",
+    "detail": "From: Pokémon",
+    "difficulty": 1,
+    "emoji": "🌱🐸🌿"
+   },
+   {
+    "n": 46,
+    "prompt": "Which character is this?",
+    "answer": "Squirtle",
+    "detail": "From: Pokémon",
+    "difficulty": 1,
+    "emoji": "🐢💦😎"
+   },
+   {
+    "n": 47,
+    "prompt": "Which character is this?",
+    "answer": "Snorlax",
+    "detail": "From: Pokémon",
+    "difficulty": 2,
+    "emoji": "😴🐻🍔"
+   },
+   {
+    "n": 48,
+    "prompt": "Which character is this?",
+    "answer": "Doraemon",
+    "detail": "From: Doraemon",
+    "difficulty": 1,
+    "emoji": "🔔🐱🔵"
+   },
+   {
+    "n": 49,
+    "prompt": "Which character is this?",
+    "answer": "Boo",
+    "detail": "From: Super Mario",
+    "difficulty": 2,
+    "emoji": "👻😳🤍"
+   },
+   {
+    "n": 50,
+    "prompt": "Which character is this?",
+    "answer": "Wario",
+    "detail": "From: WarioWare",
+    "difficulty": 2,
+    "emoji": "💰💛😬"
+   },
+   {
+    "n": 51,
+    "prompt": "Which character is this?",
+    "answer": "Fox McCloud",
+    "detail": "From: Star Fox",
+    "difficulty": 2,
+    "emoji": "🦊🚀🔫"
+   },
+   {
+    "n": 52,
+    "prompt": "Which character is this?",
+    "answer": "Princess Zelda",
+    "detail": "From: The Legend of Zelda",
+    "difficulty": 2,
+    "emoji": "👸🔺🎵"
+   },
+   {
+    "n": 53,
+    "prompt": "Which character is this?",
+    "answer": "Ganondorf",
+    "detail": "From: The Legend of Zelda",
+    "difficulty": 3,
+    "emoji": "🐗🔱😈"
+   },
+   {
+    "n": 54,
+    "prompt": "Which character is this?",
+    "answer": "Crewmate",
+    "detail": "From: Among Us",
+    "difficulty": 1,
+    "emoji": "🔴👨‍🚀🔪"
+   },
+   {
+    "n": 55,
+    "prompt": "Which character is this?",
+    "answer": "The Knight",
+    "detail": "From: Hollow Knight",
+    "difficulty": 3,
+    "emoji": "🐞🗡️🕳️"
+   },
+   {
+    "n": 56,
+    "prompt": "Which character is this?",
+    "answer": "Shrek",
+    "detail": "From: Shrek",
+    "difficulty": 1,
+    "emoji": "🧅👹🟢"
+   },
+   {
+    "n": 57,
+    "prompt": "Which character is this?",
+    "answer": "Minion",
+    "detail": "From: Despicable Me",
+    "difficulty": 1,
+    "emoji": "🍌👓💛"
+   },
+   {
+    "n": 58,
+    "prompt": "Which character is this?",
+    "answer": "Slime",
+    "detail": "From: Dragon Quest",
+    "difficulty": 2,
+    "emoji": "💧😊🔵"
+   },
+   {
+    "n": 59,
+    "prompt": "Which character is this?",
+    "answer": "Tails",
+    "detail": "From: Sonic the Hedgehog",
+    "difficulty": 2,
+    "emoji": "🦊🚁🔧"
+   },
+   {
+    "n": 60,
+    "prompt": "Which character is this?",
+    "answer": "Ash Ketchum",
+    "detail": "From: Pokémon",
+    "difficulty": 2,
+    "emoji": "🧢⚡🌈"
+   }
+  ]
  }
 ];

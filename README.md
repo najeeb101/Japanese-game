@@ -4,12 +4,14 @@
 
 ## Features
 
-- Six categories, each with 60 numbered questions: the board shows only the categories, and the numbers 1-60 appear once you open one
+- Seven categories (Silhouette, Sound, Character, Item, Console, Biome and the new Emoji "guess the character" category), each with 60 numbered questions: the board shows only the categories, and the numbers 1-60 appear once you open one
 - Hint button that turns the question into four multiple-choice answers
 - Correct answer button plus win and lose animations (a wrong choice is the only way to lose)
 - Host view for selecting questions, giving hints and marking answers
 - TV/audience view that follows the host in another browser window
-- One vintage circus / theatre theme (crimson, cream and gold marquee lights)
+- One Persona 5 theme: red, black and white, halftone dots, stars, ransom-note lettering, a Phantom Thief mask on every category and a character beside each question bubble
+- Persona 5 clips for the question flash and the win/lose animations
+- "We will be right back" TV screen (brb.html, or the host button) for when the booth is empty
 - Question images, character art, backgrounds, and sound effects
 - Local browser storage for used questions and synchronized game state
 - Responsive layout for desktop displays, projectors, tablets, and phones
@@ -73,13 +75,15 @@ The host and audience windows communicate through browser `localStorage` events,
 ├── board.html       # Category board
 ├── category.html    # Numbers 1-60 for one category
 ├── question.html    # Question and answer display
+├── brb.html         # "We will be right back" screen
 └── assets/
     ├── common.js    # Shared state, styles, and host/TV communication
     ├── data.js      # Quiz question data
     ├── style.css    # Shared styles
     ├── audio/       # Sound effects
     ├── img/         # Question and character artwork
-    └── theme/       # Theme backgrounds and win/lose artwork
+    ├── p5/          # Persona 5 backgrounds, clips and masks/characters (p5/cut)
+    └── theme/       # Mouse cursors
 ```
 
 ## Deployment with GitHub Pages

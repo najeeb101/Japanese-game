@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We'll be right back - Game Jeopardy - Gamers Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=5">
+<style>
+  html, body { height: 100%; }
+  body { overflow: hidden; }
+  .brb {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: min(3vh, 3vw); padding: 3vh 4vw; text-align: center;
+  }
+  .brb .kicker { margin: 0; font-family: var(--display); letter-spacing: .3em; font-size: min(3.4vw, 2.4vh); background: #000; color: #fff; padding: .6vh 3vw; border: 3px solid #fff; transform: skewX(-8deg); }
+  .brb h1 {
+    margin: 0; font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: 1.02;
+    font-size: min(11vw, 8.5vh); display: flex; flex-direction: column; align-items: center; gap: .08em;
+  }
+  .brb .line { display: block; white-space: nowrap; }
+  .rn { display: inline-block; padding: 0 .07em; margin: 0 .01em; line-height: 1; }
+  .rn.k0 { background: #fff; color: #000; transform: rotate(-4deg) translateY(.02em); }
+  .rn.k1 { background: #000; color: #fff; transform: rotate(3deg) translateY(-.03em); border: .03em solid #fff; }
+  .rn.k2 { background: var(--red); color: #fff; transform: rotate(-2deg) translateY(.04em); font-family: Georgia, serif; font-style: italic; font-weight: 700; }
+  .rn.k3 { background: #fff; color: var(--red); transform: rotate(5deg); font-family: Georgia, serif; font-weight: 700; }
+  .rn.sp { background: none; border: 0; width: .3em; }
+  .screen {
+    position: relative; width: min(84vw, 62vh * 1.78); aspect-ratio: 16 / 9; overflow: hidden;
+    border: 5px solid #fff; box-shadow: 10px 10px 0 var(--red), 20px 20px 0 #000; background: #000; transform: rotate(-1.5deg);
+  }
+  /* the clip carries a small recorder logo in its bottom-right corner: scale it past the frame edge */
+  .screen video { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); transform-origin: 0 0; }
+  .brb .foot { margin: 0; font-family: var(--display); letter-spacing: .12em; font-size: min(4vw, 2.6vh); background: var(--red); color: #fff; padding: .6vh 3vw; border: 3px solid #000; box-shadow: 4px 4px 0 #000; transform: skewX(-8deg); }
+  .brb .dots span { display: inline-block; animation: bounce 1.2s ease-in-out infinite; }
+  .brb .dots span:nth-child(2) { animation-delay: .2s; } .brb .dots span:nth-child(3) { animation-delay: .4s; }
+  @keyframes bounce { 0%, 60%, 100% { transform: none; } 30% { transform: translateY(-.35em); } }
+  .back { position: fixed; left: 10px; top: 10px; z-index: 5; }
+  @media (max-aspect-ratio: 3/4) { .screen { width: 90vw; } }
+</style>
+</head>
+<body class="p-menu">
+<a class="btn back tvhide" href="index.html">&larr; Main menu</a>
+<div class="brb">
+  <p class="kicker">GAMERS WEEK</p>
+  <h1 id="title" aria-label="We'll be right back"><span class="line">We'll be</span><span class="line">right back</span></h1>
+  <div class="screen"><video id="vid" src="assets/p5/brb.mp4" muted loop playsinline autoplay></video></div>
+  <p class="foot">Japan Club × Esports Club <span class="dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></p>
+</div>
+
+<script src="assets/common.js?v=5"></script>
+<script>
+// ransom-note letters
+let i = 0;
+document.querySelectorAll('#title .line').forEach(line => {
+  const text = line.textContent; line.textContent = ''; line.setAttribute('aria-hidden', 'true');
+  [...text].forEach(ch => {
+    const s = document.createElement('span');
+    s.className = ch === ' ' ? 'rn sp' : 'rn k' + ((i++ * 7 + 1) % 4);
+    s.textContent = ch === ' ' ? ' ' : ch;
+    line.append(s);
+  });
+});
+document.getElementById('vid').play().catch(() => {});
+window.pageView = () => ({ page: 'brb' });
+announce(window.pageView());
+</script>
+</body>
+</html>

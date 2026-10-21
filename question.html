@@ -6,19 +6,22 @@
 <title>Question - Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body class="p-question">
 <div class="frame">
   <div class="q-top">
     <a class="btn tvhide" id="menu" href="index.html">&#8962; Main menu</a>
     <a class="btn tvhide" id="back" href="board.html">&larr; Numbers</a>
-    <div class="q-tag"><span class="jp" id="jp"></span><span class="en" id="en"></span><span class="no" id="no"></span></div>
+    <div class="q-tag"><img class="tag-mask" id="mask" alt=""><span class="jp" id="jp"></span><span class="en" id="en"></span><span class="no" id="no"></span></div>
     <span class="diff" id="diff" hidden></span>
   </div>
 
   <div class="q-panel" id="panel">
-    <div class="q-stage"><h2 class="q-prompt" id="prompt"></h2></div>
+    <div class="q-stage">
+      <div class="q-who"><img class="q-char" id="char" alt=""><span class="q-name" id="cname"></span></div>
+      <div class="q-bubble"><div><h2 class="q-prompt" id="prompt"></h2></div></div>
+    </div>
     <div id="media"></div>
     <div class="q-actions tvhide">
       <button class="btn hintbtn" id="hint">&#128161; Hint</button>
@@ -31,8 +34,8 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Image preview"><img alt=""></div>
 
-<script src="assets/data.js?v=4"></script>
-<script src="assets/common.js?v=4"></script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/common.js?v=5"></script>
 <script>
 const p = new URLSearchParams(location.search);
 const cat = DATA.find(c => c.key === p.get('c'));
@@ -44,6 +47,9 @@ if (!q) {
   document.title = cat.en + ' #' + q.n + ' - Game Jeopardy - Gamers Week';
   used.add(cat.key, q.n);
 
+  document.getElementById('mask').src = maskFor(cat.key);
+  const who = charFor(cat.key, q.n);
+  document.getElementById('char').src = who.src; document.getElementById('cname').textContent = who.name;
   document.getElementById('jp').textContent = cat.jp;
   document.getElementById('en').textContent = cat.en;
   document.getElementById('no').textContent = '#' + q.n;
@@ -56,6 +62,11 @@ if (!q) {
     im.className = 'q-img' + (q.cutout ? ' cutout' : ''); im.src = q.img; im.alt = cat.en + ' question ' + q.n;
     im.onclick = () => { const lb = document.getElementById('lightbox'); const li = lb.querySelector('img'); li.src = q.img; li.className = q.cutout ? 'cutout' : ''; lb.classList.add('open'); };
     media.append(im);
+  }
+  if (q.emoji) {
+    const em = document.createElement('div');
+    em.className = 'q-emoji'; em.textContent = q.emoji; em.setAttribute('role', 'img'); em.setAttribute('aria-label', 'Emoji clue');
+    media.append(em);
   }
   if (q.audio) {
     const box = document.createElement('div');

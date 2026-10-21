@@ -6,7 +6,7 @@
 <title>Game Jeopardy - Gamers Week</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=4">
+<link rel="stylesheet" href="assets/style.css?v=5">
 </head>
 <body class="p-board">
 <div class="frame">
@@ -22,8 +22,8 @@
   <p class="note" id="note"></p>
 </div>
 
-<script src="assets/data.js?v=4"></script>
-<script src="assets/common.js?v=4"></script>
+<script src="assets/data.js?v=5"></script>
+<script src="assets/common.js?v=5"></script>
 <script>
 const wrap = document.getElementById('cats');
 
@@ -35,10 +35,11 @@ function render() {
     a.className = 'cat' + (left === 0 ? ' done' : '');
     a.href = 'category.html?c=' + c.key + tvQS();
     a.setAttribute('aria-label', c.en);
-    a.innerHTML = '<span class="jp"></span><span class="en"></span><span class="left"></span>';
-    a.children[0].textContent = c.jp;
-    a.children[1].textContent = c.en;
-    a.children[2].textContent = left + ' left';
+    a.innerHTML = '<img class="mask" alt=""><span class="jp"></span><span class="en"></span><span class="left"></span>';
+    a.children[0].src = maskFor(c.key);
+    a.children[1].textContent = c.jp;
+    a.children[2].textContent = c.en;
+    a.children[3].textContent = left + ' left';
     wrap.append(a);
   });
   const left = DATA.reduce((s, c) => s + c.questions.filter(q => !used.has(c.key, q.n)).length, 0);
